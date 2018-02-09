@@ -1,4 +1,4 @@
-#First run scantailor with arguments
+#First runs scantailor with arguments
 #layout option specifies if the image scan is 1 page or 2
 #0 is autodetect, 1 is one page layout
 
@@ -11,8 +11,6 @@ scan_tailor () {
 			INPUT_FILELIST="$INPUT_FILELIST $f"
 		fi
 	done
-	
-	#--orientation=$ORIENTATION \
 	
 	#scantailor command
 	scantailor-cli \
@@ -38,6 +36,7 @@ scan_tailor () {
 		$2
 }
 
+#Edit these options for universal scantailor options
 LAYOUT_OPTION=0
 LAYOUT_DIRECTION="lr"
 ORIENTATION="left"
@@ -49,7 +48,7 @@ ALIGNMENT="center"
 DPI=600
 OUTPUT_DPI=600
 COLOR_MODE="black_and_white" #black_and_white, color_grayscale, mixed
-WHITE_MARGINS=false
+WHITE_MARGINS=true
 THRESHOLD=0
 DESPECKLE="normal"
 DEWARPING="off"
@@ -67,17 +66,14 @@ scan_tailor $1 $2
 echo Finished Tif Conversions
 
 
+#Convert all tifs in the directory into a multi tiff with Image Magick. Tiff is lossless, so this combination loses no data.
 dir=`pwd`
 cd $2
-echo Converting to PDF format
-convert *.tif output.pdf
+echo Converting tifs to multitiffs
+convert *.tif output.tiff
 echo Adding OCR Layer
-pdfsandwich output.pdf
-echo Performing Cleanup
-rm *.tif
-rm -r cache
-rm output.pdf
-cd $dir 
-#covert tiff to pdf using convert <file1> <file2> .... <outputfile.pdf>
-
- 
+tesseract output.tiff ../OCRoutput
+#echo Performing Cleanup
+#rm *.tif
+#rm -r cache
+#rm output.pdf
