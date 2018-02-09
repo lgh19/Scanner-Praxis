@@ -59,19 +59,20 @@ INPUT_FILELIST=""
 
 #scantailor commandline takes a list of images as input, not input directory
 #need to go through all of the images of an input directory to construct the parameter
-echo Beginning Tif Conversion
+#Starting ScanTailor. JPGs will be converted to tif files for tesseract to run OCR on.
+echo Starting ScanTailor.
 scan_tailor $1 $2
-echo Finished Tif Conversions
+echo Finished ScanTailor. Results in out folder.
 
 
 #Convert all tifs in the directory into a multi tiff with Image Magick. Tiff is lossless, so this combination loses no data.
 cd $2
-echo Converting tifs to multitiffs
+echo Combining pictures into PDF #It's actually a multitiff, but called a PDF for the user
 convert *.tif output.tiff
-echo Adding OCR Layer and dumping to .txt file
-#tesseract output.tiff ../OCRoutput
-echo Converting tiff to pdf
-convert output.tiff ../output.pdf
+
+#With this multitiff OCR with tesseract can be run. Tesseract can only run on individual images, which is why we give it a multitiff rather than a pdf
+echo Adding OCR Layer to PDF
+tesseract output.tiff ../outputOCR -l eng pdf
 
 #echo Performing Cleanup
 #pwd
