@@ -1,7 +1,4 @@
 #First runs scantailor with arguments
-#layout option specifies if the image scan is 1 page or 2
-#0 is autodetect, 1 is one page layout
-
 
 scan_tailor () {
 	for f in $1* #iterate the directory
@@ -12,10 +9,11 @@ scan_tailor () {
 		fi
 	done
 	
-	#scantailor command
+	#scantailor options
 	scantailor-cli \
 		--layout=$LAYOUT_OPTION \
 		--layout-direction=$LAYOUT_DIRECTION \
+		--orientation=$ORIENTATION \
 		--rotate=$ROTATE \
 		--deskew=$DESKEW \
 		--content-direction=$CONTENT_DETECTION \
@@ -37,25 +35,25 @@ scan_tailor () {
 }
 
 #Edit these options for universal scantailor options
-LAYOUT_OPTION=0
+LAYOUT_OPTION="0" #<0: auto detect | 1: one page | layout 1.5: one page, layout but cutting is needed | 2: two page layout>
 LAYOUT_DIRECTION="lr"
-ORIENTATION="left"
-ROTATE=0
-DESKEW="auto"
-CONTENT_DETECTION="normal"
-MARGINS=1
+ORIENTATION="left" #<left|right|upsidedown|none>
+ROTATE=0.0
+DESKEW="auto" #<auto|manual> Default: auto
+CONTENT_DETECTION="normal" #<cautious|normal|aggressive> Default: normal
+MARGINS=25.4 #In MM
 ALIGNMENT="center"
 DPI=600
-OUTPUT_DPI=600
+OUTPUT_DPI=600 #sets x and y dpi. default: 600
 COLOR_MODE="black_and_white" #black_and_white, color_grayscale, mixed
-WHITE_MARGINS=true
-THRESHOLD=0
-DESPECKLE="normal"
-DEWARPING="off"
-DEPTH_PERCEPT=2.0
-START_FILTER=4
-END_FILTER=6
-OUTPUT_PROJECT="$2/imginfo"
+WHITE_MARGINS=false #Default: false
+THRESHOLD= #n<0 thinner, n>0 thicker; default: 0
+DESPECKLE="normal" #Default: normal <off|cautious|normal|aggressive>
+DEWARPING="off" #Default: <off|auto>
+DEPTH_PERCEPT=2.0 #Default: 2.0
+START_FILTER=4 #Default: 4
+END_FILTER=6 #Default: 6
+OUTPUT_PROJECT="$1/Project.ScanTailor"
 
 INPUT_FILELIST=""
 
@@ -67,13 +65,18 @@ echo Finished Tif Conversions
 
 
 #Convert all tifs in the directory into a multi tiff with Image Magick. Tiff is lossless, so this combination loses no data.
-dir=`pwd`
 cd $2
 echo Converting tifs to multitiffs
 convert *.tif output.tiff
-echo Adding OCR Layer
-tesseract output.tiff ../OCRoutput
+echo Adding OCR Layer and dumping to .txt file
+#tesseract output.tiff ../OCRoutput
+echo Converting tiff to pdf
+convert output.tiff ../output.pdf
+
 #echo Performing Cleanup
-#rm *.tif
+#pwd
+#cd $1
+#pwd
+#mkdir in
+#mv *.JPG in/
 #rm -r cache
-#rm output.pdf
