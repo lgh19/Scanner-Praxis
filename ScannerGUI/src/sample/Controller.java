@@ -14,21 +14,27 @@ import java.util.concurrent.TimeUnit;
 
 public class Controller {
 
+    //Easy Tab
     @FXML
     Button easyCreate;
-    @FXML
-    Button b2;
     @FXML
     CheckBox easyCheck;
     @FXML
     ProgressBar easyLoading;
 
+    //Medium Tab
+    @FXML
+    Button mediumImport;
+    @FXML
+    Button mediumProcess;
+
+    //Hard Tab
     @FXML
     Button hardImport;
 
     public void initialize() {
         easyTab();
-        //mediumTab();
+        mediumTab();
         hardTab();
     }
 
@@ -44,10 +50,17 @@ public class Controller {
     }
 
     void mediumTab(){
-        b2.setOnAction(new EventHandler<ActionEvent>() {
+        mediumImport.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                b2.setText("working!");
+                mediumImport.setText("working!");
+                easyCreate.setText("Lol");
+            }
+        });
+        mediumProcess.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                mediumProcess.setText("working!");
             }
         });
     }
@@ -59,8 +72,8 @@ public class Controller {
                 hardImport.setText("Running!");
                 String[] env = {"PATH=/bin:/usr/bin/"};
                 String cmd = "you complete shell command";
-                Process process = Runtime.getRuntime().exec(cmd, env);
                 try {
+                    Process process = Runtime.getRuntime().exec(cmd, env);
                     Process pr = Runtime.getRuntime().exec(cmd);
                 }
                 catch (IOException e){System.out.println("Nope");}
