@@ -3,9 +3,7 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import javax.imageio.IIOException;
@@ -31,6 +29,13 @@ public class Controller {
     //Hard Tab
     @FXML
     Button hardImport;
+    @FXML
+    Button hardDelete;
+    @FXML
+    Button hardScan;
+    @FXML
+    Spinner hardRotate;
+
 
     public void initialize() {
         easyTab();
@@ -54,7 +59,6 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 mediumImport.setText("working!");
-                easyCreate.setText("Lol");
             }
         });
         mediumProcess.setOnAction(new EventHandler<ActionEvent>() {
@@ -69,7 +73,7 @@ public class Controller {
         hardImport.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                hardImport.setText("Running!");
+                hardImport.setText("Importing!");
                 String[] env = {"PATH=/bin:/usr/bin/"};
                 String cmd = "you complete shell command";
                 try {
@@ -79,6 +83,23 @@ public class Controller {
                 catch (IOException e){System.out.println("Nope");}
             }
         });
+        ChoiceBox hardOrientation = new ChoiceBox();
+        hardOrientation.getItems().addAll("item1", "item2", "item3");
+
+        hardDelete.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                hardDelete.setText("Deleting!");
+            }
+        });
+        hardScan.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                hardScan.setText("Scanning!");
+            }
+        });
+        hardRotate.setPromptText("0.0");
+
     }
 
 
