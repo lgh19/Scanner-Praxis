@@ -9,16 +9,19 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-  <TabPane tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<TabPane tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
       <tabs>
           <Tab text="Easy">
               <content>
                   <AnchorPane>
                       <children>
-                          <Button fx:id="easyCreate" layoutX="188.0" layoutY="49.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="207.0" text="Create PDF" />
-                          <CheckBox fx:id="easyCheck" layoutX="266.0" layoutY="180.0" mnemonicParsing="false" text="OCR" />
+                          <Button fx:id="easyCreate" layoutX="188.0" layoutY="49.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="207.0" text="Download and Create PDF" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                          <CheckBox fx:id="easyCheck" layoutX="266.0" layoutY="180.0" mnemonicParsing="false" selected="true" text="OCR" />
                           <ProgressBar fx:id="easyLoading" layoutX="191.0" layoutY="259.0" onDragDetected="#initialize" prefWidth="200.0" progress="0.0" />
                       </children>
                   </AnchorPane>
@@ -28,32 +31,37 @@
               <content>
                   <AnchorPane>
                       <children>
-                          <Button fx:id="mediumImport" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Import Pictures" />
-                          <Button fx:id="mediumProcess" layoutX="14.0" layoutY="116.0" mnemonicParsing="false" text="Process Pictures" />
+                  <Button fx:id="mediumCreatePDF" layoutX="17.0" layoutY="186.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="108.0" text="Create PDF" />
+                  <CheckBox fx:id="easyCheck1" layoutX="17.0" layoutY="120.0" mnemonicParsing="false" selected="true" text="OCR (uncheck to speed up)" />
+                  <Label layoutX="14.0" layoutY="27.0" prefHeight="27.0" prefWidth="99.0" text="Color Mode:" />
+                  <ChoiceBox fx:id="mediumColorMode" layoutX="113.0" layoutY="27.0" prefWidth="150.0" />
+                  <CheckBox layoutX="17.0" layoutY="145.0" mnemonicParsing="false" text="Create .txt output" />
                       </children>
             </AnchorPane>
               </content>
           </Tab>
           <Tab closable="false" text="Expert">
               <content>
-                  <AnchorPane>
+                  <AnchorPane prefHeight="446.0" prefWidth="518.0">
                       <children>
                           <Button fx:id="hardImport" layoutX="14.0" layoutY="31.0" mnemonicParsing="false" text="Import Pictures" />
                           <Button fx:id="hardDelete" layoutX="14.0" layoutY="64.0" mnemonicParsing="false" text="Delete Pictures" />
-                  <ChoiceBox fx:id="hardOrientation" layoutX="111.0" layoutY="164.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="hardLayoutOption" layoutX="111.0" layoutY="164.0" prefWidth="150.0" />
                   <Label layoutX="12.0" layoutY="139.0" prefHeight="17.0" prefWidth="73.0" text="ScanTailor:" />
                   <Label layoutX="12.0" layoutY="164.0" prefHeight="27.0" prefWidth="99.0" text="Layout Option:" />
-                  <ChoiceBox fx:id="hardOrientation1" layoutX="111.0" layoutY="191.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="hardOrientation" layoutX="111.0" layoutY="191.0" prefWidth="150.0" />
                   <Label layoutX="12.0" layoutY="191.0" prefHeight="27.0" prefWidth="99.0" text="Orientation:" />
                   <Label layoutX="12.0" layoutY="218.0" prefHeight="27.0" prefWidth="99.0" text="Rotate:" />
                   <Spinner fx:id="hardRotate" editable="true" layoutX="111.0" layoutY="218.0" prefHeight="27.0" prefWidth="150.0" />
                   <Label layoutX="12.0" layoutY="245.0" prefHeight="27.0" prefWidth="99.0" text="Color Mode:" />
-                  <ChoiceBox fx:id="hardOrientation11" layoutX="111.0" layoutY="245.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="hardColorMode" layoutX="111.0" layoutY="245.0" prefWidth="150.0" />
                   <Label layoutX="12.0" layoutY="324.0" prefHeight="17.0" prefWidth="98.0" text="Tesseract OCR:" />
-                  <CheckBox layoutX="19.0" layoutY="350.0" mnemonicParsing="false" text="Run OCR" />
-                  <CheckBox layoutX="18.0" layoutY="378.0" mnemonicParsing="false" text="Create .txt output" />
+                  <CheckBox layoutX="15.0" layoutY="341.0" mnemonicParsing="false" selected="true" text="Run OCR (uncheck to speed up)" />
+                  <CheckBox layoutX="15.0" layoutY="362.0" mnemonicParsing="false" text="Create .txt output" />
                   <Label layoutX="19.0" layoutY="14.0" text="Camera Functions:" />
-                  <Button fx:id="hardScan" layoutX="442.0" layoutY="167.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="140.0" text="Scan" />
+                  <Button fx:id="hardScan" layoutX="378.0" layoutY="167.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="140.0" text="Process" />
+                  <Button fx:id="hardRunScanTailor" layoutX="378.0" layoutY="247.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" text="Open in Scantailor" />
+                  <Button fx:id="hardCreatePDF" layoutX="378.0" layoutY="328.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="133.0" text="Create PDF" />
                       </children>
             </AnchorPane>
               </content>
