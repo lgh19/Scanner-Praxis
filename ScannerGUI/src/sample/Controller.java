@@ -4,7 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Controller {
@@ -13,7 +17,9 @@ public class Controller {
     @FXML
     Button easyCreate;
     @FXML
-    CheckBox easyCheck;
+    Button easyFileBrowser;
+    @FXML
+    Label easyFilePath;
     @FXML
     ProgressBar easyLoading;
 
@@ -43,6 +49,23 @@ public class Controller {
     @FXML
     ChoiceBox hardColorMode = new ChoiceBox();
 
+    @FXML File locateFile(ActionEvent event) {
+
+
+
+        DirectoryChooser chooser = new DirectoryChooser();
+        chooser.setTitle("JavaFX Projects");
+        File defaultDirectory = new File("/Users/paul/Documents/Programming/VML/Scanner-Praxis/ScannerGUI/src/sample");
+        chooser.setInitialDirectory(defaultDirectory);
+//        FileChooser chooser = new FileChooser();
+//        chooser.setTitle("Open File");
+//        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+//        chooser.setSelectedExtensionFilter(FileChooser.;
+
+
+        File selectedFile = chooser.showDialog(new Stage());
+        return selectedFile;
+    }
 
 
     public void initialize() {
@@ -54,8 +77,8 @@ public class Controller {
     }
 
     public void setText(){
-        mediumColorMode.getItems().addAll("Black and White", "Color Grayscale", "Mixed");
-        mediumColorMode.setValue("Black and White");
+        mediumColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
+        mediumColorMode.setValue("Text and Line Drawings Only");
 
         hardRunScanTailor.setDisable(true);
         hardCreatePDF.setDisable(true);
@@ -63,9 +86,9 @@ public class Controller {
         hardLayoutOption.setValue("Auto Detect");
         hardOrientation.getItems().addAll("Left", "Right", "Upsidedown");
         hardOrientation.setValue("Left");
-        hardRotate.setPromptText("0.0");
-        hardColorMode.getItems().addAll("Black and White", "Color Grayscale", "Mixed");
-        hardColorMode.setValue("Black and White");
+        hardRotate.setPromptText("0.0 mm");
+        hardColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
+        hardColorMode.setValue("Text and Line Drawings Only");
 
     }
 
@@ -74,8 +97,14 @@ public class Controller {
         easyCreate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                easyCreate.setText("Creating!");
-                //String[] cmd = new String[]{"/bin/sh", "path/to/script.sh"};
+                easyCreate.setText("!!!");
+            }
+        });
+        easyFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                File results = locateFile(new ActionEvent());
+                easyFilePath.setText(results.toString());
             }
         });
     }

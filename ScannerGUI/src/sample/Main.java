@@ -17,12 +17,6 @@ public class Main extends Application {
         primaryStage.setTitle("A Scanner Darkly");
         primaryStage.setScene(new Scene(root, 600, 450));
         primaryStage.show();
-
-
-
-
-
-
     }
 
 
