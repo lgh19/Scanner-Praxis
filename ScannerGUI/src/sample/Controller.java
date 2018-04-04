@@ -13,6 +13,9 @@ import java.io.IOException;
 
 public class Controller {
 
+    File curretDirectory;
+    File defaultDirectory;
+
     //Easy Tab
     @FXML
     Button easyCreate;
@@ -22,14 +25,24 @@ public class Controller {
     Label easyFilePath;
     @FXML
     ProgressBar easyLoading;
+    @FXML
+    TextArea easyLog;
 
     //Medium Tab
+    @FXML
+    Button normalFileBrowser;
+    @FXML
+    Label normalFilePath;
     @FXML
     Button mediumCreatePDF;
     @FXML
     ChoiceBox mediumColorMode = new ChoiceBox();
 
     //Hard Tab
+    @FXML
+    Button hardFileBrowser;
+    @FXML
+    Label hardFilePath;
     @FXML
     Button hardImport;
     @FXML
@@ -41,7 +54,7 @@ public class Controller {
     @FXML
     Button hardCreatePDF;
     @FXML
-    Spinner hardRotate;
+    Spinner hardMargins;
     @FXML
     ChoiceBox hardLayoutOption = new ChoiceBox();
     @FXML
@@ -55,16 +68,11 @@ public class Controller {
 
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("JavaFX Projects");
-        File defaultDirectory = new File("/Users/paul/Documents/Programming/VML/Scanner-Praxis/ScannerGUI/src/sample");
+        defaultDirectory = new File("/Users/paul/Documents/Programming/VML/Scanner-Praxis/ScannerGUI/src/");
         chooser.setInitialDirectory(defaultDirectory);
-//        FileChooser chooser = new FileChooser();
-//        chooser.setTitle("Open File");
-//        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
-//        chooser.setSelectedExtensionFilter(FileChooser.;
 
-
-        File selectedFile = chooser.showDialog(new Stage());
-        return selectedFile;
+        curretDirectory = chooser.showDialog(new Stage());
+        return curretDirectory;
     }
 
 
@@ -77,6 +85,8 @@ public class Controller {
     }
 
     public void setText(){
+
+
         mediumColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
         mediumColorMode.setValue("Text and Line Drawings Only");
 
@@ -86,30 +96,44 @@ public class Controller {
         hardLayoutOption.setValue("Auto Detect");
         hardOrientation.getItems().addAll("Left", "Right", "Upsidedown");
         hardOrientation.setValue("Left");
-        hardRotate.setPromptText("0.0 mm");
+        hardMargins.setPromptText("0.0 mm");
         hardColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
         hardColorMode.setValue("Text and Line Drawings Only");
 
     }
 
     void easyTab(){
-
-        easyCreate.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                easyCreate.setText("!!!");
-            }
-        });
         easyFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 File results = locateFile(new ActionEvent());
                 easyFilePath.setText(results.toString());
+                normalFilePath.setText(results.toString());
+                hardFilePath.setText(results.toString());
             }
         });
+        easyCreate.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //easyCreate.setText("!!!");
+                easyLog.appendText("Working!\n");
+            }
+        });
+
     }
 
     void mediumTab(){
+        normalFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                File results = locateFile(new ActionEvent());
+                easyFilePath.setText(results.toString());
+                normalFilePath.setText(results.toString());
+                hardFilePath.setText(results.toString());
+                int test = 0;
+                test = 1;
+            }
+        });
         mediumCreatePDF.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -119,10 +143,21 @@ public class Controller {
     }
 
     void hardTab() {
+        hardFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                File results = locateFile(new ActionEvent());
+                easyFilePath.setText(results.toString());
+                normalFilePath.setText(results.toString());
+                hardFilePath.setText(results.toString());
+                int test = 0;
+            }
+        });
         hardImport.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 hardImport.setText("Importing!");
+                hardDelete.setDisable(true);
                 try {
                     ProcessBuilder pb = new ProcessBuilder("sh test");
                     pb.redirectErrorStream(true);
@@ -131,7 +166,7 @@ public class Controller {
                     //BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
                 }
-                catch (IOException e){System.out.println("Nope");}
+                catch (IOException e){e.printStackTrace();}
             }
         });
         hardDelete.setOnAction(new EventHandler<ActionEvent>() {

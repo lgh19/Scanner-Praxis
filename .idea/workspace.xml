@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ebe3d71-5b92-4462-be85-ef18cbebcac1" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/ScannerGUI/src/sample/ScanTailor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScannerGUI/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScannerGUI/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/sample/sample.fxml" afterDir="false" />
@@ -20,8 +22,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="165">
+              <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -29,18 +31,25 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="62" column="58" lean-forward="true" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
+            <state relative-caret-position="272">
+              <caret line="168" column="76" lean-forward="true" selection-start-line="168" selection-start-column="76" selection-end-line="168" selection-end-column="76" />
               <folding>
-                <element signature="e#2341#2342#0" expanded="true" />
-                <element signature="e#2398#2399#0" expanded="true" />
-                <element signature="e#2941#2942#0" expanded="true" />
-                <element signature="e#3011#3012#0" expanded="true" />
-                <element signature="e#4650#4651#0" expanded="true" />
-                <element signature="e#4719#4720#0" expanded="true" />
-                <element signature="e#4873#4874#0" expanded="true" />
-                <element signature="e#4939#4940#0" expanded="true" />
+                <element signature="e#3614#3615#0" expanded="true" />
+                <element signature="e#3684#3685#0" expanded="true" />
+                <element signature="e#5673#5674#0" expanded="true" />
+                <element signature="e#5742#5743#0" expanded="true" />
+                <element signature="e#5896#5897#0" expanded="true" />
+                <element signature="e#5962#5963#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScanTailor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/ScanTailor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -49,7 +58,9 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor />
+              <first_editor relative-caret-position="315">
+                <caret line="21" column="179" selection-start-line="21" selection-start-column="179" selection-end-line="21" selection-end-column="179" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -57,12 +68,27 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>hardfilepath</find>
+      <find>rotate</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/ScannerGUI/src/sample/ScanTailor.java" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/ScannerGUI/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java" />
       </list>
@@ -193,12 +219,12 @@
       <option name="presentableId" value="Default" />
       <updated>1522469223933</updated>
       <workItem from="1522469225522" duration="2043000" />
-      <workItem from="1522776133986" duration="4273000" />
+      <workItem from="1522776133986" duration="11064000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6316000" />
+    <option name="totallyTimeSpent" value="13107000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1612" height="876" extended-state="0" />
@@ -242,14 +268,12 @@
         <state relative-caret-position="60">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
-            <element signature="e#2341#2342#0" expanded="true" />
-            <element signature="e#2398#2399#0" expanded="true" />
-            <element signature="e#2941#2942#0" expanded="true" />
-            <element signature="e#3011#3012#0" expanded="true" />
-            <element signature="e#4650#4651#0" expanded="true" />
-            <element signature="e#4719#4720#0" expanded="true" />
-            <element signature="e#4873#4874#0" expanded="true" />
-            <element signature="e#4939#4940#0" expanded="true" />
+            <element signature="e#3614#3615#0" expanded="true" />
+            <element signature="e#3684#3685#0" expanded="true" />
+            <element signature="e#5673#5674#0" expanded="true" />
+            <element signature="e#5742#5743#0" expanded="true" />
+            <element signature="e#5896#5897#0" expanded="true" />
+            <element signature="e#5962#5963#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -269,21 +293,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home/lib/src.zip!/javafx.base/javafx/event/ActionEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -291,19 +300,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="315">
+            <caret line="21" column="179" selection-start-line="21" selection-start-column="179" selection-end-line="21" selection-end-column="179" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/ScanTailor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="71" column="25" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="62" column="58" lean-forward="true" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
+        <state relative-caret-position="272">
+          <caret line="168" column="76" lean-forward="true" selection-start-line="168" selection-start-column="76" selection-end-line="168" selection-end-column="76" />
           <folding>
-            <element signature="e#2341#2342#0" expanded="true" />
-            <element signature="e#2398#2399#0" expanded="true" />
-            <element signature="e#2941#2942#0" expanded="true" />
-            <element signature="e#3011#3012#0" expanded="true" />
-            <element signature="e#4650#4651#0" expanded="true" />
-            <element signature="e#4719#4720#0" expanded="true" />
-            <element signature="e#4873#4874#0" expanded="true" />
-            <element signature="e#4939#4940#0" expanded="true" />
+            <element signature="e#3614#3615#0" expanded="true" />
+            <element signature="e#3684#3685#0" expanded="true" />
+            <element signature="e#5673#5674#0" expanded="true" />
+            <element signature="e#5742#5743#0" expanded="true" />
+            <element signature="e#5896#5897#0" expanded="true" />
+            <element signature="e#5962#5963#0" expanded="true" />
           </folding>
         </state>
       </provider>

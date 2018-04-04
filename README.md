@@ -20,8 +20,3 @@ Looks into the input folder, taking all jpg, JPG or jpeg files
 and converts them into tif files using scan tailor and it's
 build in arguments. Then it converts all the tif files into a
 a multi tiff using Image Magick. This allows Tesseract to run OCR on the document before an compression occurs. Finally, a pdf is created by tesseract with a searchable OCR layer.
-
-To Do:
-- Create GUI for script allowing users to change basic functions in scantailor like adjusting margins. 
-
-
