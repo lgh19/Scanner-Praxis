@@ -54,15 +54,15 @@
                           <Button fx:id="hardImport" layoutX="10.0" layoutY="83.0" mnemonicParsing="false" text="Download Pictures  from Cameras" />
                           <Button fx:id="hardDelete" layoutX="257.0" layoutY="83.0" mnemonicParsing="false" text="Delete Pictures from Cameras" />
                   <ChoiceBox fx:id="hardLayoutOption" layoutX="113.0" layoutY="197.0" />
-                  <Label layoutX="14.0" layoutY="172.0" prefHeight="17.0" prefWidth="73.0" text="ScanTailor:" />
+                  <Label layoutX="13.0" layoutY="165.0" text="Image Processing:" />
                   <Label layoutX="14.0" layoutY="197.0" prefHeight="27.0" prefWidth="99.0" text="Layout Option:" />
-                  <ChoiceBox fx:id="hardOrientation" layoutX="113.0" layoutY="224.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="hardOrientation" layoutX="113.0" layoutY="224.0" />
                   <Label layoutX="14.0" layoutY="224.0" prefHeight="27.0" prefWidth="99.0" text="Orientation:" />
                   <Label layoutX="14.0" layoutY="251.0" prefHeight="27.0" prefWidth="99.0" text="Margins" />
                   <Spinner fx:id="hardMargins" editable="true" layoutX="113.0" layoutY="251.0" prefHeight="27.0" prefWidth="150.0" />
                   <Label layoutX="14.0" layoutY="278.0" prefHeight="27.0" prefWidth="99.0" text="Color Mode:" />
                   <ChoiceBox fx:id="hardColorMode" layoutX="113.0" layoutY="278.0" />
-                  <Label layoutX="14.0" layoutY="357.0" prefHeight="17.0" prefWidth="98.0" text="Tesseract OCR:" />
+                  <Label layoutX="14.0" layoutY="344.0" text="PDF Output:" />
                   <CheckBox layoutX="17.0" layoutY="374.0" mnemonicParsing="false" selected="true" text="Run OCR (uncheck to speed up)" />
                   <CheckBox layoutX="17.0" layoutY="395.0" mnemonicParsing="false" text="Create .txt file" />
                   <Label layoutX="15.0" layoutY="66.0" text="Scanner:" />

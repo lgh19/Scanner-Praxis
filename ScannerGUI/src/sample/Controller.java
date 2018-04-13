@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -90,6 +91,7 @@ public class Controller {
         mediumColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
         mediumColorMode.setValue("Text and Line Drawings Only");
 
+
         hardRunScanTailor.setDisable(true);
         hardCreatePDF.setDisable(true);
         hardLayoutOption.getItems().addAll("Auto Detect", "One Page", "Two Page");
@@ -107,6 +109,7 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 File results = locateFile(new ActionEvent());
+
                 easyFilePath.setText(results.toString());
                 normalFilePath.setText(results.toString());
                 hardFilePath.setText(results.toString());
@@ -115,11 +118,65 @@ public class Controller {
         easyCreate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //easyCreate.setText("!!!");
-                easyLog.appendText("Working!\n");
+                if(curretDirectory)
+                easyLog.appendText("Downloading Pictures from Cameras...\n");
+
+                System.out.println("Starting");
+                easyCreate.setText("Processing...");
+                easyLog.appendText("Processing Pictures...\n");
+                easyCreate.setDisable(true);
+
+                scanTail();
+
+                System.out.println("Finished");
+
             }
         });
 
+    }
+
+    void scanTail(){
+        try{
+            String[] command = {"/Users/paul/Documents/Programming/VML/Scanner-Praxis/auto_scan.sh", curretDirectory.toString(), curretDirectory.toString()};
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+            //process.waitFor();
+            process.onExit();
+
+//            Task<Long> task = new Task<Long>() {
+//                @Override protected Long call() throws Exception {
+//                    long a=0;
+//                    long b=1;
+//                    for (long i = 0; i < Long.MAX_VALUE; i++){
+//                        updateValue(a);
+//                        a += b;
+//                        b = a - b;
+//                    }
+//                    return a;
+//                }
+//            };
+//
+//
+//
+//            Task<Boolean> task = new Task<Boolean>() {
+//                @Override
+//                public Boolean call() {
+//                    // process long-running computation, data retrieval, etc...
+//
+//                    Boolean result = true; // result of computation
+//                    return result ;
+//                }
+//            };
+//
+//            task.setOnSucceeded(e -> {
+//                easyLog.appendText("\nFinished Processing.\n");
+//            });
+//
+//            new Thread(task).start();
+        }
+        catch (Exception e){
+            System.out.println("Failed");
+        }
     }
 
     void mediumTab(){
@@ -132,6 +189,15 @@ public class Controller {
                 hardFilePath.setText(results.toString());
                 int test = 0;
                 test = 1;
+            }
+        });
+        mediumColorMode.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println(mediumColorMode.getValue());
+                if(mediumColorMode.getValue().equals("Text and Photographs")){
+                    mediumCreatePDF.setDisable(true);
+                }
             }
         });
         mediumCreatePDF.setOnAction(new EventHandler<ActionEvent>() {
@@ -201,8 +267,4 @@ public class Controller {
         });
 
     }
-
-
-
-
 }
