@@ -1,3 +1,5 @@
+# Gets the photos from the cameras and moves them to the computer
+
 echo $1
 
 JOBLABELARG=`echo ${1// /_}` # replace spaces with underscores

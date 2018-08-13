@@ -1,3 +1,5 @@
+# Attempt to compine all the scripts into one unified workflow. Longterm, the GUI will replace this.
+
 JOBLABELARG=`echo ${1// /_}` # replace spaces with underscores
 JOBDEFAULT= # default label
 

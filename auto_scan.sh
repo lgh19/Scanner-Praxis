@@ -1,5 +1,14 @@
-#First runs scantailor with arguments
+# Run with: ./auto_scan.sh <input_folder> <output_folder>
 
+# Looks into the input folder, taking all jpg, JPG or jpeg files
+# and converts them into tif files using scan tailor and it's
+# build in arguments. Then it converts all the tif files into a
+# a multi tiff using Image Magick. This allows Tesseract to run 
+# OCR on the document before an compression occurs. Finally, a 
+# pdf is created by tesseract with a searchable OCR layer.
+
+
+#First runs scantailor with arguments
 scan_tailor () {
 	for f in $1* #iterate the directory
 	do
