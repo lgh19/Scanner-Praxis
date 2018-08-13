@@ -72,7 +72,7 @@ convert *.tif output.tiff
 
 #With this multitiff OCR with tesseract can be run. Tesseract can only run on individual images, which is why we give it a multitiff rather than a pdf
 echo Adding OCR Layer to PDF
-tesseract output.tiff ../outputOCR -l eng pdf
+tesseract output.tiff outputOCR -l eng pdf
 
 #echo Performing Cleanup
 #pwd

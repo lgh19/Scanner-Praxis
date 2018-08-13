@@ -14,8 +14,9 @@ import java.io.IOException;
 
 public class Controller {
 
-    File curretDirectory;
+    File curretDirectory = null;
     File defaultDirectory;
+    String projectName;
 
     //Easy Tab
     @FXML
@@ -28,6 +29,8 @@ public class Controller {
     ProgressBar easyLoading;
     @FXML
     TextArea easyLog;
+    @FXML
+    TextField easyProjectName;
 
     //Medium Tab
     @FXML
@@ -64,12 +67,9 @@ public class Controller {
     ChoiceBox hardColorMode = new ChoiceBox();
 
     @FXML File locateFile(ActionEvent event) {
-
-
-
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("JavaFX Projects");
-        defaultDirectory = new File("/Users/paul/Documents/Programming/VML/Scanner-Praxis/ScannerGUI/src/");
+        defaultDirectory = new File("/Users/paul/Documents/Programming/VML/Scanner-Praxis/");
         chooser.setInitialDirectory(defaultDirectory);
 
         curretDirectory = chooser.showDialog(new Stage());
@@ -85,7 +85,7 @@ public class Controller {
         hardTab();
     }
 
-    public void setText(){
+    private void setText(){
 
 
         mediumColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
@@ -108,28 +108,37 @@ public class Controller {
         easyFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                File results = locateFile(new ActionEvent());
 
-                easyFilePath.setText(results.toString());
-                normalFilePath.setText(results.toString());
-                hardFilePath.setText(results.toString());
+                try{
+                    File results = locateFile(new ActionEvent());
+
+                    easyFilePath.setText(results.toString());
+                    normalFilePath.setText(results.toString());
+                    hardFilePath.setText(results.toString());
+                }
+                catch (Exception e){
+                    System.out.println("No directory selected.");
+                }
             }
         });
         easyCreate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(curretDirectory)
-                easyLog.appendText("Downloading Pictures from Cameras...\n");
+                if(!(curretDirectory == null)){
+                    easyLog.appendText("Downloading Pictures from Cameras...\n");
 
-                System.out.println("Starting");
-                easyCreate.setText("Processing...");
-                easyLog.appendText("Processing Pictures...\n");
-                easyCreate.setDisable(true);
+                    System.out.println("Starting");
+                    easyCreate.setText("Processing...");
+                    easyLog.appendText("Processing Pictures...\n");
+//                    easyCreate.setDisable(true);
 
-                scanTail();
+                    scanTail();
 
-                System.out.println("Finished");
-
+                }
+                else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Please chose a place to scan to.", ButtonType.OK);
+                    alert.showAndWait();
+                }
             }
         });
 
@@ -137,42 +146,30 @@ public class Controller {
 
     void scanTail(){
         try{
-            String[] command = {"/Users/paul/Documents/Programming/VML/Scanner-Praxis/auto_scan.sh", curretDirectory.toString(), curretDirectory.toString()};
+            String fileOfDirectory = curretDirectory.toString() + "/";
+            System.out.println(fileOfDirectory);
+            String[] command = {"/Users/paul/Documents/Programming/VML/Scanner-Praxis/auto_scan.sh", fileOfDirectory, fileOfDirectory};
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
-            //process.waitFor();
+//            process.waitFor();
             process.onExit();
+            System.out.println("Finished");
 
-//            Task<Long> task = new Task<Long>() {
-//                @Override protected Long call() throws Exception {
-//                    long a=0;
-//                    long b=1;
-//                    for (long i = 0; i < Long.MAX_VALUE; i++){
-//                        updateValue(a);
-//                        a += b;
-//                        b = a - b;
-//                    }
-//                    return a;
-//                }
-//            };
-//
-//
-//
-//            Task<Boolean> task = new Task<Boolean>() {
+//            Task<Void> task = new Task<>() {
 //                @Override
-//                public Boolean call() {
-//                    // process long-running computation, data retrieval, etc...
-//
-//                    Boolean result = true; // result of computation
-//                    return result ;
+//                protected Void call() throws Exception {
+//                    updateMessage("Running");
+//                    for (int i = 0; i < 10; i++) {
+//                        Thread.sleep(200);
+//                        updateProgress(i+1, 10);
+//                    }
+//                    updateMessage("Finished.");
+//                    return null;
 //                }
 //            };
 //
-//            task.setOnSucceeded(e -> {
-//                easyLog.appendText("\nFinished Processing.\n");
-//            });
-//
-//            new Thread(task).start();
+//            easyCreate.disableProperty().bind(task.runningProperty());
+//            easyLog.textProperty().bind(task.messageProperty());
         }
         catch (Exception e){
             System.out.println("Failed");

@@ -1,3 +1,5 @@
+echo $1
+
 JOBLABELARG=`echo ${1// /_}` # replace spaces with underscores
 JOBDEFAULT= # default label
 
@@ -15,7 +17,7 @@ else
 fi
 
 # Use a timestamp for the job folder name
-JOBFOLDER=~/bookscans/$(date +%Y%m%d%H%M%S)--${JOBLABEL}--scanner--PDF-OCR
+JOBFOLDER=~/bookscans/$(date + %Y%m%d%H%M%S)--${JOBLABEL}
 echo "Jobfolder: ${JOBFOLDER}"
 
 mkdir ${JOBFOLDER}
