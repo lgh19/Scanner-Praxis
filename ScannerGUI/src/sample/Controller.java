@@ -13,7 +13,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class Controller {
-
     File curretDirectory = null;
     File defaultDirectory;
     String projectName;
@@ -69,49 +68,45 @@ public class Controller {
     @FXML File locateFile(ActionEvent event) {
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("JavaFX Projects");
+        // Manually set the default director -- THIS IS BAD
         defaultDirectory = new File("/Users/paul/Documents/Programming/VML/Scanner-Praxis/");
+        //sets initial directory to this default
         chooser.setInitialDirectory(defaultDirectory);
-
         curretDirectory = chooser.showDialog(new Stage());
         return curretDirectory;
     }
 
-
+    //Initializes the project
     public void initialize() {
         setText();
-
         easyTab();
         mediumTab();
         hardTab();
     }
 
     private void setText(){
-
-
         mediumColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
         mediumColorMode.setValue("Text and Line Drawings Only");
-
-
         hardRunScanTailor.setDisable(true);
         hardCreatePDF.setDisable(true);
         hardLayoutOption.getItems().addAll("Auto Detect", "One Page", "Two Page");
         hardLayoutOption.setValue("Auto Detect");
         hardOrientation.getItems().addAll("Left", "Right", "Upsidedown");
         hardOrientation.setValue("Left");
-        hardMargins.setPromptText("0.0 mm");
+        hardMargins.getEditor().setPromptText("0.0 mm");
         hardColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
         hardColorMode.setValue("Text and Line Drawings Only");
-
     }
 
+    // For the easy tab of the GUI
     void easyTab(){
+        // Handles event of "Download Location" button click on the easy tab of the GUI
         easyFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                //Try to locate the file
                 try{
                     File results = locateFile(new ActionEvent());
-
                     easyFilePath.setText(results.toString());
                     normalFilePath.setText(results.toString());
                     hardFilePath.setText(results.toString());
@@ -121,19 +116,18 @@ public class Controller {
                 }
             }
         });
+
+        //Handles event of "Download and Create PDF" button
         easyCreate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                //If the current directory has been set, do the scanning; otherwise, show error message
                 if(!(curretDirectory == null)){
                     easyLog.appendText("Downloading Pictures from Cameras...\n");
-
                     System.out.println("Starting");
                     easyCreate.setText("Processing...");
                     easyLog.appendText("Processing Pictures...\n");
-//                    easyCreate.setDisable(true);
-
                     scanTail();
-
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please chose a place to scan to.", ButtonType.OK);
@@ -144,6 +138,7 @@ public class Controller {
 
     }
 
+    // Does the scanner
     void scanTail(){
         try{
             String fileOfDirectory = curretDirectory.toString() + "/";
@@ -151,31 +146,15 @@ public class Controller {
             String[] command = {"/Users/paul/Documents/Programming/VML/Scanner-Praxis/auto_scan.sh", fileOfDirectory, fileOfDirectory};
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
-//            process.waitFor();
-            process.onExit();
+            process.waitFor();
             System.out.println("Finished");
-
-//            Task<Void> task = new Task<>() {
-//                @Override
-//                protected Void call() throws Exception {
-//                    updateMessage("Running");
-//                    for (int i = 0; i < 10; i++) {
-//                        Thread.sleep(200);
-//                        updateProgress(i+1, 10);
-//                    }
-//                    updateMessage("Finished.");
-//                    return null;
-//                }
-//            };
-//
-//            easyCreate.disableProperty().bind(task.runningProperty());
-//            easyLog.textProperty().bind(task.messageProperty());
         }
         catch (Exception e){
             System.out.println("Failed");
         }
     }
 
+    // For the medium tab of the GUI
     void mediumTab(){
         normalFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -205,6 +184,7 @@ public class Controller {
         });
     }
 
+    // For the hard tab of the GUI
     void hardTab() {
         hardFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -227,7 +207,6 @@ public class Controller {
                     pb.start();
                     //StringBuilder out = new StringBuilder();
                     //BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
                 }
                 catch (IOException e){e.printStackTrace();}
             }

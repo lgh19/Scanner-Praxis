@@ -10,19 +10,24 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
+//Main application for the scanner GUI
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        // Loads FXML from file
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.getIcons().add(new Image("file:icon.png"));
+        //Sets title of window
         primaryStage.setTitle("A Scanner Darkly");
+        //Sets window dimensions
         primaryStage.setScene(new Scene(root, 600, 500));
+        //Show window
         primaryStage.show();
     }
 
 
-
+    // On start, launch the app
     public static void main(String[] args) {
         launch(args);
     }
