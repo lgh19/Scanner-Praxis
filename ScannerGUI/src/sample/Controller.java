@@ -40,6 +40,8 @@ public class Controller {
     Button mediumCreatePDF;
     @FXML
     ChoiceBox mediumColorMode = new ChoiceBox();
+    @FXML
+    TextArea normalLog;
 
     //Hard Tab
     @FXML
