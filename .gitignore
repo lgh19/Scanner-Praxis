@@ -4,3 +4,4 @@ ScannerGUI/ScannerGUI.iml
 *.class
 pictures/
 out/
+*.DS_Store
