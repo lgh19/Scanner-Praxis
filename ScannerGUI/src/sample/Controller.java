@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Controller {
-    File curretDirectory = null;
+    File currentDirectory = null;
     File defaultDirectory;
     String projectName;
 
@@ -68,14 +68,15 @@ public class Controller {
     ChoiceBox hardColorMode = new ChoiceBox();
 
     @FXML File locateFile(ActionEvent event) {
+        //TODO: Make this work
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("JavaFX Projects");
         // Manually set the default director -- THIS IS BAD
         defaultDirectory = new File("/Users/paul/Documents/Programming/VML/Scanner-Praxis/");
         //sets initial directory to this default
         chooser.setInitialDirectory(defaultDirectory);
-        curretDirectory = chooser.showDialog(new Stage());
-        return curretDirectory;
+        currentDirectory = chooser.showDialog(new Stage());
+        return currentDirectory;
     }
 
     //Initializes the project
@@ -87,16 +88,26 @@ public class Controller {
     }
 
     private void setText(){
+        //Adds options to medium tab's color mode
         mediumColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
+        //Set default value of medium tab color mode options
         mediumColorMode.setValue("Text and Line Drawings Only");
+        //Disable two buttons in the hard tab
         hardRunScanTailor.setDisable(true);
         hardCreatePDF.setDisable(true);
+        //Adds options to hard tab's layout options
         hardLayoutOption.getItems().addAll("Auto Detect", "One Page", "Two Page");
+        //Set default layout option
         hardLayoutOption.setValue("Auto Detect");
+        //Adds options to hard tab's orientation options
         hardOrientation.getItems().addAll("Left", "Right", "Upsidedown");
+        //Set default orientation options
         hardOrientation.setValue("Left");
+        //Sets default margin in hard tab
         hardMargins.getEditor().setPromptText("0.0 mm");
+        //Sets color mode options in hard tab
         hardColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
+        //Sets default value in hard tab color options
         hardColorMode.setValue("Text and Line Drawings Only");
     }
 
@@ -124,12 +135,13 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 //If the current directory has been set, do the scanning; otherwise, show error message
-                if(!(curretDirectory == null)){
+                if(!(currentDirectory == null)){
                     easyLog.appendText("Downloading Pictures from Cameras...\n");
                     System.out.println("Starting");
                     easyCreate.setText("Processing...");
                     easyLog.appendText("Processing Pictures...\n");
                     scanTail();
+                    //TODO: Make this not a wireframe
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please chose a place to scan to.", ButtonType.OK);
@@ -140,11 +152,13 @@ public class Controller {
 
     }
 
-    // Does the scanner
+    // Does the scanner, using the auto scan script
     void scanTail(){
         try{
-            String fileOfDirectory = curretDirectory.toString() + "/";
+            //Sets file string to current directory
+            String fileOfDirectory = currentDirectory.toString() + "/";
             System.out.println(fileOfDirectory);
+            //TODO: Make this generalized
             String[] command = {"/Users/paul/Documents/Programming/VML/Scanner-Praxis/auto_scan.sh", fileOfDirectory, fileOfDirectory};
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
@@ -165,8 +179,6 @@ public class Controller {
                 easyFilePath.setText(results.toString());
                 normalFilePath.setText(results.toString());
                 hardFilePath.setText(results.toString());
-                int test = 0;
-                test = 1;
             }
         });
         mediumColorMode.setOnAction(new EventHandler<ActionEvent>() {
@@ -176,12 +188,17 @@ public class Controller {
                 if(mediumColorMode.getValue().equals("Text and Photographs")){
                     mediumCreatePDF.setDisable(true);
                 }
+                else{
+                    mediumCreatePDF.setDisable(false);
+                }
+                //TODO: Handle change of options in 'backend'
             }
         });
         mediumCreatePDF.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 mediumCreatePDF.setText("Processing!");
+                //TODO: Do the processing
             }
         });
     }
@@ -195,24 +212,24 @@ public class Controller {
                 easyFilePath.setText(results.toString());
                 normalFilePath.setText(results.toString());
                 hardFilePath.setText(results.toString());
-                int test = 0;
             }
         });
+
         hardImport.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 hardImport.setText("Importing!");
+                //TODO: Do the importing
                 hardDelete.setDisable(true);
                 try {
                     ProcessBuilder pb = new ProcessBuilder("sh test");
                     pb.redirectErrorStream(true);
                     pb.start();
-                    //StringBuilder out = new StringBuilder();
-                    //BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
                 }
                 catch (IOException e){e.printStackTrace();}
             }
         });
+
         hardDelete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -220,29 +237,35 @@ public class Controller {
                 alert.showAndWait();
                 if (alert.getResult() == ButtonType.YES) {
                     hardDelete.setText("Deleting!");
+                    //TODO: Make the delete happen
                 }
             }
         });
+
         hardScan.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 hardScan.setText("Processing!");
+                //TODO: Do the processing
                 hardRunScanTailor.setDisable(false);
                 hardCreatePDF.setDisable(false);
             }
         });
+
         hardRunScanTailor.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 hardRunScanTailor.setText("Opening!");
+                //TODO: DO the opening
             }
         });
+
         hardCreatePDF.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 hardCreatePDF.setText("Creating!");
+                //TODO: DO the creating
             }
         });
-
     }
 }
