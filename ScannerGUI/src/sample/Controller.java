@@ -68,15 +68,14 @@ public class Controller {
     ChoiceBox hardColorMode = new ChoiceBox();
 
     @FXML File locateFile(ActionEvent event) {
-        //TODO: Make this work
-        DirectoryChooser chooser = new DirectoryChooser();
-        chooser.setTitle("JavaFX Projects");
-        // Manually set the default director -- THIS IS BAD
-        defaultDirectory = new File("/Users/paul/Documents/Programming/VML/Scanner-Praxis/");
-        //sets initial directory to this default
-        chooser.setInitialDirectory(defaultDirectory);
-        currentDirectory = chooser.showDialog(new Stage());
-        return currentDirectory;
+        //Create a Directory chooser object
+        DirectoryChooser dirChooser = new DirectoryChooser();
+        //Set the title (shown at the top of the window) of this directory browser window
+        dirChooser.setTitle("Open Resource File");
+        //Show the directory chooser window and wait for user to choose directory
+        File f = dirChooser.showDialog(null);
+        //Return the directory the user chose
+        return f;
     }
 
     //Initializes the project
@@ -111,6 +110,11 @@ public class Controller {
         hardColorMode.setValue("Text and Line Drawings Only");
     }
 
+    void appendLog(String s){
+        easyLog.appendText(s);
+        normalLog.appendText(s);
+    }
+
     // For the easy tab of the GUI
     void easyTab(){
         // Handles event of "Download Location" button click on the easy tab of the GUI
@@ -119,10 +123,10 @@ public class Controller {
             public void handle(ActionEvent event) {
                 //Try to locate the file
                 try{
-                    File results = locateFile(new ActionEvent());
-                    easyFilePath.setText(results.toString());
-                    normalFilePath.setText(results.toString());
-                    hardFilePath.setText(results.toString());
+                    currentDirectory = locateFile(new ActionEvent());
+                    easyFilePath.setText(currentDirectory.toString());
+                    normalFilePath.setText(currentDirectory.toString());
+                    hardFilePath.setText(currentDirectory.toString());
                 }
                 catch (Exception e){
                     System.out.println("No directory selected.");
@@ -136,17 +140,14 @@ public class Controller {
             public void handle(ActionEvent event) {
                 //If the current directory has been set, do the scanning; otherwise, show error message
                 if(!(currentDirectory == null)){
-                    easyLog.appendText("Downloading Pictures from Cameras...\n");
-                    System.out.println("Starting");
                     easyCreate.setText("Processing...");
-                    easyLog.appendText("Processing Pictures...\n");
                     scanTail();
-                    //TODO: Make this not a wireframe
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please chose a place to scan to.", ButtonType.OK);
                     alert.showAndWait();
                 }
+                easyCreate.setText("Download and Create PDF");
             }
         });
 
@@ -154,18 +155,21 @@ public class Controller {
 
     // Does the scanner, using the auto scan script
     void scanTail(){
+        appendLog("Processing...");
         try{
             //Sets file string to current directory
             String fileOfDirectory = currentDirectory.toString() + "/";
-            System.out.println(fileOfDirectory);
-            //TODO: Make this generalized
-            String[] command = {"/Users/paul/Documents/Programming/VML/Scanner-Praxis/auto_scan.sh", fileOfDirectory, fileOfDirectory};
+            //System.out.println(fileOfDirectory);
+            //System.out.println(System.getProperty("user.dir") + "/auto_scan.sh");
+            String[] command = {System.getProperty("user.dir") + "/auto_scan.sh", fileOfDirectory, fileOfDirectory};
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
             process.waitFor();
             System.out.println("Finished");
+            appendLog("Finished\n");
         }
         catch (Exception e){
+            appendLog("Failed\n");
             System.out.println("Failed");
         }
     }
@@ -175,10 +179,10 @@ public class Controller {
         normalFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                File results = locateFile(new ActionEvent());
-                easyFilePath.setText(results.toString());
-                normalFilePath.setText(results.toString());
-                hardFilePath.setText(results.toString());
+                currentDirectory = locateFile(new ActionEvent());
+                easyFilePath.setText(currentDirectory.toString());
+                normalFilePath.setText(currentDirectory.toString());
+                hardFilePath.setText(currentDirectory.toString());
             }
         });
         mediumColorMode.setOnAction(new EventHandler<ActionEvent>() {
@@ -208,10 +212,10 @@ public class Controller {
         hardFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                File results = locateFile(new ActionEvent());
-                easyFilePath.setText(results.toString());
-                normalFilePath.setText(results.toString());
-                hardFilePath.setText(results.toString());
+                currentDirectory = locateFile(new ActionEvent());
+                easyFilePath.setText(currentDirectory.toString());
+                normalFilePath.setText(currentDirectory.toString());
+                hardFilePath.setText(currentDirectory.toString());
             }
         });
 
