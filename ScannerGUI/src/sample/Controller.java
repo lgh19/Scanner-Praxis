@@ -11,11 +11,19 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.*;
 
 public class Controller {
     File currentDirectory = null;
     File defaultDirectory;
     String projectName;
+
+    String colorModeOption;
+    boolean ocrOption;
+    boolean txtOutputOption;
+    String layoutOption;
+    String orientationOption;
+    String marginOption;
 
     //Easy Tab
     @FXML
@@ -164,6 +172,15 @@ public class Controller {
             String[] command = {System.getProperty("user.dir") + "/auto_scan.sh", fileOfDirectory, fileOfDirectory};
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
+
+            //Re-direct output of shell script to console
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ( (line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
             process.waitFor();
             System.out.println("Finished");
             appendLog("Finished\n");

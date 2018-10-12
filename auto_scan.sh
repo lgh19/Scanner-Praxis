@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Run with: ./auto_scan.sh <input_folder> <output_folder>
 
 # Looks into the input folder, taking all jpg, JPG or jpeg files
