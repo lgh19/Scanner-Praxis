@@ -11,8 +11,18 @@ https://gluonhq.com/products/scene-builder/
 ScanTailor
 http://scantailor.org
 
+Mac Install:
+sudo port selfupdate
+sudo port install scantailor
+
 Image Magick
 https://www.imagemagick.org/
 
+Mac Install:
+sudo port install ImageMagick
+
 Tesseract OCR
 https://github.com/tesseract-ocr/tesseract
+
+Mac Install:
+sudo port install tesseract

@@ -169,7 +169,7 @@ public class Controller {
             String fileOfDirectory = currentDirectory.toString() + "/";
             //System.out.println(fileOfDirectory);
             //System.out.println(System.getProperty("user.dir") + "/auto_scan.sh");
-            String[] command = {System.getProperty("user.dir") + "/auto_scan.sh", fileOfDirectory, fileOfDirectory};
+            String[] command = {"scantailor-cli", fileOfDirectory, fileOfDirectory};
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
@@ -187,6 +187,7 @@ public class Controller {
         }
         catch (Exception e){
             appendLog("Failed\n");
+            appendLog(e.printStackTrace();
             System.out.println("Failed");
         }
     }
