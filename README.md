@@ -26,3 +26,4 @@ https://github.com/tesseract-ocr/tesseract
 
 Mac Install:
 sudo port install tesseract
+sudo port install tesseract-*

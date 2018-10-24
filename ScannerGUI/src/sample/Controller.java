@@ -163,17 +163,19 @@ public class Controller {
 
     // Does the scanner, using the auto scan script
     void scanTail(){
-        appendLog("Processing...");
+        appendLog("Processing...\n");
         try{
             //Sets file string to current directory
             String fileOfDirectory = currentDirectory.toString() + "/";
             //System.out.println(fileOfDirectory);
             //System.out.println(System.getProperty("user.dir") + "/auto_scan.sh");
+            System.out.println("Starting ScanTailor...");
+            appendLog("Starting ScanTailor...");
             String[] command = {"scantailor-cli", fileOfDirectory, fileOfDirectory};
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
-            //Re-direct output of shell script to console
+            //Re-direct output of process to console
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line = null;
             while ( (line = reader.readLine()) != null) {
@@ -182,12 +184,55 @@ public class Controller {
             }
 
             process.waitFor();
+
+            System.out.println("Finished ScanTailor");
+            appendLog("Finished ScanTailor\n");
+            System.out.println("Starting Imagemagick...");
+            appendLog("Starting Imagemagick...");
+
+            command = new String[]{"convert", fileOfDirectory + "*.tif", fileOfDirectory + "output.tiff"};
+            pb = new ProcessBuilder(command);
+            process = pb.start();
+
+            //Re-direct output of process to console
+            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            line = null;
+            while ( (line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            process.waitFor();
+            System.out.println("Finished Imagemagick");
+            appendLog("Finished Imagemagick\n");
+
+            //tesseract output.tiff outputOCR -l eng pdf
+            System.out.println("Starting Tesseract...");
+            appendLog("Starting Tesseract...");
+
+            command = new String[]{"tesseract", fileOfDirectory + "output.tiff", fileOfDirectory + "outputOCR", "-l", "eng", "pdf"};
+            pb = new ProcessBuilder(command);
+            process = pb.start();
+
+            //Re-direct output of process to console
+            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            line = null;
+            while ( (line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            process.waitFor();
+            System.out.println("Finished Tesseract");
+            appendLog("Finished Tesseract\n");
+
             System.out.println("Finished");
             appendLog("Finished\n");
+
         }
         catch (Exception e){
             appendLog("Failed\n");
-            appendLog(e.printStackTrace();
+            appendLog(e.getMessage());
             System.out.println("Failed");
         }
     }
