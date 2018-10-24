@@ -25,6 +25,26 @@ public class Controller {
     String orientationOption;
     String marginOption;
 
+    String layout = "0";
+    String layoutDirection = "lr";
+    String orientation = "left";
+    String rotate = "0.0";
+    String deskew = "auto";
+    String contentDirection = "normal";
+    String margins = "2";
+    String alignment = "center";
+    String dpi = "300";
+    String outputDpi = "1200";
+    String colorMode = "black_and_white";
+    String whiteMargins = "false";
+    String threshold = "0";
+    String despeckle = "normal";
+    String dewarping = "off";
+    String depthPerception = "2.0";
+    String startFilter = "4";
+    String endFilter = "6";
+
+
     //Easy Tab
     @FXML
     Button easyCreate;
@@ -149,7 +169,10 @@ public class Controller {
                 //If the current directory has been set, do the scanning; otherwise, show error message
                 if(!(currentDirectory == null)){
                     easyCreate.setText("Processing...");
+                    appendLog("Processing...\n");
                     scanTail();
+                    imageMagick();
+                    tesseract();
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please chose a place to scan to.", ButtonType.OK);
@@ -163,7 +186,6 @@ public class Controller {
 
     // Does the scanner, using the auto scan script
     void scanTail(){
-        appendLog("Processing...\n");
         try{
             //Sets file string to current directory
             String fileOfDirectory = currentDirectory.toString() + "/";
@@ -171,7 +193,29 @@ public class Controller {
             //System.out.println(System.getProperty("user.dir") + "/auto_scan.sh");
             System.out.println("Starting ScanTailor...");
             appendLog("Starting ScanTailor...");
-            String[] command = {"scantailor-cli", fileOfDirectory, fileOfDirectory};
+            String[] command = {"scantailor-cli",
+                "--layout=" + layout,
+                "--layout-direction=" + layoutDirection,
+                "--orientation=" + orientation,
+                "--rotate=" + rotate,
+                "--deskew=" + deskew,
+                "--content-direction=" + contentDirection,
+                "--margins=" + margins,
+                "--alignment=" + alignment,
+                "--dpi=" + dpi,
+                "--output-dpi=" + outputDpi,
+                "--color-mode=" + colorMode,
+                "--white-margins=" + whiteMargins,
+                "--threshold=" + threshold,
+                "--despeckle=" + despeckle,
+                "--dewarping=" + dewarping,
+                "--depth-perception=" + depthPerception,
+                "--start-filter=" + startFilter,
+                "--end-filter=" + endFilter,
+                "--output-project=" + fileOfDirectory + "/Project.ScanTailor",
+                fileOfDirectory,
+                fileOfDirectory
+            };
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
@@ -187,17 +231,30 @@ public class Controller {
 
             System.out.println("Finished ScanTailor");
             appendLog("Finished ScanTailor\n");
+        }
+        catch (Exception e){
+            appendLog("Failed\n");
+            appendLog(e.getMessage());
+            System.out.println("Failed");
+        }
+    }
+
+    void imageMagick(){
+        try {
+            //Sets file string to current directory
+            String fileOfDirectory = currentDirectory.toString() + "/";
+
             System.out.println("Starting Imagemagick...");
             appendLog("Starting Imagemagick...");
 
-            command = new String[]{"convert", fileOfDirectory + "*.tif", fileOfDirectory + "output.tiff"};
-            pb = new ProcessBuilder(command);
-            process = pb.start();
+            String[] command = new String[]{"convert", fileOfDirectory + "*.tif", fileOfDirectory + "output.tiff"};
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
 
             //Re-direct output of process to console
-            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            line = null;
-            while ( (line = reader.readLine()) != null) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 appendLog(line + "\n");
             }
@@ -205,19 +262,30 @@ public class Controller {
             process.waitFor();
             System.out.println("Finished Imagemagick");
             appendLog("Finished Imagemagick\n");
+        }
+        catch (Exception e){
+            appendLog("Failed Imagemagick\n");
+            appendLog(e.getMessage());
+            System.out.println("Failed Imagemagick");
+        }
+    }
 
+    void tesseract(){
+        try {
+            //Sets file string to current directory
+            String fileOfDirectory = currentDirectory.toString() + "/";
             //tesseract output.tiff outputOCR -l eng pdf
             System.out.println("Starting Tesseract...");
             appendLog("Starting Tesseract...");
 
-            command = new String[]{"tesseract", fileOfDirectory + "output.tiff", fileOfDirectory + "outputOCR", "-l", "eng", "pdf"};
-            pb = new ProcessBuilder(command);
-            process = pb.start();
+            String[] command = new String[]{"tesseract", fileOfDirectory + "output.tiff", fileOfDirectory + "outputOCR", "-l", "eng", "pdf"};
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
 
             //Re-direct output of process to console
-            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            line = null;
-            while ( (line = reader.readLine()) != null) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 appendLog(line + "\n");
             }
@@ -225,15 +293,11 @@ public class Controller {
             process.waitFor();
             System.out.println("Finished Tesseract");
             appendLog("Finished Tesseract\n");
-
-            System.out.println("Finished");
-            appendLog("Finished\n");
-
         }
         catch (Exception e){
-            appendLog("Failed\n");
+            appendLog("Failed tesseract\n");
             appendLog(e.getMessage());
-            System.out.println("Failed");
+            System.out.println("Failed tesseract");
         }
     }
 
