@@ -16,14 +16,7 @@ import java.io.*;
 public class Controller {
     File currentDirectory = null;
     File defaultDirectory;
-    String projectName;
-
-    String colorModeOption;
-    boolean ocrOption;
-    boolean txtOutputOption;
-    String layoutOption;
-    String orientationOption;
-    String marginOption;
+    String projectName = "Project";
 
     String layout = "0";
     String layoutDirection = "lr";
@@ -44,6 +37,11 @@ public class Controller {
     String startFilter = "4";
     String endFilter = "6";
 
+    boolean useOCRMedium = true;
+    boolean txtOutputMedium = false;
+
+    boolean useOCRHard = true;
+    boolean txtOutputHard = false;
 
     //Easy Tab
     @FXML
@@ -70,6 +68,10 @@ public class Controller {
     ChoiceBox mediumColorMode = new ChoiceBox();
     @FXML
     TextArea normalLog;
+    @FXML
+    CheckBox mediumUseOCR;
+    @FXML
+    CheckBox mediumTxtOutput;
 
     //Hard Tab
     @FXML
@@ -94,6 +96,10 @@ public class Controller {
     ChoiceBox hardOrientation = new ChoiceBox();
     @FXML
     ChoiceBox hardColorMode = new ChoiceBox();
+    @FXML
+    CheckBox hardUseOCR;
+    @FXML
+    CheckBox hardTxtOutput;
 
     @FXML File locateFile(ActionEvent event) {
         //Create a Directory chooser object
@@ -181,12 +187,13 @@ public class Controller {
                 easyCreate.setText("Download and Create PDF");
             }
         });
-
     }
 
     // Does the scanner, using the auto scan script
     void scanTail(){
         try{
+            if(easyProjectName.getCharacters().toString().length() > 0)
+                projectName = easyProjectName.getCharacters().toString();
             //Sets file string to current directory
             String fileOfDirectory = currentDirectory.toString() + "/";
             //System.out.println(fileOfDirectory);
@@ -212,7 +219,7 @@ public class Controller {
                 "--depth-perception=" + depthPerception,
                 "--start-filter=" + startFilter,
                 "--end-filter=" + endFilter,
-                "--output-project=" + fileOfDirectory + "/Project.ScanTailor",
+                "--output-project=" + fileOfDirectory + "/" + projectName + ".ScanTailor",
                 fileOfDirectory,
                 fileOfDirectory
             };
@@ -278,7 +285,7 @@ public class Controller {
             System.out.println("Starting Tesseract...");
             appendLog("Starting Tesseract...");
 
-            String[] command = new String[]{"tesseract", fileOfDirectory + "output.tiff", fileOfDirectory + "outputOCR", "-l", "eng", "pdf"};
+            String[] command = new String[]{"tesseract", fileOfDirectory + "output.tiff", fileOfDirectory + projectName, "-l", "eng", "pdf"};
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
@@ -317,19 +324,50 @@ public class Controller {
             public void handle(ActionEvent event) {
                 System.out.println(mediumColorMode.getValue());
                 if(mediumColorMode.getValue().equals("Text and Photographs")){
-                    mediumCreatePDF.setDisable(true);
+                    //mediumCreatePDF.setDisable(true);
+                    colorMode = "mixed";
+                    hardColorMode.setValue("Text and Photographs");
                 }
-                else{
-                    mediumCreatePDF.setDisable(false);
+                else if(mediumColorMode.getValue().equals("Text and Line Drawings Only")){
+                    //mediumCreatePDF.setDisable(false);
+                    colorMode = "black_and_white";
+                    hardColorMode.setValue("Text and Line Drawings Only");
                 }
-                //TODO: Handle change of options in 'backend'
+                else if(mediumColorMode.getValue().equals("Full Photographs")) {
+                    //mediumCreatePDF.setDisable(false);
+                    colorMode = "color_grayscale";
+                    hardColorMode.setValue("Full Photographs");
+                }
             }
         });
+
+        mediumUseOCR.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                useOCRMedium = mediumUseOCR.isSelected();
+                //TODO: make this do something
+            }
+        });
+
+        mediumTxtOutput.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                txtOutputMedium = mediumTxtOutput.isSelected();
+                //TODO: make this do something
+            }
+        });
+
         mediumCreatePDF.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                mediumCreatePDF.setDisable(true);
                 mediumCreatePDF.setText("Processing!");
-                //TODO: Do the processing
+                appendLog("Processing...\n");
+                scanTail();
+                imageMagick();
+                tesseract();
+                mediumCreatePDF.setText("Download and Create PDF!");
+                mediumCreatePDF.setDisable(false);
             }
         });
     }
@@ -377,7 +415,8 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 hardScan.setText("Processing!");
-                //TODO: Do the processing
+                margins = "" + hardMargins.getValue();
+                scanTail();
                 hardRunScanTailor.setDisable(false);
                 hardCreatePDF.setDisable(false);
             }
@@ -387,7 +426,7 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 hardRunScanTailor.setText("Opening!");
-                //TODO: DO the opening
+                //TODO: Open the ScanTailor client
             }
         });
 
@@ -395,7 +434,84 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 hardCreatePDF.setText("Creating!");
-                //TODO: DO the creating
+                imageMagick();
+                tesseract();
+            }
+        });
+
+        hardLayoutOption.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println(hardLayoutOption.getValue());
+                if(hardLayoutOption.getValue().equals("Auto Detect")){
+                    //mediumCreatePDF.setDisable(true);
+                    layout = "0";
+                }
+                else if(hardLayoutOption.getValue().equals("One Page")){
+                    //mediumCreatePDF.setDisable(false);
+                    layout = "1";
+                }
+                else if(hardLayoutOption.getValue().equals("Two Page")){
+                    //mediumCreatePDF.setDisable(false);
+                    layout = "2";
+                }
+            }
+        });
+
+        hardColorMode.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println(hardColorMode.getValue());
+                if(hardColorMode.getValue().equals("Text and Photographs")){
+                    //mediumCreatePDF.setDisable(true);
+                    colorMode = "mixed";
+                    mediumColorMode.setValue("Text and Photographs");
+                }
+                else if(hardColorMode.getValue().equals("Text and Line Drawings Only")){
+                    //mediumCreatePDF.setDisable(false);
+                    colorMode = "black_and_white";
+                    mediumColorMode.setValue("Text and Line Drawings Only");
+                }
+                else if(hardColorMode.getValue().equals("Full Photographs")) {
+                    //mediumCreatePDF.setDisable(false);
+                    colorMode = "color_grayscale";
+                    mediumColorMode.setValue("Full Photographs");
+                }
+            }
+        });
+
+        hardOrientation.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println(hardOrientation.getValue());
+                if(hardOrientation.getValue().equals("Left")){
+                    //mediumCreatePDF.setDisable(true);
+                    orientation = "left";
+                }
+                else if(hardOrientation.getValue().equals("Right")){
+                    //mediumCreatePDF.setDisable(false);
+                    orientation = "right";
+                }
+                else if(hardOrientation.getValue().equals("Upsidedown")){
+                    //mediumCreatePDF.setDisable(false);
+                    orientation = "upsidedown";
+                }
+            }
+        });
+
+        hardUseOCR.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                useOCRHard = hardUseOCR.isSelected();
+                //TODO: make this do something
+            }
+        });
+
+        hardTxtOutput.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                txtOutputHard = hardTxtOutput.isSelected();
+                //TODO: make this do something
             }
         });
     }

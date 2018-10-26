@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4d2f4695-ac45-4c8e-a8c4-a091772778e6" name="Default Changelist" comment="Begun commenting java code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScannerGUI/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/sample/sample.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,16 +27,17 @@
     <session id="769825168">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -61,9 +64,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="fxml" value="2076" />
+          <entry key="fxml" value="2108" />
           <entry key="gitignore" value="8" />
-          <entry key="java" value="2522" />
+          <entry key="java" value="4325" />
           <entry key="sh" value="1" />
           <entry key="txt" value="33" />
         </counts>
@@ -71,9 +74,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="JAVA" value="2522" />
+          <entry key="JAVA" value="4325" />
           <entry key="PLAIN_TEXT" value="41" />
-          <entry key="XML" value="2076" />
+          <entry key="XML" value="2108" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.mvc.usages" />
@@ -100,17 +103,34 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="189" column="42" selection-start-line="189" selection-start-column="42" selection-end-line="189" selection-end-column="42" />
+            <state relative-caret-position="324">
+              <caret line="421" selection-start-line="417" selection-start-column="31" selection-end-line="421" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#locateFile#0;class#Controller#0" />
-                <element signature="method#initialize#0;class#Controller#0" />
-                <element signature="method#setText#0;class#Controller#0" />
-                <element signature="method#appendLog#0;class#Controller#0" />
-                <element signature="method#easyTab#0;class#Controller#0" />
-                <element signature="method#mediumTab#0;class#Controller#0" />
-                <element signature="method#hardTab#0;class#Controller#0" />
+                <element signature="e#2111#2598#0" />
+                <element signature="e#2604#2744#0" />
+                <element signature="e#2750#4018#0" />
+                <element signature="e#4024#4119#0" />
+                <element signature="e#4125#5793#0" />
+                <element signature="class#4302:4915" />
+                <element signature="class#5014:5782" />
+                <element signature="e#5799#8028#0" />
+                <element signature="e#8034#9197#0" />
+                <element signature="e#9203#10434#0" />
+                <element signature="e#10587#13030#0" />
+                <element signature="class#10537:10933" />
+                <element signature="method#handle#0;class#10537:10933" />
+                <element signature="class#11131:12147" />
+                <element signature="class#13076:13472" />
+                <element signature="class#13511:14027" />
+                <element signature="class#14329:14831" />
+                <element signature="class#14971:15192" />
+                <element signature="class#15234:15453" />
+                <element signature="class#15409:16144" />
+                <element signature="class#16538:17552" />
+                <element signature="class#17596:18350" />
+                <element signature="class#18391:18623" />
+                <element signature="class#18667:18905" />
               </folding>
             </state>
           </provider>
@@ -119,8 +139,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/sample.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+            <state relative-caret-position="583">
+              <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -129,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/auto_scan.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="57" column="69" lean-forward="true" selection-start-line="57" selection-start-column="69" selection-end-line="57" selection-end-column="69" />
+            <state relative-caret-position="975">
+              <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -151,6 +171,11 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>easyProjectName</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -158,9 +183,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/ScannerGUI/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/ScannerGUI/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/auto_scan.sh" />
+        <option value="$PROJECT_DIR$/ScannerGUI/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java" />
       </list>
     </option>
@@ -172,7 +197,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
+    <option name="x" value="84" />
     <option name="y" value="22" />
     <option name="width" value="1214" />
     <option name="height" value="778" />
@@ -183,6 +208,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -194,14 +221,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539979895345" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540587178931" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -258,6 +283,8 @@
       <workItem from="1539368607884" duration="909000" />
       <workItem from="1539369599346" duration="2828000" />
       <workItem from="1539978190298" duration="1350000" />
+      <workItem from="1540419277555" duration="6086000" />
+      <workItem from="1540577984673" duration="7882000" />
     </task>
     <task id="LOCAL-00001" summary="Begun commenting java code">
       <created>1538167043115</created>
@@ -270,13 +297,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18999000" />
+    <option name="totallyTimeSpent" value="32967000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="22" width="1214" height="778" extended-state="0" />
-    <editor active="true" />
+    <frame x="84" y="22" width="1214" height="778" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16894197" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17406143" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -294,7 +320,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32892805" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3265306" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -322,29 +348,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java</url>
-          <line>166</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java</url>
-          <line>206</line>
+          <line>322</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java</url>
-          <line>127</line>
+          <line>153</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java</url>
-          <line>126</line>
-          <properties class="sample.Controller" method="easyTab">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="6" />
+          <line>401</line>
+          <properties />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -394,6 +412,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/auto_scan.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Full Stack.sh">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -404,34 +429,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/auto_scan.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="57" column="69" lean-forward="true" selection-start-line="57" selection-start-column="69" selection-end-line="57" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+        <state relative-caret-position="583">
+          <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="189" column="42" selection-start-line="189" selection-start-column="42" selection-end-line="189" selection-end-column="42" />
+        <state relative-caret-position="324">
+          <caret line="421" selection-start-line="417" selection-start-column="31" selection-end-line="421" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#locateFile#0;class#Controller#0" />
-            <element signature="method#initialize#0;class#Controller#0" />
-            <element signature="method#setText#0;class#Controller#0" />
-            <element signature="method#appendLog#0;class#Controller#0" />
-            <element signature="method#easyTab#0;class#Controller#0" />
-            <element signature="method#mediumTab#0;class#Controller#0" />
-            <element signature="method#hardTab#0;class#Controller#0" />
+            <element signature="e#2111#2598#0" />
+            <element signature="e#2604#2744#0" />
+            <element signature="e#2750#4018#0" />
+            <element signature="e#4024#4119#0" />
+            <element signature="e#4125#5793#0" />
+            <element signature="class#4302:4915" />
+            <element signature="class#5014:5782" />
+            <element signature="e#5799#8028#0" />
+            <element signature="e#8034#9197#0" />
+            <element signature="e#9203#10434#0" />
+            <element signature="e#10587#13030#0" />
+            <element signature="class#10537:10933" />
+            <element signature="method#handle#0;class#10537:10933" />
+            <element signature="class#11131:12147" />
+            <element signature="class#13076:13472" />
+            <element signature="class#13511:14027" />
+            <element signature="class#14329:14831" />
+            <element signature="class#14971:15192" />
+            <element signature="class#15234:15453" />
+            <element signature="class#15409:16144" />
+            <element signature="class#16538:17552" />
+            <element signature="class#17596:18350" />
+            <element signature="class#18391:18623" />
+            <element signature="class#18667:18905" />
           </folding>
         </state>
       </provider>
