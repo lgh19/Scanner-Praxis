@@ -179,6 +179,7 @@ public class Controller {
                     scanTail();
                     imageMagick();
                     tesseract();
+                    cleanDirectory();
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please chose a place to scan to.", ButtonType.OK);
@@ -277,6 +278,68 @@ public class Controller {
         }
     }
 
+    void convertPDF(){
+        try{
+            //Sets file string to current directory
+            String fileOfDirectory = currentDirectory.toString() + "/";
+
+            System.out.println("Starting Imagemagick...");
+            appendLog("Starting Imagemagick...");
+
+            String[] command = new String[]{"convert", fileOfDirectory + "output.tiff", fileOfDirectory + projectName + ".pdf"};
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+
+            //Re-direct output of process to console
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            process.waitFor();
+            System.out.println("Finished Imagemagick");
+            appendLog("Finished Imagemagick\n");
+        }
+            catch (Exception e){
+            appendLog("Failed Imagemagick\n");
+            appendLog(e.getMessage());
+            System.out.println("Failed Imagemagick");
+        }
+    }
+
+    void convertTXT(){
+        try {
+            //Sets file string to current directory
+            String fileOfDirectory = currentDirectory.toString() + "/";
+            //tesseract output.tiff outputOCR -l eng pdf
+            System.out.println("Starting Tesseract...");
+            appendLog("Starting Tesseract...");
+
+            String[] command = new String[]{"tesseract", fileOfDirectory + "output.tiff", fileOfDirectory + projectName, "txt"};
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+
+            //Re-direct output of process to console
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            process.waitFor();
+            System.out.println("Finished Tesseract");
+            appendLog("Finished Tesseract\n");
+        }
+        catch (Exception e){
+            appendLog("Failed tesseract\n");
+            appendLog(e.getMessage());
+            System.out.println("Failed tesseract");
+        }
+    }
+
     void tesseract(){
         try {
             //Sets file string to current directory
@@ -305,6 +368,63 @@ public class Controller {
             appendLog("Failed tesseract\n");
             appendLog(e.getMessage());
             System.out.println("Failed tesseract");
+        }
+    }
+
+    void cleanDirectory(){
+        try {
+            //Sets file string to current directory
+            String fileOfDirectory = currentDirectory.toString() + "/";
+            //tesseract output.tiff outputOCR -l eng pdf
+            System.out.println("Cleaning...");
+            appendLog("Cleaning...");
+
+            String[] command = new String[]{"rm", fileOfDirectory + "*.tif"};
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+
+            //Re-direct output of process to console
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            process.waitFor();
+
+            command = new String[]{"sh", "-c", "rm", fileOfDirectory + "*.tiff"};
+            pb = new ProcessBuilder(command);
+            process = pb.start();
+
+            //Re-direct output of process to console
+            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            process.waitFor();
+
+            command = new String[]{"rm", "-r", fileOfDirectory + "cache"};
+            pb = new ProcessBuilder(command);
+            process = pb.start();
+
+            //Re-direct output of process to console
+            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            process.waitFor();
+
+            appendLog("Finished\n");
+        }
+        catch (Exception e){
+            appendLog(e.getMessage());
         }
     }
 
@@ -365,7 +485,16 @@ public class Controller {
                 appendLog("Processing...\n");
                 scanTail();
                 imageMagick();
-                tesseract();
+                if(useOCRMedium){
+                    tesseract();
+                }else{
+                    convertPDF();
+                }
+
+                if(txtOutputMedium){
+                    convertTXT();
+                }
+
                 mediumCreatePDF.setText("Download and Create PDF!");
                 mediumCreatePDF.setDisable(false);
             }
@@ -435,7 +564,15 @@ public class Controller {
             public void handle(ActionEvent event) {
                 hardCreatePDF.setText("Creating!");
                 imageMagick();
-                tesseract();
+                if(useOCRHard){
+                    tesseract();
+                }else{
+                    convertPDF();
+                }
+
+                if(txtOutputHard){
+                    convertTXT();
+                }
             }
         });
 
