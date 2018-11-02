@@ -19,7 +19,7 @@ else
 fi
 
 # Use a timestamp for the job folder name
-JOBFOLDER=~/bookscans/$(date + %Y%m%d%H%M%S)--${JOBLABEL}
+JOBFOLDER=$1
 echo "Jobfolder: ${JOBFOLDER}"
 
 mkdir ${JOBFOLDER}

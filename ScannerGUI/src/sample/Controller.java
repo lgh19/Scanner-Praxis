@@ -43,7 +43,11 @@ public class Controller {
     boolean useOCRHard = true;
     boolean txtOutputHard = false;
 
+    boolean camerasConnected = false;
+
     //Easy Tab
+    @FXML
+    CheckBox usingCameras;
     @FXML
     Button easyCreate;
     @FXML
@@ -62,6 +66,8 @@ public class Controller {
     Button normalFileBrowser;
     @FXML
     Label normalFilePath;
+    @FXML
+    CheckBox usingCamerasMedium;
     @FXML
     Button mediumCreatePDF;
     @FXML
@@ -176,6 +182,9 @@ public class Controller {
                 if(!(currentDirectory == null)){
                     easyCreate.setText("Processing...");
                     appendLog("Processing...\n");
+                    if(camerasConnected){
+                        importFromCameras();
+                    }
                     scanTail();
                     imageMagick();
                     tesseract();
@@ -186,6 +195,14 @@ public class Controller {
                     alert.showAndWait();
                 }
                 easyCreate.setText("Download and Create PDF");
+            }
+        });
+
+        usingCameras.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                camerasConnected = usingCameras.isSelected();
+                usingCamerasMedium.setSelected(camerasConnected);
             }
         });
     }
@@ -465,7 +482,6 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 useOCRMedium = mediumUseOCR.isSelected();
-                //TODO: make this do something
             }
         });
 
@@ -473,7 +489,6 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 txtOutputMedium = mediumTxtOutput.isSelected();
-                //TODO: make this do something
             }
         });
 
@@ -483,6 +498,11 @@ public class Controller {
                 mediumCreatePDF.setDisable(true);
                 mediumCreatePDF.setText("Processing!");
                 appendLog("Processing...\n");
+
+                if(camerasConnected){
+                    importFromCameras();
+                }
+
                 scanTail();
                 imageMagick();
                 if(useOCRMedium){
@@ -499,6 +519,37 @@ public class Controller {
                 mediumCreatePDF.setDisable(false);
             }
         });
+
+        usingCamerasMedium.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                camerasConnected = usingCamerasMedium.isSelected();
+                usingCameras.setSelected(camerasConnected);
+            }
+        });
+    }
+
+    void importFromCameras(){
+        try{
+            String[] command = new String[]{System.getProperty("user.dir") + "/camera_getter.sh", "" + currentDirectory};
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+
+            //Re-direct output of process to console
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            process.waitFor();
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Application was unable to import from cameras", ButtonType.OK);
+            alert.showAndWait();
+            appendLog("Error importing\n");
+        }
     }
 
     // For the hard tab of the GUI
@@ -517,14 +568,10 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 hardImport.setText("Importing!");
-                //TODO: Do the importing
                 hardDelete.setDisable(true);
-                try {
-                    ProcessBuilder pb = new ProcessBuilder("sh test");
-                    pb.redirectErrorStream(true);
-                    pb.start();
-                }
-                catch (IOException e){e.printStackTrace();}
+                importFromCameras();
+                hardDelete.setDisable(false);
+                hardImport.setText("Download Images from Cameras");
             }
         });
 
@@ -555,7 +602,24 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 hardRunScanTailor.setText("Opening!");
-                //TODO: Open the ScanTailor client
+                String fileOfDirectory = currentDirectory.toString() + "/";
+                try {
+                    String[] command = new String[]{"scantailor", fileOfDirectory + projectName + ".ScanTailor"};
+                    ProcessBuilder pb = new ProcessBuilder(command);
+                    Process process = pb.start();
+
+                    //Re-direct output of process to console
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    String line = null;
+                    while ((line = reader.readLine()) != null) {
+                        System.out.println(line);
+                        appendLog(line + "\n");
+                    }
+
+                    process.waitFor();
+                }catch(Exception e){
+                    hardRunScanTailor.setText("Error opening");
+                }
             }
         });
 
@@ -640,7 +704,6 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 useOCRHard = hardUseOCR.isSelected();
-                //TODO: make this do something
             }
         });
 
@@ -648,7 +711,6 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 txtOutputHard = hardTxtOutput.isSelected();
-                //TODO: make this do something
             }
         });
     }

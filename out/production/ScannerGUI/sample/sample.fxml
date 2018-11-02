@@ -26,14 +26,15 @@
                           <Label layoutX="14.0" layoutY="14.0" text="Project Name:" />
                           <!-- Text input of the project name -->
                           <TextField fx:id="easyProjectName" layoutX="108.0" layoutY="9.0" />
+                          <CheckBox fx:id="usingCameras" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="Are you connected to a Scanner?" />
                           <!-- File browser button, "Download Location" -->
-                          <Button fx:id="easyFileBrowser" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" text="Download Location" />
+                          <Button fx:id="easyFileBrowser" layoutX="14.0" layoutY="80.0" mnemonicParsing="false" text="Download Location" />
                           <!-- Label for the pathways label "File Path:" -->
-                          <Label layoutX="160.0" layoutY="67.0" text="File Path:" />
+                          <Label layoutX="160.0" layoutY="85.0" text="File Path:" />
                           <!-- Pathway label -->
-                          <Label fx:id="easyFilePath" layoutX="235.0" layoutY="67.0" />
+                          <Label fx:id="easyFilePath" layoutX="235.0" layoutY="85.0" />
                           <!-- Button for creating and downloading pdfs -->
-                          <Button fx:id="easyCreate" layoutX="164.0" layoutY="113.0" mnemonicParsing="false" prefHeight="186.0" prefWidth="273.0" text="Download and Create PDF" textAlignment="CENTER" wrapText="true">
+                          <Button fx:id="easyCreate" layoutX="164.0" layoutY="120.0" mnemonicParsing="false" prefHeight="186.0" prefWidth="273.0" text="Download and Create PDF" textAlignment="CENTER" wrapText="true">
                               <Font size="18.0" />
                           </Button>
                           <!-- Log for the easy tab -->
@@ -54,6 +55,7 @@
                           <!-- File path text -->
                           <Label fx:id="normalFilePath" layoutX="171.0" layoutY="16.0" />
                           <!-- Label for color mode -->
+                          <CheckBox fx:id="usingCamerasMedium" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="Are you connected to a Scanner?" />
                           <Label layoutX="14.0" layoutY="88.0" text="Color Mode:" />
                           <!-- Choice box for color mode -->
                           <ChoiceBox fx:id="mediumColorMode" layoutX="97.0" layoutY="83.0" />
