@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ScannerJAR">
+    <output-path>$PROJECT_DIR$/out/artifacts/ScannerJAR</output-path>
+    <root id="archive" name="ScannerJAR.jar">
+      <element id="archive" name="ScannerGUI.jar">
+        <element id="module-output" name="ScannerGUI" />
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/ScannerGUI/src/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
