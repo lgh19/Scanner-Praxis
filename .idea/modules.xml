@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ScannerGUI/ScannerGUI.iml" filepath="$PROJECT_DIR$/ScannerGUI/ScannerGUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScannerGUI/src/ScannerGUI.iml" filepath="$PROJECT_DIR$/ScannerGUI/src/ScannerGUI.iml" />
     </modules>
   </component>
 </project>

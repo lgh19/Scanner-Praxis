@@ -1,4 +1,4 @@
-package sample;
+package Scanner;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -15,15 +15,19 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        // Loads FXML from file
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.getIcons().add(new Image("file:icon.png"));
-        //Sets title of window
-        primaryStage.setTitle("A Scanner Darkly");
-        //Sets window dimensions
-        primaryStage.setScene(new Scene(root, 600, 500));
-        //Show window
-        primaryStage.show();
+        try {
+            // Loads FXML from file
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Scanner.fxml"));
+            primaryStage.getIcons().add(new Image("file:icon.png"));
+            //Sets title of window
+            primaryStage.setTitle("A Scanner Darkly");
+            //Sets window dimensions
+            primaryStage.setScene(new Scene(root, 600, 500));
+            //Show window
+            primaryStage.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

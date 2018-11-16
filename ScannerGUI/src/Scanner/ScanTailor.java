@@ -1,4 +1,4 @@
-package sample;
+package Scanner;
 
 public class ScanTailor {
 }

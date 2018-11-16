@@ -1,4 +1,4 @@
-package sample;
+package Scanner;
 
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
