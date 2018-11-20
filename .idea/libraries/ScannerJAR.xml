@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ScannerJAR">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerJAR/ScannerJAR.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

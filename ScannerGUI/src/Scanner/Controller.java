@@ -189,6 +189,9 @@ public class Controller {
                     imageMagick();
                     tesseract();
                     cleanDirectory();
+                    if(camerasConnected){
+                        deleteFromCameras();
+                    }
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please chose a place to scan to.", ButtonType.OK);
@@ -237,12 +240,24 @@ public class Controller {
                 "--depth-perception=" + depthPerception,
                 "--start-filter=" + startFilter,
                 "--end-filter=" + endFilter,
-                "--output-project=" + fileOfDirectory + "/" + projectName + ".ScanTailor",
-                fileOfDirectory,
+                "--output-project=" + fileOfDirectory + projectName + ".ScanTailor",
+                fileOfDirectory + "*.jpg",
                 fileOfDirectory
             };
+
+            String os = System.getProperty("os.name").toLowerCase();
+            if(!(os.contains("win") || os.contains("osx"))){
+                String[] newCommand = {"/bin/bash", "-c", ""};
+                for(String a: command){
+                    newCommand[2] += a + " ";
+                }
+                command = newCommand;
+            }
+
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
+
+            int outCode = process.waitFor();
 
             //Re-direct output of process to console
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -252,9 +267,7 @@ public class Controller {
                 appendLog(line + "\n");
             }
 
-            process.waitFor();
-
-            System.out.println("Finished ScanTailor");
+            System.out.println("Finished ScanTailor: " + outCode);
             appendLog("Finished ScanTailor\n");
         }
         catch (Exception e){
@@ -501,6 +514,7 @@ public class Controller {
 
                 if(camerasConnected){
                     importFromCameras();
+                    deleteFromCameras();
                 }
 
                 scanTail();
@@ -532,6 +546,22 @@ public class Controller {
     void importFromCameras(){
         try{
             String[] command = new String[]{System.getProperty("user.dir") + "/camera_getter.sh", "" + currentDirectory};
+
+            String os = System.getProperty("os.name").toLowerCase();
+            if(!(os.contains("win") || os.contains("osx"))){
+                String[] newCommand = {"/bin/bash", "-c", ""};
+                for(String a: command){
+                    newCommand[2] += a + " ";
+                }
+                command = newCommand;
+            }
+
+            if(os.contains("win") ){
+                System.out.println("Scanner download operation not supported on windows");
+                appendLog("Scanner download operation not supported on windows" + "\n");
+                return;
+            }
+
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
@@ -544,11 +574,52 @@ public class Controller {
             }
 
             process.waitFor();
+            System.out.println("Done downloading");
         }
         catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Application was unable to import from cameras", ButtonType.OK);
             alert.showAndWait();
             appendLog("Error importing\n");
+        }
+    }
+
+    void deleteFromCameras(){
+        try{
+            String[] command = new String[]{System.getProperty("user.dir") + "/camdelete.sh"};
+
+            String os = System.getProperty("os.name").toLowerCase();
+            if(!(os.contains("win") || os.contains("osx"))){
+                String[] newCommand = {"/bin/bash", "-c", ""};
+                for(String a: command){
+                    newCommand[2] += a + " ";
+                }
+                command = newCommand;
+            }
+
+            if(os.contains("win") ){
+                System.out.println("Scanner delete operation not supported on windows");
+                appendLog("Scanner delete operation not supported on windows" + "\n");
+                return;
+            }
+
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+
+            //Re-direct output of process to console
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            process.waitFor();
+            System.out.println("Done deleting");
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Application was unable to delete from cameras", ButtonType.OK);
+            alert.showAndWait();
+            appendLog("Error deleting\n");
         }
     }
 
@@ -582,7 +653,8 @@ public class Controller {
                 alert.showAndWait();
                 if (alert.getResult() == ButtonType.YES) {
                     hardDelete.setText("Deleting!");
-                    //TODO: Make the delete happen
+                    deleteFromCameras();
+                    hardDelete.setText("Delete Images From Cameras");
                 }
             }
         });
