@@ -15,6 +15,8 @@ import java.io.*;
 
 public class Controller {
     File currentDirectory = null;
+    File leftCamDirectory = null;
+    File rightCamDirectory = null;
     File defaultDirectory;
     String projectName = "Project";
 
@@ -52,6 +54,10 @@ public class Controller {
     Button easyCreate;
     @FXML
     Button easyFileBrowser;
+    @FXML
+    Button easySetLeftCamera;
+    @FXML
+    Button easySetRightCamera;
     @FXML
     Label easyFilePath;
     @FXML
@@ -174,6 +180,34 @@ public class Controller {
             }
         });
 
+        easySetLeftCamera.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //Try to locate the file
+                try{
+                    leftCamDirectory = locateFile(new ActionEvent());
+                    easySetLeftCamera.setText("Left Camera Set");
+                }
+                catch (Exception e){
+                    System.out.println("No directory selected.");
+                }
+            }
+        });
+
+        easySetRightCamera.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //Try to locate the file
+                try{
+                    rightCamDirectory = locateFile(new ActionEvent());
+                    easySetRightCamera.setText("Right Camera Set");
+                }
+                catch (Exception e){
+                    System.out.println("No directory selected.");
+                }
+            }
+        });
+
         //Handles event of "Download and Create PDF" button
         easyCreate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -265,6 +299,83 @@ public class Controller {
             while ( (line = reader.readLine()) != null) {
                 System.out.println(line);
                 appendLog(line + "\n");
+            }
+            if(camerasConnected) {
+                command = new String[]{"scantailor-cli",
+                        "--layout=" + layout,
+                        "--layout-direction=" + layoutDirection,
+                        "--orientation=" + orientation,
+                        "--rotate=" + rotate,
+                        "--deskew=" + deskew,
+                        "--content-direction=" + contentDirection,
+                        "--margins=" + margins,
+                        "--alignment=" + alignment,
+                        "--dpi=" + dpi,
+                        "--output-dpi=" + outputDpi,
+                        "--color-mode=" + colorMode,
+                        "--white-margins=" + whiteMargins,
+                        "--threshold=" + threshold,
+                        "--despeckle=" + despeckle,
+                        "--dewarping=" + dewarping,
+                        "--depth-perception=" + depthPerception,
+                        "--start-filter=" + startFilter,
+                        "--end-filter=" + endFilter,
+                        "--output-project=" + fileOfDirectory + projectName + ".ScanTailor",
+                        fileOfDirectory + "/left/*.jpg",
+                        fileOfDirectory
+                };
+
+                os = System.getProperty("os.name").toLowerCase();
+                if (!(os.contains("win") || os.contains("osx"))) {
+                    String[] newCommand = {"/bin/bash", "-c", ""};
+                    for (String a : command) {
+                        newCommand[2] += a + " ";
+                    }
+                    command = newCommand;
+                }
+
+                pb = new ProcessBuilder(command);
+                process = pb.start();
+
+                outCode = process.waitFor();
+
+                command = new String[]{"scantailor-cli",
+                        "--layout=" + layout,
+                        "--layout-direction=" + layoutDirection,
+                        "--orientation=" + orientation,
+                        "--rotate=" + rotate,
+                        "--deskew=" + deskew,
+                        "--content-direction=" + contentDirection,
+                        "--margins=" + margins,
+                        "--alignment=" + alignment,
+                        "--dpi=" + dpi,
+                        "--output-dpi=" + outputDpi,
+                        "--color-mode=" + colorMode,
+                        "--white-margins=" + whiteMargins,
+                        "--threshold=" + threshold,
+                        "--despeckle=" + despeckle,
+                        "--dewarping=" + dewarping,
+                        "--depth-perception=" + depthPerception,
+                        "--start-filter=" + startFilter,
+                        "--end-filter=" + endFilter,
+                        "--output-project=" + fileOfDirectory + projectName + ".ScanTailor",
+                        fileOfDirectory + "/right/*.jpg",
+                        fileOfDirectory
+                };
+
+                os = System.getProperty("os.name").toLowerCase();
+                if (!(os.contains("win") || os.contains("osx"))) {
+                    String[] newCommand = {"/bin/bash", "-c", ""};
+                    for (String a : command) {
+                        newCommand[2] += a + " ";
+                    }
+                    command = newCommand;
+                }
+
+                pb = new ProcessBuilder(command);
+                process = pb.start();
+
+                outCode = process.waitFor();
             }
 
             System.out.println("Finished ScanTailor: " + outCode);
@@ -543,9 +654,9 @@ public class Controller {
         });
     }
 
-    void importFromCameras(){
+    void downloadFromCamera(String usbAddress, String subDir){
         try{
-            String[] command = new String[]{System.getProperty("user.dir") + "/camera_getter.sh", "" + currentDirectory};
+            String[] command = new String[]{"mkdir", "" + currentDirectory + subDir};
 
             String os = System.getProperty("os.name").toLowerCase();
             if(!(os.contains("win") || os.contains("osx"))){
@@ -565,27 +676,66 @@ public class Controller {
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
-            //Re-direct output of process to console
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line = null;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 appendLog(line + "\n");
             }
+        }
+        catch(Exception e){
+            System.out.println("Created dir");
+        }
 
-            process.waitFor();
-            System.out.println("Done downloading");
+
+        try {
+            System.out.println("" + usbAddress);
+            System.out.println("" + currentDirectory + subDir);
+            String[] command = new String[]{"cp", usbAddress + "/*", "" + currentDirectory + subDir};
+
+            String os = System.getProperty("os.name").toLowerCase();
+            if(!(os.contains("win") || os.contains("osx"))){
+                String[] newCommand = {"/bin/bash", "-c", ""};
+                for(String a: command){
+                    newCommand[2] += a + " ";
+                }
+                command = newCommand;
+            }
+
+            if(os.contains("win") ){
+                System.out.println("Scanner download operation not supported on windows");
+                appendLog("Scanner download operation not supported on windows" + "\n");
+                return;
+            }
+
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
         }
         catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Application was unable to import from cameras", ButtonType.OK);
             alert.showAndWait();
-            appendLog("Error importing\n");
+            appendLog("Error importing from \n");
         }
+    }
+
+    void importFromCameras(){
+        if(leftCamDirectory == null || rightCamDirectory == null){
+            return;
+        }
+        downloadFromCamera("" + leftCamDirectory, "/left");
+        downloadFromCamera("" + rightCamDirectory, "/right");
     }
 
     void deleteFromCameras(){
         try{
-            String[] command = new String[]{System.getProperty("user.dir") + "/camdelete.sh"};
+            String[] command = new String[]{"rm", "" + leftCamDirectory + "/*"};
 
             String os = System.getProperty("os.name").toLowerCase();
             if(!(os.contains("win") || os.contains("osx"))){
@@ -608,6 +758,36 @@ public class Controller {
             //Re-direct output of process to console
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            process.waitFor();
+
+            command = new String[]{"rm", "" + rightCamDirectory + "/*"};
+
+            os = System.getProperty("os.name").toLowerCase();
+            if(!(os.contains("win") || os.contains("osx"))){
+                String[] newCommand = {"/bin/bash", "-c", ""};
+                for(String a: command){
+                    newCommand[2] += a + " ";
+                }
+                command = newCommand;
+            }
+
+            if(os.contains("win") ){
+                System.out.println("Scanner delete operation not supported on windows");
+                appendLog("Scanner delete operation not supported on windows" + "\n");
+                return;
+            }
+
+            pb = new ProcessBuilder(command);
+            process = pb.start();
+
+            //Re-direct output of process to console
+            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            line = null;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 appendLog(line + "\n");
