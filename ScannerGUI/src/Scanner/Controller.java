@@ -13,7 +13,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.*;
 
-public class Controller {
+public class
+Controller {
     File currentDirectory = null;
     File leftCamDirectory = null;
     File rightCamDirectory = null;
@@ -61,6 +62,10 @@ public class Controller {
     @FXML
     Label easyFilePath;
     @FXML
+    Label leftCamFilePath;
+    @FXML
+    Label rightCamFilePath;
+    @FXML
     ProgressBar easyLoading;
     @FXML
     TextArea easyLog;
@@ -68,12 +73,6 @@ public class Controller {
     TextField easyProjectName;
 
     //Medium Tab
-    @FXML
-    Button normalFileBrowser;
-    @FXML
-    Label normalFilePath;
-    @FXML
-    CheckBox usingCamerasMedium;
     @FXML
     Button mediumCreatePDF;
     @FXML
@@ -86,10 +85,6 @@ public class Controller {
     CheckBox mediumTxtOutput;
 
     //Hard Tab
-    @FXML
-    Button hardFileBrowser;
-    @FXML
-    Label hardFilePath;
     @FXML
     Button hardImport;
     @FXML
@@ -112,21 +107,13 @@ public class Controller {
     CheckBox hardUseOCR;
     @FXML
     CheckBox hardTxtOutput;
-
-    @FXML File locateFile(ActionEvent event) {
-        //Create a Directory chooser object
-        DirectoryChooser dirChooser = new DirectoryChooser();
-        //Set the title (shown at the top of the window) of this directory browser window
-        dirChooser.setTitle("Open Resource File");
-        //Show the directory chooser window and wait for user to choose directory
-        File f = dirChooser.showDialog(null);
-        //Return the directory the user chose
-        return f;
-    }
+    @FXML
+    TextArea expertLog;
 
     //Initializes the project
     public void initialize() {
         setText();
+        configTab();
         easyTab();
         mediumTab();
         hardTab();
@@ -159,20 +146,20 @@ public class Controller {
     void appendLog(String s){
         easyLog.appendText(s);
         normalLog.appendText(s);
+        expertLog.appendText(s);
     }
 
-    // For the easy tab of the GUI
-    void easyTab(){
+    void configTab(){
         // Handles event of "Download Location" button click on the easy tab of the GUI
         easyFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 //Try to locate the file
                 try{
-                    currentDirectory = locateFile(new ActionEvent());
+                    DirectoryChooser chooser = new DirectoryChooser();
+                    chooser.setTitle("Choose destination folder");
+                    currentDirectory = chooser.showDialog(new Stage());
                     easyFilePath.setText(currentDirectory.toString());
-                    normalFilePath.setText(currentDirectory.toString());
-                    hardFilePath.setText(currentDirectory.toString());
                 }
                 catch (Exception e){
                     System.out.println("No directory selected.");
@@ -185,7 +172,10 @@ public class Controller {
             public void handle(ActionEvent event) {
                 //Try to locate the file
                 try{
-                    leftCamDirectory = locateFile(new ActionEvent());
+                    DirectoryChooser chooser = new DirectoryChooser();
+                    chooser.setTitle("Choose left camera folder");
+                    leftCamDirectory = chooser.showDialog(new Stage());
+                    leftCamFilePath.setText(leftCamDirectory.toString());
                     easySetLeftCamera.setText("Left Camera Set");
                 }
                 catch (Exception e){
@@ -199,7 +189,10 @@ public class Controller {
             public void handle(ActionEvent event) {
                 //Try to locate the file
                 try{
-                    rightCamDirectory = locateFile(new ActionEvent());
+                    DirectoryChooser chooser = new DirectoryChooser();
+                    chooser.setTitle("Choose right camera folder");
+                    rightCamDirectory = chooser.showDialog(new Stage());
+                    rightCamFilePath.setText(rightCamDirectory.toString());
                     easySetRightCamera.setText("Right Camera Set");
                 }
                 catch (Exception e){
@@ -208,6 +201,26 @@ public class Controller {
             }
         });
 
+        easySetLeftCamera.setDisable(true);
+        easySetRightCamera.setDisable(true);
+
+        usingCameras.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                camerasConnected = usingCameras.isSelected();
+                if(camerasConnected){
+                    easySetLeftCamera.setDisable(false);
+                    easySetRightCamera.setDisable(false);
+                }else{
+                    easySetLeftCamera.setDisable(true);
+                    easySetRightCamera.setDisable(true);
+                }
+            }
+        });
+    }
+
+    // For the easy tab of the GUI
+    void easyTab(){
         //Handles event of "Download and Create PDF" button
         easyCreate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -232,14 +245,6 @@ public class Controller {
                     alert.showAndWait();
                 }
                 easyCreate.setText("Download and Create PDF");
-            }
-        });
-
-        usingCameras.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                camerasConnected = usingCameras.isSelected();
-                usingCamerasMedium.setSelected(camerasConnected);
             }
         });
     }
@@ -571,15 +576,6 @@ public class Controller {
 
     // For the medium tab of the GUI
     void mediumTab(){
-        normalFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                currentDirectory = locateFile(new ActionEvent());
-                easyFilePath.setText(currentDirectory.toString());
-                normalFilePath.setText(currentDirectory.toString());
-                hardFilePath.setText(currentDirectory.toString());
-            }
-        });
         mediumColorMode.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -642,14 +638,6 @@ public class Controller {
 
                 mediumCreatePDF.setText("Download and Create PDF!");
                 mediumCreatePDF.setDisable(false);
-            }
-        });
-
-        usingCamerasMedium.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                camerasConnected = usingCamerasMedium.isSelected();
-                usingCameras.setSelected(camerasConnected);
             }
         });
     }
@@ -805,16 +793,6 @@ public class Controller {
 
     // For the hard tab of the GUI
     void hardTab() {
-        hardFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                currentDirectory = locateFile(new ActionEvent());
-                easyFilePath.setText(currentDirectory.toString());
-                normalFilePath.setText(currentDirectory.toString());
-                hardFilePath.setText(currentDirectory.toString());
-            }
-        });
-
         hardImport.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

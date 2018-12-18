@@ -23,6 +23,7 @@ public class Main extends Application {
             primaryStage.setTitle("A Scanner Darkly");
             //Sets window dimensions
             primaryStage.setScene(new Scene(root, 600, 500));
+            primaryStage.setResizable(false);
             //Show window
             primaryStage.show();
         }catch (Exception e){
