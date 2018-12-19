@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c60bbaf-53d8-4eb7-91f8-c56cf376c140" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ScannerGUI.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ScannerGUI.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ScannerGUI.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ScannerGUI1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ScannerGUI1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ScannerJAR.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/limited.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/limited.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/unlimited.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/unlimited.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ScannerGUI/Scanner/Scanner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ScannerGUI/Scanner/Scanner.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,56 +35,57 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="fxml" value="1198" />
-          <entry key="java" value="259" />
+          <entry key="fxml" value="1200" />
+          <entry key="java" value="2464" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="259" />
-          <entry key="XML" value="1198" />
+          <entry key="JAVA" value="2464" />
+          <entry key="XML" value="1200" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="204" column="44" selection-start-line="204" selection-start-column="44" selection-end-line="204" selection-end-column="44" />
+            <state relative-caret-position="331">
+              <caret line="353" column="63" selection-start-line="353" selection-start-column="63" selection-end-line="354" selection-end-column="17" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#3012#3152#0" />
                 <element signature="e#3158#4426#0" />
                 <element signature="e#4432#4527#0" />
-                <element signature="e#4533#7776#0" />
-                <element signature="class#6448:7472" />
-                <element signature="e#7782#14087#0" />
+                <element signature="e#3924#6142#0" />
+                <element signature="e#8338#8346#0" expanded="true" />
+                <element signature="e#8406#8414#0" expanded="true" />
                 <element signature="e#14093#15256#0" />
                 <element signature="e#15262#16440#0" />
                 <element signature="e#16446#17665#0" />
                 <element signature="e#17671#18902#0" />
                 <element signature="e#18908#20927#0" />
                 <element signature="e#20933#24131#0" />
-                <element signature="e#21967#21968#0" expanded="true" />
-                <element signature="e#22039#22040#0" expanded="true" />
-                <element signature="e#22196#22197#0" expanded="true" />
-                <element signature="e#22274#22275#0" expanded="true" />
-                <element signature="e#24137#26885#0" />
+                <element signature="e#26146#26147#0" expanded="true" />
+                <element signature="e#26218#26219#0" expanded="true" />
+                <element signature="e#26375#26376#0" expanded="true" />
+                <element signature="e#26453#26454#0" expanded="true" />
+                <element signature="e#27769#30738#0" />
                 <element signature="e#26891#27141#0" />
                 <element signature="e#27147#29757#0" />
                 <element signature="e#29763#36351#0" />
-                <element signature="e#34632#34633#0" expanded="true" />
-                <element signature="e#34700#34701#0" expanded="true" />
-                <element signature="e#34855#34856#0" expanded="true" />
-                <element signature="e#34929#34930#0" expanded="true" />
+                <element signature="e#39076#39077#0" expanded="true" />
+                <element signature="e#39144#39145#0" expanded="true" />
+                <element signature="e#39299#39300#0" expanded="true" />
+                <element signature="e#39373#39374#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -108,12 +98,11 @@
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="657">
+              <caret line="159" column="36" selection-start-line="159" selection-start-column="36" selection-end-line="159" selection-end-column="36" />
               <folding>
                 <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#!!top" />
                 <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#!!top" />
-                <element signature="n#Tab#2;n#tabs#0;n#TabPane#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -121,21 +110,26 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ls</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java" />
         <option value="$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml" />
         <option value="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" />
-        <option value="$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1012" />
-    <option name="width" value="915" />
+    <option name="x" value="690" />
+    <option name="width" value="1237" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -171,7 +165,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545169926198" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545197832839" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -208,7 +202,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1012" y="0" width="915" height="1047" extended-state="0" />
+    <frame x="690" y="0" width="1237" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
@@ -216,7 +210,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25730994" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13678844" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" />
@@ -224,7 +218,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.32968238" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32968238" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31325302" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39978093" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -245,92 +239,80 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java</url>
-          <line>395</line>
-          <properties class="Scanner.Controller" method="imageMagick">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="1" />
+          <line>160</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java</url>
+          <line>475</line>
+          <properties />
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java</url>
-          <line>113</line>
-          <properties class="Scanner.Controller" method="initialize">
+          <line>230</line>
+          <properties class="Scanner.Controller" method="easyTab">
             <option name="EMULATED" value="true" />
           </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java</url>
-          <line>457</line>
-          <properties class="Scanner.Controller" method="convertTXT">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java</url>
-          <line>723</line>
-          <properties class="Scanner.Controller" method="deleteFromCameras">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="657">
+          <caret line="159" column="36" selection-start-line="159" selection-start-column="36" selection-end-line="159" selection-end-column="36" />
           <folding>
             <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#!!top" />
             <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#!!top" />
-            <element signature="n#Tab#2;n#tabs#0;n#TabPane#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="204" column="44" selection-start-line="204" selection-start-column="44" selection-end-line="204" selection-end-column="44" />
+        <state relative-caret-position="331">
+          <caret line="353" column="63" selection-start-line="353" selection-start-column="63" selection-end-line="354" selection-end-column="17" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#3012#3152#0" />
             <element signature="e#3158#4426#0" />
             <element signature="e#4432#4527#0" />
-            <element signature="e#4533#7776#0" />
-            <element signature="class#6448:7472" />
-            <element signature="e#7782#14087#0" />
+            <element signature="e#3924#6142#0" />
+            <element signature="e#8338#8346#0" expanded="true" />
+            <element signature="e#8406#8414#0" expanded="true" />
             <element signature="e#14093#15256#0" />
             <element signature="e#15262#16440#0" />
             <element signature="e#16446#17665#0" />
             <element signature="e#17671#18902#0" />
             <element signature="e#18908#20927#0" />
             <element signature="e#20933#24131#0" />
-            <element signature="e#21967#21968#0" expanded="true" />
-            <element signature="e#22039#22040#0" expanded="true" />
-            <element signature="e#22196#22197#0" expanded="true" />
-            <element signature="e#22274#22275#0" expanded="true" />
-            <element signature="e#24137#26885#0" />
+            <element signature="e#26146#26147#0" expanded="true" />
+            <element signature="e#26218#26219#0" expanded="true" />
+            <element signature="e#26375#26376#0" expanded="true" />
+            <element signature="e#26453#26454#0" expanded="true" />
+            <element signature="e#27769#30738#0" />
             <element signature="e#26891#27141#0" />
             <element signature="e#27147#29757#0" />
             <element signature="e#29763#36351#0" />
-            <element signature="e#34632#34633#0" expanded="true" />
-            <element signature="e#34700#34701#0" expanded="true" />
-            <element signature="e#34855#34856#0" expanded="true" />
-            <element signature="e#34929#34930#0" expanded="true" />
+            <element signature="e#39076#39077#0" expanded="true" />
+            <element signature="e#39144#39145#0" expanded="true" />
+            <element signature="e#39299#39300#0" expanded="true" />
+            <element signature="e#39373#39374#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
         </state>
       </provider>
     </entry>

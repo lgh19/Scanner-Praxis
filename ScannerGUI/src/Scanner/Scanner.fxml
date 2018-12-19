@@ -40,14 +40,14 @@
                           <!-- Label for the pathways label "File Path:" -->
                           <Label layoutX="180.0" layoutY="125.0" text="File Path:" />
                           <!-- Pathway label -->
-                          <Label fx:id="leftCamFilePath" layoutX="255.0" layoutY="120.0" />
+                          <Label fx:id="leftCamFilePath" layoutX="255.0" layoutY="125.0" />
 
                           <!-- Right camera button -->
                           <Button fx:id="easySetRightCamera" layoutX="34.0" layoutY="160.0" mnemonicParsing="false" text="Set Right Camera" prefWidth="120.0"/>
                           <!-- Label for the pathways label "File Path:" -->
                           <Label layoutX="180.0" layoutY="165.0" text="File Path:" />
                           <!-- Pathway label -->
-                          <Label fx:id="rightCamFilePath" layoutX="255.0" layoutY="160.0" />
+                          <Label fx:id="rightCamFilePath" layoutX="255.0" layoutY="165.0" />
 
                           <!-- Line splitting third and fourth -->
                           <Line endX="600.0" layoutX="90.0" layoutY="200.0" startX="-100.0" />

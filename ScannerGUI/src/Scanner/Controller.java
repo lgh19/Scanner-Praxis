@@ -12,9 +12,16 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.io.*;
+import java.util.*;
 
-public class
-Controller {
+import java.awt.Graphics2D;
+import java.awt.image.*;
+
+//import javax.imageio.ImageIO;
+import javax.imageio.*;
+import javax.imageio.stream.ImageOutputStream;
+
+public class Controller {
     File currentDirectory = null;
     File leftCamDirectory = null;
     File rightCamDirectory = null;
@@ -144,6 +151,7 @@ Controller {
     }
 
     void appendLog(String s){
+        s = s.trim() + "\n";
         easyLog.appendText(s);
         normalLog.appendText(s);
         expertLog.appendText(s);
@@ -229,6 +237,7 @@ Controller {
                 if(!(currentDirectory == null)){
                     easyCreate.setText("Processing...");
                     appendLog("Processing...\n");
+                    stitch();
                     if(camerasConnected){
                         importFromCameras();
                     }
@@ -237,8 +246,9 @@ Controller {
                     tesseract();
                     cleanDirectory();
                     if(camerasConnected){
-                        deleteFromCameras();
+                        //deleteFromCameras();
                     }
+                    appendLog("Done\n");
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please chose a place to scan to.", ButtonType.OK);
@@ -249,15 +259,129 @@ Controller {
         });
     }
 
+    void stitch(){
+        try {
+            ArrayList<String> leftNames = new ArrayList<String>();
+            ArrayList<String> rightNames = new ArrayList<String>();
+            //Sets file string to current directory
+            String fileOfDirectory = currentDirectory.toString();
+            String os = System.getProperty("os.name").toLowerCase();
+
+            if(os.contains("win")){
+                fileOfDirectory = fileOfDirectory + "\\";
+            }else{
+                fileOfDirectory = fileOfDirectory + "/";
+            }
+
+            File leftFolder = new File(fileOfDirectory + "left");
+            File rightFolder = new File(fileOfDirectory + "right");
+
+            File[] leftFiles = leftFolder.listFiles();
+            File[] rightFiles = rightFolder.listFiles();
+
+            for(int j = 0; j < leftFiles.length; j++){
+                if(leftFiles[j].isFile()){
+                    leftNames.add(leftFiles[j].getName());
+                }
+            }
+
+            for(int j = 0; j < rightFiles.length; j++){
+                if(rightFiles[j].isFile()){
+                    rightNames.add(rightFiles[j].getName());
+                }
+            }
+
+            BufferedImage[] outImages = new BufferedImage[Math.min(leftNames.size(), rightNames.size())];
+            int imCount = 0;
+
+            for(int i = 0; i < Math.min(leftNames.size(), rightNames.size()); i++){
+                System.out.println(leftNames.get(i) + " + " + rightNames.get(i));
+
+                String leftPath = fileOfDirectory + "left";
+                String rightPath = fileOfDirectory + "right";
+                String outFile = fileOfDirectory + "pageBlock" + i + ".jpg";
+
+                if(os.contains("win")){
+                    leftPath = leftPath + "\\";
+                    rightPath = rightPath + "\\";
+                }else{
+                    leftPath = leftPath + "/";
+                    rightPath = rightPath + "/";
+                }
+
+                leftPath += leftNames.get(i);
+                rightPath += rightNames.get(i);
+
+                int imagesCount = 4;
+                BufferedImage images[] = new BufferedImage[2];
+                images[0] = ImageIO.read(new File(leftPath));
+                images[1] = ImageIO.read(new File(rightPath));
+
+                int widthTotal = 0;
+                for(int j = 0; j < images.length; j++) {
+                    widthTotal += images[j].getWidth();
+                }
+
+                int widthCurr = 0;
+                BufferedImage concatImage = new BufferedImage(widthTotal, Math.max(images[0].getHeight(),images[1].getHeight()), BufferedImage.TYPE_INT_RGB);
+                Graphics2D g2d = concatImage.createGraphics();
+                for(int j = 0; j < images.length; j++) {
+                    g2d.drawImage(images[j], widthCurr, 0, null);
+                    widthCurr += images[j].getWidth();
+                }
+                g2d.dispose();
+
+                //ImageIO.write(concatImage, "jpg", new File(outFile)); // export concat image
+                outImages[imCount++] = concatImage;
+            }
+
+            ImageWriter writer = ImageIO.getImageWritersByFormatName("TIFF").next();
+            File stream = new File(fileOfDirectory + "raw_pages.tiff");
+
+            try (ImageOutputStream output = ImageIO.createImageOutputStream(stream)) {
+                writer.setOutput(output);
+
+                ImageWriteParam params = writer.getDefaultWriteParam();
+                params.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+
+                // Compression: None, PackBits, ZLib, Deflate, LZW, JPEG and CCITT variants allowed
+                // (different plugins may use a different set of compression type names)
+                params.setCompressionType("LZW");
+
+                writer.prepareWriteSequence(null);
+
+                for (BufferedImage image : outImages) {
+                    writer.writeToSequence(new IIOImage(image, null, null), params);
+                }
+
+                // We're done
+                writer.endWriteSequence();
+            }
+
+            writer.dispose();
+        }
+        catch (Exception e){
+            appendLog("Failed stitching photos with Imagemagick\n");
+            appendLog("" + e.getMessage());
+            e.printStackTrace();
+            System.out.println("Failed Imagemagick");
+        }
+    }
+
     // Does the scanner, using the auto scan script
     void scanTail(){
         try{
             if(easyProjectName.getCharacters().toString().length() > 0)
                 projectName = easyProjectName.getCharacters().toString();
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString() + "/";
-            //System.out.println(fileOfDirectory);
-            //System.out.println(System.getProperty("user.dir") + "/auto_scan.sh");
+            String fileOfDirectory = currentDirectory.toString();
+            String os = System.getProperty("os.name").toLowerCase();
+            if(os.contains("win")){
+                fileOfDirectory = fileOfDirectory + "\\";
+            }else{
+                fileOfDirectory = fileOfDirectory + "/";
+            }
+
             System.out.println("Starting ScanTailor...");
             appendLog("Starting ScanTailor...");
             String[] command = {"scantailor-cli",
@@ -280,17 +404,42 @@ Controller {
                 "--start-filter=" + startFilter,
                 "--end-filter=" + endFilter,
                 "--output-project=" + fileOfDirectory + projectName + ".ScanTailor",
-                fileOfDirectory + "*.jpg",
+                fileOfDirectory + "raw_pages.tiff",
                 fileOfDirectory
             };
 
-            String os = System.getProperty("os.name").toLowerCase();
             if(!(os.contains("win") || os.contains("osx"))){
                 String[] newCommand = {"/bin/bash", "-c", ""};
                 for(String a: command){
                     newCommand[2] += a + " ";
                 }
                 command = newCommand;
+            }
+
+            if(os.contains("win")){
+                command = new String[]{"C:\\Program Files\\Scan Tailor\\scantailor-cli.exe",
+                        "--layout=" + layout,
+                        "--layout-direction=" + layoutDirection,
+                        "--orientation=" + orientation,
+                        "--rotate=" + rotate,
+                        "--deskew=" + deskew,
+                        "--content-direction=" + contentDirection,
+                        "--margins=" + margins,
+                        "--alignment=" + alignment,
+                        "--dpi=" + dpi,
+                        "--output-dpi=" + outputDpi,
+                        "--color-mode=" + colorMode,
+                        "--white-margins=" + whiteMargins,
+                        "--threshold=" + threshold,
+                        "--despeckle=" + despeckle,
+                        "--dewarping=" + dewarping,
+                        "--depth-perception=" + depthPerception,
+                        "--start-filter=" + startFilter,
+                        "--end-filter=" + endFilter,
+                        "--output-project=" + fileOfDirectory + projectName + ".ScanTailor",
+                        fileOfDirectory + "raw_pages.tiff",
+                        fileOfDirectory
+                };
             }
 
             ProcessBuilder pb = new ProcessBuilder(command);
@@ -305,82 +454,12 @@ Controller {
                 System.out.println(line);
                 appendLog(line + "\n");
             }
-            if(camerasConnected) {
-                command = new String[]{"scantailor-cli",
-                        "--layout=" + layout,
-                        "--layout-direction=" + layoutDirection,
-                        "--orientation=" + orientation,
-                        "--rotate=" + rotate,
-                        "--deskew=" + deskew,
-                        "--content-direction=" + contentDirection,
-                        "--margins=" + margins,
-                        "--alignment=" + alignment,
-                        "--dpi=" + dpi,
-                        "--output-dpi=" + outputDpi,
-                        "--color-mode=" + colorMode,
-                        "--white-margins=" + whiteMargins,
-                        "--threshold=" + threshold,
-                        "--despeckle=" + despeckle,
-                        "--dewarping=" + dewarping,
-                        "--depth-perception=" + depthPerception,
-                        "--start-filter=" + startFilter,
-                        "--end-filter=" + endFilter,
-                        "--output-project=" + fileOfDirectory + projectName + ".ScanTailor",
-                        fileOfDirectory + "/left/*.jpg",
-                        fileOfDirectory
-                };
 
-                os = System.getProperty("os.name").toLowerCase();
-                if (!(os.contains("win") || os.contains("osx"))) {
-                    String[] newCommand = {"/bin/bash", "-c", ""};
-                    for (String a : command) {
-                        newCommand[2] += a + " ";
-                    }
-                    command = newCommand;
-                }
-
-                pb = new ProcessBuilder(command);
-                process = pb.start();
-
-                outCode = process.waitFor();
-
-                command = new String[]{"scantailor-cli",
-                        "--layout=" + layout,
-                        "--layout-direction=" + layoutDirection,
-                        "--orientation=" + orientation,
-                        "--rotate=" + rotate,
-                        "--deskew=" + deskew,
-                        "--content-direction=" + contentDirection,
-                        "--margins=" + margins,
-                        "--alignment=" + alignment,
-                        "--dpi=" + dpi,
-                        "--output-dpi=" + outputDpi,
-                        "--color-mode=" + colorMode,
-                        "--white-margins=" + whiteMargins,
-                        "--threshold=" + threshold,
-                        "--despeckle=" + despeckle,
-                        "--dewarping=" + dewarping,
-                        "--depth-perception=" + depthPerception,
-                        "--start-filter=" + startFilter,
-                        "--end-filter=" + endFilter,
-                        "--output-project=" + fileOfDirectory + projectName + ".ScanTailor",
-                        fileOfDirectory + "/right/*.jpg",
-                        fileOfDirectory
-                };
-
-                os = System.getProperty("os.name").toLowerCase();
-                if (!(os.contains("win") || os.contains("osx"))) {
-                    String[] newCommand = {"/bin/bash", "-c", ""};
-                    for (String a : command) {
-                        newCommand[2] += a + " ";
-                    }
-                    command = newCommand;
-                }
-
-                pb = new ProcessBuilder(command);
-                process = pb.start();
-
-                outCode = process.waitFor();
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
             }
 
             System.out.println("Finished ScanTailor: " + outCode);
@@ -396,12 +475,28 @@ Controller {
     void imageMagick(){
         try {
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString() + "/";
+            String fileOfDirectory = currentDirectory.toString();
+            String os = System.getProperty("os.name").toLowerCase();
+            if(os.contains("win")){
+                fileOfDirectory = fileOfDirectory + "\\";
+            }else{
+                fileOfDirectory = fileOfDirectory + "/";
+            }
 
             System.out.println("Starting Imagemagick...");
             appendLog("Starting Imagemagick...");
 
             String[] command = new String[]{"convert", fileOfDirectory + "*.tif", fileOfDirectory + "output.tiff"};
+
+            if(os.contains("win")){
+                command = new String[]{"magick", "convert", fileOfDirectory + "*.tif", fileOfDirectory + "output.tiff"};
+                String[] newCommand = {"cmd.exe", "/c", ""};
+                for(String a: command){
+                    newCommand[2] += a + " ";
+                }
+                command = newCommand;
+            }
+
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
@@ -411,6 +506,13 @@ Controller {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 appendLog(line + "\n");
+            }
+
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
             }
 
             process.waitFor();
@@ -427,7 +529,13 @@ Controller {
     void convertPDF(){
         try{
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString() + "/";
+            String fileOfDirectory = currentDirectory.toString();
+            String os = System.getProperty("os.name").toLowerCase();
+            if(os.contains("win")){
+                fileOfDirectory = fileOfDirectory + "\\";
+            }else{
+                fileOfDirectory = fileOfDirectory + "/";
+            }
 
             System.out.println("Starting Imagemagick...");
             appendLog("Starting Imagemagick...");
@@ -444,6 +552,13 @@ Controller {
                 appendLog(line + "\n");
             }
 
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
+            }
+
             process.waitFor();
             System.out.println("Finished Imagemagick");
             appendLog("Finished Imagemagick\n");
@@ -458,7 +573,14 @@ Controller {
     void convertTXT(){
         try {
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString() + "/";
+            String fileOfDirectory = currentDirectory.toString();
+            String os = System.getProperty("os.name").toLowerCase();
+            if(os.contains("win")){
+                fileOfDirectory = fileOfDirectory + "\\";
+            }else{
+                fileOfDirectory = fileOfDirectory + "/";
+            }
+
             //tesseract output.tiff outputOCR -l eng pdf
             System.out.println("Starting Tesseract...");
             appendLog("Starting Tesseract...");
@@ -475,6 +597,13 @@ Controller {
                 appendLog(line + "\n");
             }
 
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
+            }
+
             process.waitFor();
             System.out.println("Finished Tesseract");
             appendLog("Finished Tesseract\n");
@@ -489,7 +618,14 @@ Controller {
     void tesseract(){
         try {
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString() + "/";
+            String fileOfDirectory = currentDirectory.toString();
+            String os = System.getProperty("os.name").toLowerCase();
+            if(os.contains("win")){
+                fileOfDirectory = fileOfDirectory + "\\";
+            }else{
+                fileOfDirectory = fileOfDirectory + "/";
+            }
+
             //tesseract output.tiff outputOCR -l eng pdf
             System.out.println("Starting Tesseract...");
             appendLog("Starting Tesseract...");
@@ -504,6 +640,13 @@ Controller {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 appendLog(line + "\n");
+            }
+
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
             }
 
             process.waitFor();
@@ -655,12 +798,6 @@ Controller {
                 command = newCommand;
             }
 
-            if(os.contains("win") ){
-                System.out.println("Scanner download operation not supported on windows");
-                appendLog("Scanner download operation not supported on windows" + "\n");
-                return;
-            }
-
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
@@ -670,6 +807,14 @@ Controller {
                 System.out.println(line);
                 appendLog(line + "\n");
             }
+
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
+            }
+
         }
         catch(Exception e){
             System.out.println("Created dir");
@@ -691,9 +836,7 @@ Controller {
             }
 
             if(os.contains("win") ){
-                System.out.println("Scanner download operation not supported on windows");
-                appendLog("Scanner download operation not supported on windows" + "\n");
-                return;
+                command = new String[]{"xcopy", "/f", usbAddress + "/*", "" + currentDirectory + subDir};
             }
 
             ProcessBuilder pb = new ProcessBuilder(command);
@@ -704,6 +847,13 @@ Controller {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 appendLog(line + "\n");
+            }
+
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
             }
         }
         catch (Exception e) {
@@ -735,9 +885,7 @@ Controller {
             }
 
             if(os.contains("win") ){
-                System.out.println("Scanner delete operation not supported on windows");
-                appendLog("Scanner delete operation not supported on windows" + "\n");
-                return;
+                command = new String[]{"del", "" + leftCamDirectory + "\\*"};
             }
 
             ProcessBuilder pb = new ProcessBuilder(command);
@@ -749,6 +897,13 @@ Controller {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 appendLog(line + "\n");
+            }
+
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
             }
 
             process.waitFor();
@@ -765,9 +920,7 @@ Controller {
             }
 
             if(os.contains("win") ){
-                System.out.println("Scanner delete operation not supported on windows");
-                appendLog("Scanner delete operation not supported on windows" + "\n");
-                return;
+                command = new String[]{"del", "" + rightCamDirectory + "\\*"};
             }
 
             pb = new ProcessBuilder(command);
