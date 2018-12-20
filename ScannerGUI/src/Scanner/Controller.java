@@ -238,10 +238,11 @@ public class Controller {
                 if(!(currentDirectory == null)){
                     easyCreate.setText("Processing...");
                     appendLog("Processing...\n");
-                    sideStitch();
+                    makeDirectories();
                     if(camerasConnected){
                         importFromCameras();
                     }
+                    sideStitch();
                     scanTail();
                     tailorStitch();
                     tesseract();
@@ -585,22 +586,31 @@ public class Controller {
     }
 
     void convertPDF(){
-        try{
+        return;
+        /*try{
             //Sets file string to current directory
             String fileOfDirectory = currentDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
+            String inputImages = fileOfDirectory;
+
             if(os.contains("win")){
                 fileOfDirectory = fileOfDirectory + "\\";
+                inputImages += "\\tailored\\combined_pages.tiff";
             }else{
                 fileOfDirectory = fileOfDirectory + "/";
+                inputImages += "/tailored/combined_pages.tiff";
             }
 
             System.out.println("Starting Imagemagick...");
             appendLog("Starting Imagemagick...");
 
-            String[] command = new String[]{"convert", fileOfDirectory + "output.tiff", fileOfDirectory + projectName + ".pdf"};
+            String[] command = new String[]{"convert", inputImages, fileOfDirectory + projectName + ".pdf"};
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
+
+            if(os.contains("win")){
+                command = new String[]{"C:\\Program Files\\ImageMagick-7.0.8-Q16\\magick.exe", "convert", inputImages, fileOfDirectory + projectName + ".pdf"};
+            }
 
             //Re-direct output of process to console
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -625,7 +635,7 @@ public class Controller {
             appendLog("Failed Imagemagick\n");
             appendLog(e.getMessage());
             System.out.println("Failed Imagemagick");
-        }
+        }*/
     }
 
     void convertTXT(){
@@ -633,17 +643,27 @@ public class Controller {
             //Sets file string to current directory
             String fileOfDirectory = currentDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
+
+            String inputImages = fileOfDirectory;
+
             if(os.contains("win")){
                 fileOfDirectory = fileOfDirectory + "\\";
+                inputImages += "\\tailored\\combined_pages.tiff";
             }else{
                 fileOfDirectory = fileOfDirectory + "/";
+                inputImages += "/tailored/combined_pages.tiff";
             }
 
             //tesseract output.tiff outputOCR -l eng pdf
             System.out.println("Starting Tesseract...");
             appendLog("Starting Tesseract...");
 
-            String[] command = new String[]{"tesseract", fileOfDirectory + "output.tiff", fileOfDirectory + projectName, "txt"};
+            String[] command = new String[]{"tesseract", inputImages, fileOfDirectory + projectName, "txt"};
+
+            if(os.contains("win")){
+                command[0] = "C:\\Program Files (x86)\\Tesseract-OCR\\tesseract";
+            }
+
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
@@ -771,12 +791,12 @@ public class Controller {
                 mediumCreatePDF.setDisable(true);
                 mediumCreatePDF.setText("Processing!");
                 appendLog("Processing...\n");
-
+                makeDirectories();
                 if(camerasConnected){
                     importFromCameras();
-                    deleteFromCameras();
+                    //deleteFromCameras();
                 }
-
+                sideStitch();
                 scanTail();
                 tailorStitch();
                 if(useOCRMedium){
@@ -797,11 +817,17 @@ public class Controller {
 
     void downloadFromCamera(String usbAddress, String subDir){
         try {
+            String os = System.getProperty("os.name").toLowerCase();
+            if(os.contains("win") ){
+                subDir = "\\" + subDir;
+            }else{
+                subDir = "/" + subDir;
+            }
+
             System.out.println("" + usbAddress);
             System.out.println("" + currentDirectory + subDir);
             String[] command = new String[]{"cp", usbAddress + "/*", "" + currentDirectory + subDir};
 
-            String os = System.getProperty("os.name").toLowerCase();
             if(!(os.contains("win") || os.contains("osx"))){
                 String[] newCommand = {"/bin/bash", "-c", ""};
                 for(String a: command){
@@ -811,7 +837,7 @@ public class Controller {
             }
 
             if(os.contains("win") ){
-                command = new String[]{"xcopy", "/f", usbAddress + "/*", "" + currentDirectory + subDir};
+                command = new String[]{"xcopy", "/f", usbAddress + "\\*", "" + currentDirectory + subDir};
             }
 
             ProcessBuilder pb = new ProcessBuilder(command);
@@ -842,8 +868,8 @@ public class Controller {
         if(leftCamDirectory == null || rightCamDirectory == null){
             return;
         }
-        downloadFromCamera("" + leftCamDirectory, "/left");
-        downloadFromCamera("" + rightCamDirectory, "/right");
+        downloadFromCamera("" + leftCamDirectory, "left");
+        downloadFromCamera("" + rightCamDirectory, "right");
     }
 
     void deleteFromCameras(){
@@ -926,6 +952,7 @@ public class Controller {
             public void handle(ActionEvent event) {
                 hardImport.setText("Importing!");
                 hardDelete.setDisable(true);
+                makeDirectories();
                 importFromCameras();
                 hardDelete.setDisable(false);
                 hardImport.setText("Download Images from Cameras");
@@ -950,6 +977,8 @@ public class Controller {
             public void handle(ActionEvent event) {
                 hardScan.setText("Processing!");
                 margins = "" + hardMargins.getValue();
+                makeDirectories();
+                sideStitch();
                 scanTail();
                 hardRunScanTailor.setDisable(false);
                 hardCreatePDF.setDisable(false);
