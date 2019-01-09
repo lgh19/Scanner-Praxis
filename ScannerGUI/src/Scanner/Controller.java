@@ -16,10 +16,13 @@ import java.util.*;
 
 import java.awt.Graphics2D;
 import java.awt.image.*;
+import java.awt.geom.AffineTransform;
 
 //import javax.imageio.ImageIO;
 import javax.imageio.*;
 import javax.imageio.stream.ImageOutputStream;
+
+
 
 public class Controller {
     File currentDirectory = null;
@@ -150,6 +153,30 @@ public class Controller {
         hardColorMode.setValue("Text and Line Drawings Only");
     }
 
+    private void runOperation(String op) {
+        if (op.equals("easy")) {
+            Task<Void> task = new Task<Void>() {
+                @Override
+                public Void call() throws Exception {
+                    if(camerasConnected){
+                        importFromCameras();
+                    }
+                    sideStitch();
+                    scanTail();
+                    tailorStitch();
+                    tesseract();
+                    if(camerasConnected){
+                        //deleteFromCameras();
+                    }
+                    appendLog("Done\n");
+                    return null;
+                }
+            };
+            //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
+            new Thread(task).start();
+        }
+    }
+
     void appendLog(String s){
         s = s.trim() + "\n";
         easyLog.appendText(s);
@@ -239,7 +266,9 @@ public class Controller {
                     easyCreate.setText("Processing...");
                     appendLog("Processing...\n");
                     makeDirectories();
-                    if(camerasConnected){
+                    runOperation("easy");
+
+                    /*if(camerasConnected){
                         importFromCameras();
                     }
                     sideStitch();
@@ -249,7 +278,7 @@ public class Controller {
                     if(camerasConnected){
                         //deleteFromCameras();
                     }
-                    appendLog("Done\n");
+                    appendLog("Done\n");*/
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please chose a place to scan to.", ButtonType.OK);
@@ -320,8 +349,78 @@ public class Controller {
         }
     }
 
+    void rotateImages(){
+        try{
+            //Sets file string to current directory
+            String fileOfDirectory = currentDirectory.toString();
+            String os = System.getProperty("os.name").toLowerCase();
+            String leftPath = fileOfDirectory;
+            String rightPath = fileOfDirectory;
+
+            if(os.contains("win")){
+                return;
+            }else{
+                fileOfDirectory = fileOfDirectory + "/";
+                leftPath += "/left/*";
+                rightPath += "/right/*";
+            }
+
+            System.out.println("Starting Imagemagick rotations...");
+            appendLog("Rotating images...");
+
+            String[] command = new String[]{"mogrify", "-rotate", "-90", leftPath};
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+
+            //Re-direct output of process to console
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
+            }
+
+            process.waitFor();
+
+            command = new String[]{"mogrify", "-rotate", "90", rightPath};
+            pb = new ProcessBuilder(command);
+            process = pb.start();
+
+            //Re-direct output of process to console
+            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
+            }
+
+            System.out.println("Finished Imagemagick");
+            appendLog("Finished rotations\n");
+        }
+        catch (Exception e){
+            appendLog("Failed Imagemagick rotation\n");
+            appendLog(e.getMessage());
+            System.out.println("Failed Imagemagick");
+        }
+    }
+
     void sideStitch(){
         try {
+            appendLog("Stitching paired images together...\n");
             ArrayList<BufferedImage> leftImages = new ArrayList<BufferedImage>();
             ArrayList<BufferedImage> rightImages = new ArrayList<BufferedImage>();
             //Sets file string to current directory
@@ -339,6 +438,26 @@ public class Controller {
 
             File[] leftFiles = leftFolder.listFiles();
             File[] rightFiles = rightFolder.listFiles();
+
+            TreeMap<String,File> leftMap = new TreeMap<String,File>();
+            TreeMap<String,File> rightMap = new TreeMap<String,File>();
+
+            for(int j = 0; j < leftFiles.length; j++){
+                if(leftFiles[j].isFile()){
+                    //leftImages.add(ImageIO.read(leftFiles[j]));
+                    leftMap.put(leftFiles[j].getName(), leftFiles[j]);
+                }
+            }
+
+            for(int j = 0; j < rightFiles.length; j++){
+                if(rightFiles[j].isFile()){
+                    //rightImages.add(ImageIO.read(rightFiles[j]));
+                    rightMap.put(rightFiles[j].getName(), rightFiles[j]);
+                }
+            }
+
+            leftFiles = Arrays.copyOf(leftMap.values().toArray(), leftMap.values().toArray().length, File[].class);
+            rightFiles = Arrays.copyOf(rightMap.values().toArray(), rightMap.values().toArray().length, File[].class);
 
             for(int j = 0; j < leftFiles.length; j++){
                 if(leftFiles[j].isFile()){
@@ -388,7 +507,7 @@ public class Controller {
                 ImageIO.write(concatImage, "jpg", new File(outFile)); // export concat image
                 //outImages[imCount++] = concatImage;
             }
-
+            appendLog("Finished stitching paired images.\n");
             /**/
         }
         catch (Exception e){
@@ -400,7 +519,55 @@ public class Controller {
     }
 
     void tailorStitch(){
+        try{
+            //Sets file string to current directory
+            String fileOfDirectory = currentDirectory.toString();
+            String os = System.getProperty("os.name").toLowerCase();
+            String dest = fileOfDirectory;
+
+            if(os.contains("win")){
+                return;
+            }else{
+                fileOfDirectory += "/tailored/*.tif";
+                dest += "/tailored/combined_pages.tiff";
+            }
+
+            System.out.println("Starting Imagemagick conversions...");
+            appendLog("Converting .tifs to single .tiff...");
+
+            String[] command = new String[]{"convert", "-limit", "memory", "32MiB", "-limit", "map", "64MiB", fileOfDirectory, dest};
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+
+            //Re-direct output of process to console
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
+            }
+
+            process.waitFor();
+            System.out.println("Finished Imagemagick");
+            appendLog("Finished conversion\n");
+        }
+        catch (Exception e){
+            appendLog("Failed Imagemagick conversion\n");
+            appendLog(e.getMessage());
+            System.out.println("Failed Imagemagick");
+        }
+    }
+
+    /*void tailorStitch(){
         try {
+            appendLog("Combining .tifs into a single .tiff...\n");
             String fileOfDirectory = currentDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
             String combinePath = fileOfDirectory;
@@ -447,11 +614,12 @@ public class Controller {
             }
 
             writer.dispose();
+            appendLog("Finished combination.\n");
         }catch(Exception e){
             appendLog("Error combining tailored images");
             e.printStackTrace();
         }
-    }
+    }*/
 
     // Does the scanner, using the auto scan script
     void scanTail(){
@@ -501,13 +669,16 @@ public class Controller {
                 "--output-project=" + fileOfDirectory + projectName + ".ScanTailor"
             };
 
-            if(!(os.contains("win") || os.contains("osx"))){
+            /*if(!(os.contains("win") || os.contains("osx"))){
                 String[] newCommand = {"/bin/bash", "-c", ""};
                 for(String a: command){
                     newCommand[2] += a + " ";
                 }
+
+                newCommand[2] = newCommand[2].substring(0, newCommand[2].length()-1);
+
                 command = newCommand;
-            }
+            }*/
 
             if(os.contains("win")){
                 command = new String[]{"C:\\Program Files\\Scan Tailor\\scantailor-cli.exe",
@@ -553,7 +724,10 @@ public class Controller {
 
             for(int j = 0; j < commands.size(); j++){
                 command[j] = "" + commands.get(j);
+                System.out.print(commands.get(j) + " ");
             }
+
+            System.out.println();
 
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
@@ -586,8 +760,7 @@ public class Controller {
     }
 
     void convertPDF(){
-        return;
-        /*try{
+        try{
             //Sets file string to current directory
             String fileOfDirectory = currentDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
@@ -602,7 +775,7 @@ public class Controller {
             }
 
             System.out.println("Starting Imagemagick...");
-            appendLog("Starting Imagemagick...");
+            appendLog("Converting to PDF...");
 
             String[] command = new String[]{"convert", inputImages, fileOfDirectory + projectName + ".pdf"};
             ProcessBuilder pb = new ProcessBuilder(command);
@@ -629,13 +802,13 @@ public class Controller {
 
             process.waitFor();
             System.out.println("Finished Imagemagick");
-            appendLog("Finished Imagemagick\n");
+            appendLog("Finished convert to PDF\n");
         }
             catch (Exception e){
             appendLog("Failed Imagemagick\n");
             appendLog(e.getMessage());
             System.out.println("Failed Imagemagick");
-        }*/
+        }
     }
 
     void convertTXT(){
@@ -656,7 +829,7 @@ public class Controller {
 
             //tesseract output.tiff outputOCR -l eng pdf
             System.out.println("Starting Tesseract...");
-            appendLog("Starting Tesseract...");
+            appendLog("Starting txt generation with Tesseract...");
 
             String[] command = new String[]{"tesseract", inputImages, fileOfDirectory + projectName, "txt"};
 
@@ -684,7 +857,7 @@ public class Controller {
 
             process.waitFor();
             System.out.println("Finished Tesseract");
-            appendLog("Finished Tesseract\n");
+            appendLog("Finished txt\n");
         }
         catch (Exception e){
             appendLog("Failed tesseract\n");
@@ -710,7 +883,7 @@ public class Controller {
 
             //tesseract output.tiff outputOCR -l eng pdf
             System.out.println("Starting Tesseract...");
-            appendLog("Starting Tesseract...");
+            appendLog("Starting OCR to create PDF with Tesseract...");
 
             String[] command = new String[]{"tesseract", inputImages, fileOfDirectory + projectName, "-l", "eng", "pdf"};
 
@@ -870,6 +1043,7 @@ public class Controller {
         }
         downloadFromCamera("" + leftCamDirectory, "left");
         downloadFromCamera("" + rightCamDirectory, "right");
+        rotateImages();
     }
 
     void deleteFromCameras(){

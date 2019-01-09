@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="ScannerGUI2">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/ScannerGUI.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

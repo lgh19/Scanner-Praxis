@@ -1,8 +1,10 @@
 # Scanner-Praxis
 
-A GUI used to import pictures, process them, and output in an OCR PDF. 
+An application used to import images from a camera, process them, and output in an OCR PDF. 
 
-The GUI is all in java and javafx. IntelliJ is the IDE used. 
+Due to a series of poor choices, the application is in java and the GUI is in javafx. 
+
+Note: Many of the operations require JDK-9 and above.
 
 Pre-Requirements:
 
