@@ -27,7 +27,7 @@
                           <Label layoutX="14.0" layoutY="14.0" text="Project Name:" />
                           <!-- Text input of the project name -->
                           <TextField fx:id="easyProjectName" layoutX="108.0" layoutY="9.0" />
-                          <CheckBox fx:id="usingCameras" layoutX="14.0" layoutY="85.0" mnemonicParsing="false" text="Are you connected to a Scanner?" />
+                          <CheckBox fx:id="usingCameras" layoutX="14.0" layoutY="85.0" mnemonicParsing="false" text="Do you need to rotate the images?" />
                           <!-- File browser button, "Download Location" -->
                           <Button fx:id="easyFileBrowser" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="Destination Folder" prefWidth="120.0"/>
                           <!-- Label for the pathways label "File Path:" -->

@@ -163,11 +163,10 @@ public class Controller {
             Task<Void> task = new Task<Void>() {
                 @Override
                 public Void call() throws Exception {
+                    importFromCameras();
+                    //NOTE: MAY NEED TO UNCOMMENT THIS LINE
                     if(camerasConnected){
-                        importFromCameras();
-                        //rotateImages();
-                    }else{
-                        makeDirectories();
+                        rotateImages();
                     }
                     sideStitch();
                     scanTail();
@@ -252,20 +251,10 @@ public class Controller {
             }
         });
 
-        easySetLeftCamera.setDisable(true);
-        easySetRightCamera.setDisable(true);
-
         usingCameras.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 camerasConnected = usingCameras.isSelected();
-                if(camerasConnected){
-                    easySetLeftCamera.setDisable(false);
-                    easySetRightCamera.setDisable(false);
-                }else{
-                    easySetLeftCamera.setDisable(true);
-                    easySetRightCamera.setDisable(true);
-                }
             }
         });
     }
@@ -494,6 +483,7 @@ public class Controller {
             leftFiles = Arrays.copyOf(leftMap.values().toArray(), leftMap.values().toArray().length, File[].class);
             rightFiles = Arrays.copyOf(rightMap.values().toArray(), rightMap.values().toArray().length, File[].class);
 
+            /*
             for(int j = 0; j < leftFiles.length; j++){
                 if(leftFiles[j].isFile()){
                     leftImages.add(ImageIO.read(leftFiles[j]));
@@ -506,7 +496,7 @@ public class Controller {
                     rightImages.add(ImageIO.read(rightFiles[j]));
                     System.out.println(rightFiles[j].getName());
                 }
-            }
+            }*/
 
             fileOfDirectory = fileOfDirectory + "combined";
 
@@ -519,14 +509,14 @@ public class Controller {
             //BufferedImage[] outImages = new BufferedImage[Math.min(leftNames.size(), rightNames.size())];
             int imCount = 0;
 
-            for(int i = 0; i < Math.min(leftImages.size(), rightImages.size()); i++){
+            for(int i = 0; i < Math.min(leftFiles.length, rightFiles.length); i++){
                 String outFile = fileOfDirectory + "pageBlock" + i + ".jpg";
                 System.out.println(outFile);
 
                 int imagesCount = 4;
                 BufferedImage images[] = new BufferedImage[2];
-                images[0] = leftImages.get(i);
-                images[1] = rightImages.get(i);
+                images[0] = ImageIO.read(leftFiles[i]);
+                images[1] = ImageIO.read(rightFiles[i]);
 
                 int widthTotal = 0;
                 for(int j = 0; j < images.length; j++) {
