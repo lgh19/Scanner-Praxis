@@ -165,7 +165,7 @@ public class Controller {
                 public Void call() throws Exception {
                     if(camerasConnected){
                         importFromCameras();
-                        rotateImages();
+                        //rotateImages();
                     }else{
                         makeDirectories();
                     }
@@ -173,25 +173,30 @@ public class Controller {
                     scanTail();
                     tailorStitch();
                     tesseract();
-                    if(camerasConnected){
+                    /*if(camerasConnected){
                         //deleteFromCameras();
-                    }
+                    }*/
                     appendLog("Done\n");
                     running = false;
                     return null;
                 }
             };
             //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
-            new Thread(task).start();
+            (new Thread(task)).start();
         }
         //todo: make all operations work multithreading
     }
 
     void appendLog(String s){
         s = s.trim() + "\n";
-        easyLog.appendText(s);
-        normalLog.appendText(s);
-        expertLog.appendText(s);
+        try {
+            final String txt = s;
+            javafx.application.Platform.runLater( () -> easyLog.appendText(txt) );
+            javafx.application.Platform.runLater( () -> normalLog.appendText(txt) );
+            javafx.application.Platform.runLater( () -> expertLog.appendText(txt) );
+        }catch(Exception e){
+            System.out.println("Error appending text");
+        }
     }
 
     void configTab(){
@@ -277,18 +282,6 @@ public class Controller {
                     easyCreate.setText("Processing...");
                     appendLog("Processing...\n");
                     runOperation("easy");
-
-                    /*if(camerasConnected){
-                        importFromCameras();
-                    }
-                    sideStitch();
-                    scanTail();
-                    tailorStitch();
-                    tesseract();
-                    if(camerasConnected){
-                        //deleteFromCameras();
-                    }
-                    appendLog("Done\n");*/
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please chose a place to scan to.", ButtonType.OK);
@@ -385,7 +378,9 @@ public class Controller {
             String rightPath = fileOfDirectory;
 
             if(os.contains("win")){
-                return;
+                fileOfDirectory = fileOfDirectory + "\\";
+                leftPath += "\\left\\*";
+                rightPath += "\\right\\*";
             }else{
                 fileOfDirectory = fileOfDirectory + "/";
                 leftPath += "/left/*";
@@ -396,6 +391,11 @@ public class Controller {
             appendLog("Rotating images...");
 
             String[] command = new String[]{"mogrify", "-rotate", "-90", leftPath};
+
+            if(os.contains("win")){
+                command = new String[]{"magick", "mogrify", "-rotate", "-90", leftPath};
+            }
+
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
@@ -417,6 +417,11 @@ public class Controller {
             process.waitFor();
 
             command = new String[]{"mogrify", "-rotate", "90", rightPath};
+
+            if(os.contains("win")){
+                command = new String[]{"magick", "mogrify", "-rotate", "90", rightPath};
+            }
+
             pb = new ProcessBuilder(command);
             process = pb.start();
 
@@ -448,6 +453,7 @@ public class Controller {
     void sideStitch(){
         try {
             appendLog("Stitching paired images together...\n");
+            System.out.println("Stitching.");
             ArrayList<BufferedImage> leftImages = new ArrayList<BufferedImage>();
             ArrayList<BufferedImage> rightImages = new ArrayList<BufferedImage>();
             //Sets file string to current directory
@@ -473,6 +479,7 @@ public class Controller {
                 if(leftFiles[j].isFile()){
                     //leftImages.add(ImageIO.read(leftFiles[j]));
                     leftMap.put(leftFiles[j].getName(), leftFiles[j]);
+                    //System.out.println(leftFiles[j].getName());
                 }
             }
 
@@ -480,6 +487,7 @@ public class Controller {
                 if(rightFiles[j].isFile()){
                     //rightImages.add(ImageIO.read(rightFiles[j]));
                     rightMap.put(rightFiles[j].getName(), rightFiles[j]);
+                    //System.out.println(rightFiles[j].getName());
                 }
             }
 
@@ -489,12 +497,14 @@ public class Controller {
             for(int j = 0; j < leftFiles.length; j++){
                 if(leftFiles[j].isFile()){
                     leftImages.add(ImageIO.read(leftFiles[j]));
+                    System.out.println(leftFiles[j].getName());
                 }
             }
 
             for(int j = 0; j < rightFiles.length; j++){
                 if(rightFiles[j].isFile()){
                     rightImages.add(ImageIO.read(rightFiles[j]));
+                    System.out.println(rightFiles[j].getName());
                 }
             }
 
@@ -511,6 +521,7 @@ public class Controller {
 
             for(int i = 0; i < Math.min(leftImages.size(), rightImages.size()); i++){
                 String outFile = fileOfDirectory + "pageBlock" + i + ".jpg";
+                System.out.println(outFile);
 
                 int imagesCount = 4;
                 BufferedImage images[] = new BufferedImage[2];
@@ -534,6 +545,7 @@ public class Controller {
                 ImageIO.write(concatImage, "jpg", new File(outFile)); // export concat image
                 //outImages[imCount++] = concatImage;
             }
+            System.out.println("Finished stirch");
             appendLog("Finished stitching paired images.\n");
             /**/
         }
@@ -553,7 +565,8 @@ public class Controller {
             String dest = fileOfDirectory;
 
             if(os.contains("win")){
-                return;
+                fileOfDirectory += "\\tailored\\*.tif";
+                dest += "\\tailored\\combined_pages.tiff";
             }else{
                 fileOfDirectory += "/tailored/*.tif";
                 dest += "/tailored/combined_pages.tiff";
@@ -563,6 +576,9 @@ public class Controller {
             appendLog("Converting .tifs to single .tiff...");
 
             String[] command = new String[]{"convert", "-limit", "memory", "32MiB", "-limit", "map", "64MiB", fileOfDirectory, dest};
+            if(os.contains("win")){
+                command = new String[]{"magick", "convert", "-limit", "memory", "32MiB", "-limit", "map", "64MiB", fileOfDirectory, dest};
+            }
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
