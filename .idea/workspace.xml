@@ -7,215 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d86e0b45-e2ea-413c-905d-5365d87cb1d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ScannerGUI.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ScannerGUI.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ScannerGUI1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ScannerGUI1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ScannerGUI2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ScannerGUI2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/ScannerGUI.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ScannerGUI/ScannerGUI.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/ScannerGUI.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ScannerGUI/ScannerGUI.jnlp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI.jnlp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/ScannerGUI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/app/ScannerGUI.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/app/ScannerGUI.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/app/camdelete.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/app/camera_getter.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/app/camerafind.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/libpackager.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/COPYRIGHT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/THIRDPARTYLICENSEREADME-JAVAFX.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/THIRDPARTYLICENSEREADME.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/Welcome.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/calendars.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/charsets.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/classlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/cmm/CIEXYZ.pf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/cmm/GRAY.pf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/cmm/LINEAR_RGB.pf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/cmm/PYCC.pf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/cmm/sRGB.pf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/content-types.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/currency.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/deploy.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/cldrdata.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/dnsns.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/jaccess.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/jfxrt.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/localedata.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/meta-index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/nashorn.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/sunec.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/sunjce_provider.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/sunpkcs11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/ext/zipfs.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/flavormap.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.RedHat.5.bfc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.RedHat.5.properties.src" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.RedHat.6.bfc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.RedHat.6.properties.src" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.SuSE.10.bfc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.SuSE.10.properties.src" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.SuSE.11.bfc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.SuSE.11.properties.src" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.Turbo.bfc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.Turbo.properties.src" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.Ubuntu.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.bfc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fontconfig.properties.src" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fonts/LucidaBrightDemiBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fonts/LucidaBrightDemiItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fonts/LucidaBrightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fonts/LucidaBrightRegular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fonts/LucidaSansDemiBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fonts/LucidaSansRegular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fonts/LucidaTypewriterBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fonts/LucidaTypewriterRegular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/fonts/fonts.dir" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/hijrah-config-umalqura.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/client/Xusage.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/client/libjsig.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/client/libjvm.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/jli/libjli.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/jvm.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libattach.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libavplugin-53.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libavplugin-54.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libavplugin-55.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libavplugin-56.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libavplugin-57.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libavplugin-ffmpeg-56.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libavplugin-ffmpeg-57.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libawt.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libawt_headless.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libawt_xawt.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libbci.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libdcpr.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libdecora_sse.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libdeploy.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libdt_socket.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libfontmanager.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libfxplugins.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libglass.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libglib-lite.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libgstreamer-lite.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libhprof.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libinstrument.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libj2gss.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libj2pcsc.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libj2pkcs11.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjaas_unix.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjava.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjava_crw_demo.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjavafx_font.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjavafx_font_freetype.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjavafx_font_pango.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjavafx_font_t2k.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjavafx_iio.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjawt.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjdwp.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjfr.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjfxmedia.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjfxwebkit.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjpeg.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjsdt.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjsig.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjsound.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libjsoundalsa.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libkcms.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/liblcms.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libmanagement.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libmlib_image.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libnet.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libnio.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libnpt.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libprism_common.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libprism_es2.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libprism_sw.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libresource.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libsaproc.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libsctp.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libsplashscreen.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libsunec.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libt2k.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libunpack.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libverify.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/libzip.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/server/Xusage.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/server/libjsig.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/i386/server/libjvm.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/cursors/cursors.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/cursors/invalid32x32.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/cursors/motif_CopyDrop32x32.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/cursors/motif_CopyNoDrop32x32.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/cursors/motif_LinkDrop32x32.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/cursors/motif_LinkNoDrop32x32.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/cursors/motif_MoveDrop32x32.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/cursors/motif_MoveNoDrop32x32.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/icons/sun-java.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/icons/sun-java_HighContrast.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/icons/sun-java_HighContrastInverse.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/images/icons/sun-java_LowContrast.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jar.binfmt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/javafx.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/javaws.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jce.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jexec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jfr.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jfr/default.jfc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jfr/profile.jfc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jfxswt.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jsse.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jvm.hprof.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/de/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/es/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/fr/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/it/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/ja/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/ko.UTF-8/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/ko/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/pt_BR/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/sv/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/zh.GBK/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/zh/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/zh_HK.BIG5HK/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/zh_TW.BIG5/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/locale/zh_TW/LC_MESSAGES/sunw_java_plugin.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/logging.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/management-agent.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/management/jmxremote.access" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/management/jmxremote.password.template" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/management/management.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/management/snmp.acl.template" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/meta-index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/net.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/oblique-fonts/LucidaSansDemiOblique.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/oblique-fonts/LucidaSansOblique.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/oblique-fonts/LucidaTypewriterBoldOblique.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/oblique-fonts/LucidaTypewriterOblique.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/oblique-fonts/fonts.dir" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/plugin.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/psfont.properties.ja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/psfontj2d.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/resources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/rt.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/security/cacerts.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/security/policy/limited/US_export_policy.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/security/policy/limited/local_policy.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/security/policy/unlimited/US_export_policy.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/security/policy/unlimited/local_policy.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/sound.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/tzdb.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/scannergui-1.0.deb" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/scannergui-1.0.deb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ScannerGUI/Scanner/Scanner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ScannerGUI/Scanner/Scanner.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -231,19 +23,20 @@
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.65" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="135" />
-          <entry key="java" value="1515" />
+          <entry key="java" value="1915" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1515" />
+          <entry key="JAVA" value="1915" />
           <entry key="XML" value="135" />
         </counts>
       </usages-collector>
@@ -263,34 +56,38 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="62" column="59" selection-start-line="62" selection-start-column="59" selection-end-line="62" selection-end-column="59" />
+            <state relative-caret-position="300">
+              <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="93" column="9" lean-forward="true" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
+            <state relative-caret-position="174">
+              <caret line="1180" column="18" selection-start-line="1180" selection-start-column="18" selection-end-line="1180" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2653#2814#0" />
-                <element signature="e#2820#4088#0" />
-                <element signature="e#4094#4920#0" />
-                <element signature="e#4926#5083#0" />
-                <element signature="e#5089#7973#0" />
-                <element signature="e#7979#9283#0" />
-                <element signature="e#9289#11290#0" />
-                <element signature="e#11296#13866#0" />
-                <element signature="e#13872#17962#0" />
+                <element signature="e#2822#4090#0" />
+                <element signature="e#4928#5085#0" />
+                <element signature="e#5091#7975#0" />
+                <element signature="e#11298#13868#0" />
+                <element signature="e#13874#17964#0" />
+                <element signature="e#17970#19783#0" />
+                <element signature="e#21809#27079#0" />
+                <element signature="e#27085#29169#0" />
+                <element signature="e#29175#31239#0" />
+                <element signature="e#31245#33329#0" />
+                <element signature="e#33335#35856#0" />
                 <element signature="e#34589#34590#0" expanded="true" />
                 <element signature="e#34661#34662#0" expanded="true" />
                 <element signature="e#34818#34819#0" expanded="true" />
                 <element signature="e#34896#34897#0" expanded="true" />
+                <element signature="e#35862#37753#0" />
+                <element signature="e#38037#40691#0" />
                 <element signature="e#46630#46631#0" expanded="true" />
                 <element signature="e#46698#46699#0" expanded="true" />
                 <element signature="e#46853#46854#0" expanded="true" />
@@ -325,6 +122,12 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>current</find>
+      <find>make</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -337,7 +140,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1260" />
@@ -349,6 +152,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -371,8 +176,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -419,8 +222,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-1" width="1282" height="1005" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25767368" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26171243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -429,8 +233,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3295583" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3295583" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -452,14 +256,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="62" column="59" selection-start-line="62" selection-start-column="59" selection-end-line="62" selection-end-column="59" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -479,25 +275,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="93" column="9" lean-forward="true" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
+        <state relative-caret-position="174">
+          <caret line="1180" column="18" selection-start-line="1180" selection-start-column="18" selection-end-line="1180" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2653#2814#0" />
-            <element signature="e#2820#4088#0" />
-            <element signature="e#4094#4920#0" />
-            <element signature="e#4926#5083#0" />
-            <element signature="e#5089#7973#0" />
-            <element signature="e#7979#9283#0" />
-            <element signature="e#9289#11290#0" />
-            <element signature="e#11296#13866#0" />
-            <element signature="e#13872#17962#0" />
+            <element signature="e#2822#4090#0" />
+            <element signature="e#4928#5085#0" />
+            <element signature="e#5091#7975#0" />
+            <element signature="e#11298#13868#0" />
+            <element signature="e#13874#17964#0" />
+            <element signature="e#17970#19783#0" />
+            <element signature="e#21809#27079#0" />
+            <element signature="e#27085#29169#0" />
+            <element signature="e#29175#31239#0" />
+            <element signature="e#31245#33329#0" />
+            <element signature="e#33335#35856#0" />
             <element signature="e#34589#34590#0" expanded="true" />
             <element signature="e#34661#34662#0" expanded="true" />
             <element signature="e#34818#34819#0" expanded="true" />
             <element signature="e#34896#34897#0" expanded="true" />
+            <element signature="e#35862#37753#0" />
+            <element signature="e#38037#40691#0" />
             <element signature="e#46630#46631#0" expanded="true" />
             <element signature="e#46698#46699#0" expanded="true" />
             <element signature="e#46853#46854#0" expanded="true" />

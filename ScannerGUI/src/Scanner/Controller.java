@@ -22,6 +22,8 @@ import java.awt.geom.AffineTransform;
 import javax.imageio.*;
 import javax.imageio.stream.ImageOutputStream;
 
+import java.text.*;
+
 
 
 public class Controller {
@@ -30,6 +32,7 @@ public class Controller {
     File rightCamDirectory = null;
     File defaultDirectory;
     String projectName = "Project";
+    File extendedDirectory = null;
 
     String layout = "0";
     String layoutDirection = "lr";
@@ -57,6 +60,8 @@ public class Controller {
     boolean txtOutputHard = false;
 
     boolean camerasConnected = false;
+
+    boolean running = false;
 
     //Easy Tab
     @FXML
@@ -160,6 +165,9 @@ public class Controller {
                 public Void call() throws Exception {
                     if(camerasConnected){
                         importFromCameras();
+                        rotateImages();
+                    }else{
+                        makeDirectories();
                     }
                     sideStitch();
                     scanTail();
@@ -169,12 +177,14 @@ public class Controller {
                         //deleteFromCameras();
                     }
                     appendLog("Done\n");
+                    running = false;
                     return null;
                 }
             };
             //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
             new Thread(task).start();
         }
+        //todo: make all operations work multithreading
     }
 
     void appendLog(String s){
@@ -195,7 +205,7 @@ public class Controller {
                     chooser.setTitle("Choose destination folder");
                     currentDirectory = chooser.showDialog(new Stage());
                     easyFilePath.setText(currentDirectory.toString());
-                    makeDirectories();
+                    //makeDirectories();
                 }
                 catch (Exception e){
                     System.out.println("No directory selected.");
@@ -262,10 +272,10 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 //If the current directory has been set, do the scanning; otherwise, show error message
-                if(!(currentDirectory == null)){
+                if(!(currentDirectory == null) && !running){
+                    running = true;
                     easyCreate.setText("Processing...");
                     appendLog("Processing...\n");
-                    makeDirectories();
                     runOperation("easy");
 
                     /*if(camerasConnected){
@@ -291,12 +301,24 @@ public class Controller {
 
     void makeDirectories(){
         try {
+            Date date = new Date();
+            String strDateFormat = "_yyyy-MM-dd_hh-mm-ss-a";
+            DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
+            String formattedDate = dateFormat.format(date);
+
+            if(easyProjectName.getCharacters().toString().length() > 0)
+                projectName = easyProjectName.getCharacters().toString();
+
             String fileOfDirectory = currentDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
 
             if (os.contains("win")) {
+                fileOfDirectory = fileOfDirectory + "\\" + projectName + formattedDate;
+                extendedDirectory = new File(fileOfDirectory);
                 fileOfDirectory = fileOfDirectory + "\\";
             } else {
+                fileOfDirectory = fileOfDirectory + "/" + projectName + formattedDate;
+                extendedDirectory = new File(fileOfDirectory);
                 fileOfDirectory = fileOfDirectory + "/";
             }
 
@@ -306,7 +328,7 @@ public class Controller {
             String tailDir = fileOfDirectory + "tailored";
 
             //make left directory
-            String[] command = new String[]{"mkdir", "" + leftDir};
+            String[] command = new String[]{"mkdir", "" + fileOfDirectory.substring(0, fileOfDirectory.length()-1)};
 
             if (!(os.contains("win") || os.contains("osx"))) {
                 String[] newCommand = {"/bin/bash", "-c", ""};
@@ -328,6 +350,11 @@ public class Controller {
             Process process = pb.start();
             process.waitFor();
 
+            command[2] = "mkdir " + leftDir;
+            pb = new ProcessBuilder(command);
+            process = pb.start();
+            process.waitFor();
+
             command[2] = "mkdir " + rightDir;
             pb = new ProcessBuilder(command);
             process = pb.start();
@@ -343,7 +370,7 @@ public class Controller {
             process = pb.start();
             process.waitFor();
 
-            appendLog("Made new directories at " + currentDirectory.toString());
+            appendLog("Made new directories at " + extendedDirectory.toString());
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -352,7 +379,7 @@ public class Controller {
     void rotateImages(){
         try{
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString();
+            String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
             String leftPath = fileOfDirectory;
             String rightPath = fileOfDirectory;
@@ -424,7 +451,7 @@ public class Controller {
             ArrayList<BufferedImage> leftImages = new ArrayList<BufferedImage>();
             ArrayList<BufferedImage> rightImages = new ArrayList<BufferedImage>();
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString();
+            String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
 
             if(os.contains("win")){
@@ -521,7 +548,7 @@ public class Controller {
     void tailorStitch(){
         try{
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString();
+            String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
             String dest = fileOfDirectory;
 
@@ -568,7 +595,7 @@ public class Controller {
     /*void tailorStitch(){
         try {
             appendLog("Combining .tifs into a single .tiff...\n");
-            String fileOfDirectory = currentDirectory.toString();
+            String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
             String combinePath = fileOfDirectory;
 
@@ -627,7 +654,7 @@ public class Controller {
             String leftPath = "left";
             String rightPath = "right";
 
-            String fileOfDirectory = currentDirectory.toString();
+            String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
 
             if(os.contains("win")){
@@ -762,7 +789,7 @@ public class Controller {
     void convertPDF(){
         try{
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString();
+            String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
             String inputImages = fileOfDirectory;
 
@@ -814,7 +841,7 @@ public class Controller {
     void convertTXT(){
         try {
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString();
+            String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
 
             String inputImages = fileOfDirectory;
@@ -869,7 +896,7 @@ public class Controller {
     void tesseract(){
         try {
             //Sets file string to current directory
-            String fileOfDirectory = currentDirectory.toString();
+            String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
             String inputImages = fileOfDirectory;
 
@@ -998,8 +1025,8 @@ public class Controller {
             }
 
             System.out.println("" + usbAddress);
-            System.out.println("" + currentDirectory + subDir);
-            String[] command = new String[]{"cp", usbAddress + "/*", "" + currentDirectory + subDir};
+            System.out.println("" + extendedDirectory+ subDir);
+            String[] command = new String[]{"cp", usbAddress + "/*", "" + extendedDirectory + subDir};
 
             if(!(os.contains("win") || os.contains("osx"))){
                 String[] newCommand = {"/bin/bash", "-c", ""};
@@ -1010,7 +1037,7 @@ public class Controller {
             }
 
             if(os.contains("win") ){
-                command = new String[]{"xcopy", "/f", usbAddress + "\\*", "" + currentDirectory + subDir};
+                command = new String[]{"xcopy", "/f", usbAddress + "\\*", "" + extendedDirectory + subDir};
             }
 
             ProcessBuilder pb = new ProcessBuilder(command);
@@ -1041,9 +1068,9 @@ public class Controller {
         if(leftCamDirectory == null || rightCamDirectory == null){
             return;
         }
+        makeDirectories();
         downloadFromCamera("" + leftCamDirectory, "left");
         downloadFromCamera("" + rightCamDirectory, "right");
-        rotateImages();
     }
 
     void deleteFromCameras(){
@@ -1126,7 +1153,7 @@ public class Controller {
             public void handle(ActionEvent event) {
                 hardImport.setText("Importing!");
                 hardDelete.setDisable(true);
-                makeDirectories();
+                //makeDirectories();
                 importFromCameras();
                 hardDelete.setDisable(false);
                 hardImport.setText("Download Images from Cameras");
@@ -1151,7 +1178,7 @@ public class Controller {
             public void handle(ActionEvent event) {
                 hardScan.setText("Processing!");
                 margins = "" + hardMargins.getValue();
-                makeDirectories();
+                //makeDirectories();
                 sideStitch();
                 scanTail();
                 hardRunScanTailor.setDisable(false);
@@ -1163,7 +1190,7 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 hardRunScanTailor.setText("Opening!");
-                String fileOfDirectory = currentDirectory.toString() + "/";
+                String fileOfDirectory = extendedDirectory.toString() + "/";
                 try {
                     String[] command = new String[]{"scantailor", fileOfDirectory + projectName + ".ScanTailor"};
                     ProcessBuilder pb = new ProcessBuilder(command);
