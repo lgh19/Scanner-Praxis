@@ -29,21 +29,21 @@
                           <TextField fx:id="easyProjectName" layoutX="108.0" layoutY="9.0" />
                           <CheckBox fx:id="usingCameras" layoutX="14.0" layoutY="85.0" mnemonicParsing="false" text="Do you need to rotate the images?" />
                           <!-- File browser button, "Download Location" -->
-                          <Button fx:id="easyFileBrowser" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="Destination Folder" prefWidth="120.0"/>
+                          <Button fx:id="easyFileBrowser" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="Destination Folder" prefWidth="150.0"/>
                           <!-- Label for the pathways label "File Path:" -->
-                          <Label layoutX="160.0" layoutY="50.0" text="File Path:" />
+                          <Label layoutX="180.0" layoutY="50.0" text="File Path:" />
                           <!-- Pathway label -->
-                          <Label fx:id="easyFilePath" layoutX="235.0" layoutY="50.0" />
+                          <Label fx:id="easyFilePath" layoutX="255.0" layoutY="50.0" />
                           <!-- Left camera button -->
 
-                          <Button fx:id="easySetLeftCamera" layoutX="34.0" layoutY="120.0" mnemonicParsing="false" text="Set Left Camera" prefWidth="120.0"/>
+                          <Button fx:id="easySetLeftCamera" layoutX="14.0" layoutY="120.0" mnemonicParsing="false" text="Set Left Camera" prefWidth="150.0"/>
                           <!-- Label for the pathways label "File Path:" -->
                           <Label layoutX="180.0" layoutY="125.0" text="File Path:" />
                           <!-- Pathway label -->
                           <Label fx:id="leftCamFilePath" layoutX="255.0" layoutY="125.0" />
 
                           <!-- Right camera button -->
-                          <Button fx:id="easySetRightCamera" layoutX="34.0" layoutY="160.0" mnemonicParsing="false" text="Set Right Camera" prefWidth="120.0"/>
+                          <Button fx:id="easySetRightCamera" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" text="Set Right Camera" prefWidth="150.0"/>
                           <!-- Label for the pathways label "File Path:" -->
                           <Label layoutX="180.0" layoutY="165.0" text="File Path:" />
                           <!-- Pathway label -->
@@ -54,11 +54,11 @@
                           <Text layoutX="14.0" layoutY="220.0" text="Instructions" />
                           <Text layoutX="14.0" layoutY="240.0" text="1. Set your configuration on this tab." />
                           <Text layoutX="34.0" layoutY="260.0" text="a. Set your destination folder. This is where all assembled files will go." />
-                          <Text layoutX="34.0" layoutY="280.0" text="b. If you are hooked up to a scanner, check that box and set paths to both cameras." />
+                          <Text layoutX="34.0" layoutY="280.0" text="b. Set paths to both cameras; these are folders with left and right images." />
                           <Text layoutX="14.0" layoutY="300.0" text="2. Choose an output method." />
                           <Text layoutX="34.0" layoutY="320.0" text="a. The easy tab is for simple automatic downloads and conversion to pdf with OCR." />
                           <Text layoutX="34.0" layoutY="340.0" text="b. The normal tab includes options for color modes, OCR, and txt." />
-                          <Text layoutX="34.0" layoutY="360.0" text="c. The expert tab includes a wider array of specific options, separating operations into components." />
+                          <Text layoutX="34.0" layoutY="360.0" text="c. The expert tab includes a wider array of specific options." />
 
                           <Text layoutX="14.0" layoutY="395.0" text="Note: If the final pdf is upside-down, you've mistakingly swapped left+right cameras." />
                           <Text layoutX="14.0" layoutY="435.0" text="A project by the Vibrant Media Lab at the University of Pittsburgh." />

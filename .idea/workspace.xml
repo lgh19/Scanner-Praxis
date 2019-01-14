@@ -7,8 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="634e9a60-c00d-4321-8641-f8a8695bbb7b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ScannerGUI.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ScannerGUI.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/ScannerGUI.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ScannerGUI/ScannerGUI.jnlp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ScannerGUI/Scanner/Scanner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ScannerGUI/Scanner/Scanner.fxml" afterDir="false" />
@@ -55,39 +56,79 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-1356345913">
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="fxml" value="112" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="XML" value="112" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="30" column="75" selection-start-line="30" selection-start-column="75" selection-end-line="30" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="518" column="46" selection-start-line="518" selection-start-column="46" selection-end-line="518" selection-end-column="46" />
+            <state relative-caret-position="-3224">
+              <caret line="128" column="30" selection-start-line="128" selection-start-column="30" selection-end-line="128" selection-end-column="30" />
               <folding>
-                <element signature="e#4182#5203#0" />
-                <element signature="e#5209#5665#0" />
-                <element signature="e#9084#11971#0" />
-                <element signature="e#11977#14948#0" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2822#4090#0" />
+                <element signature="e#8065#8066#0" expanded="true" />
+                <element signature="e#8141#8142#0" expanded="true" />
+                <element signature="e#15160#15175#0" expanded="true" />
+                <element signature="e#15243#15258#0" expanded="true" />
+                <element signature="e#15938#15951#0" expanded="true" />
+                <element signature="e#16010#16023#0" expanded="true" />
+                <element signature="e#19488#21582#0" />
+                <element signature="e#21809#27079#0" />
+                <element signature="e#27085#29169#0" />
+                <element signature="e#29175#31239#0" />
+                <element signature="e#31245#33329#0" />
+                <element signature="e#33335#35856#0" />
+                <element signature="e#34589#34590#0" expanded="true" />
+                <element signature="e#34661#34662#0" expanded="true" />
+                <element signature="e#34818#34819#0" expanded="true" />
+                <element signature="e#34896#34897#0" expanded="true" />
+                <element signature="e#35862#37753#0" />
+                <element signature="e#38037#40691#0" />
+                <element signature="e#46630#46631#0" expanded="true" />
+                <element signature="e#46698#46699#0" expanded="true" />
+                <element signature="e#46853#46854#0" expanded="true" />
+                <element signature="e#46927#46928#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1139">
-              <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="315">
+              <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,6 +138,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>rotateImages</find>
+      <find>make</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -105,8 +147,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml" />
         <option value="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" />
+        <option value="$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml" />
       </list>
     </option>
   </component>
@@ -121,6 +163,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -143,14 +187,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547159947253" />
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunDashboard">
@@ -167,6 +209,8 @@
   </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8 (1)" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Scanner.Main" />
       <module name="ScannerGUI" />
       <method v="2">
@@ -188,10 +232,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1719" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1" y="-1" width="1282" height="1005" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18324292" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26171243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -200,7 +243,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33296824" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3295583" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -208,7 +251,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.329718" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3295583" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -235,38 +278,67 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/com/sun/glass/ui/win/WinApplication.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/com/sun/glass/ui/win/WinApplication.java" />
+    <entry file="file://$PROJECT_DIR$/../Old/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-925">
-          <caret line="176" selection-start-line="176" selection-end-line="176" />
+        <state relative-caret-position="648">
+          <caret line="298" column="19" lean-forward="true" selection-start-line="298" selection-start-column="19" selection-end-line="298" selection-end-column="19" />
+          <folding>
+            <element signature="e#4554#7797#0" />
+            <element signature="e#7803#9631#0" />
+            <element signature="e#9637#12463#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="315">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3224">
+          <caret line="128" column="30" selection-start-line="128" selection-start-column="30" selection-end-line="128" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2822#4090#0" />
+            <element signature="e#8065#8066#0" expanded="true" />
+            <element signature="e#8141#8142#0" expanded="true" />
+            <element signature="e#15160#15175#0" expanded="true" />
+            <element signature="e#15243#15258#0" expanded="true" />
+            <element signature="e#15938#15951#0" expanded="true" />
+            <element signature="e#16010#16023#0" expanded="true" />
+            <element signature="e#19488#21582#0" />
+            <element signature="e#21809#27079#0" />
+            <element signature="e#27085#29169#0" />
+            <element signature="e#29175#31239#0" />
+            <element signature="e#31245#33329#0" />
+            <element signature="e#33335#35856#0" />
+            <element signature="e#34589#34590#0" expanded="true" />
+            <element signature="e#34661#34662#0" expanded="true" />
+            <element signature="e#34818#34819#0" expanded="true" />
+            <element signature="e#34896#34897#0" expanded="true" />
+            <element signature="e#35862#37753#0" />
+            <element signature="e#38037#40691#0" />
+            <element signature="e#46630#46631#0" expanded="true" />
+            <element signature="e#46698#46699#0" expanded="true" />
+            <element signature="e#46853#46854#0" expanded="true" />
+            <element signature="e#46927#46928#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1139">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="518" column="46" selection-start-line="518" selection-start-column="46" selection-end-line="518" selection-end-column="46" />
-          <folding>
-            <element signature="e#4182#5203#0" />
-            <element signature="e#5209#5665#0" />
-            <element signature="e#9084#11971#0" />
-            <element signature="e#11977#14948#0" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="30" column="75" selection-start-line="30" selection-start-column="75" selection-end-line="30" selection-end-column="75" />
         </state>
       </provider>
     </entry>
