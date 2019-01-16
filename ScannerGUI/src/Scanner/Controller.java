@@ -159,29 +159,127 @@ public class Controller {
     }
 
     private void runOperation(String op) {
-        if (op.equals("easy")) {
-            Task<Void> task = new Task<Void>() {
-                @Override
-                public Void call() throws Exception {
-                    importFromCameras();
-                    //NOTE: MAY NEED TO UNCOMMENT THIS LINE
-                    if(camerasConnected){
-                        rotateImages();
-                    }
-                    sideStitch();
-                    scanTail();
-                    tailorStitch();
-                    tesseract();
+        if(running){
+            return;
+        }
+        running = true;
+        try {
+            if (op.equals("easy")) {
+                Task<Void> task = new Task<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        importFromCameras();
+                        //NOTE: MAY NEED TO UNCOMMENT THIS LINE
+                        if (camerasConnected) {
+                            rotateImages();
+                        }
+                        sideStitch();
+                        scanTail();
+                        tailorStitch();
+                        tesseract();
                     /*if(camerasConnected){
                         //deleteFromCameras();
                     }*/
-                    appendLog("Done\n");
-                    running = false;
-                    return null;
-                }
-            };
-            //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
-            (new Thread(task)).start();
+                        appendLog("Done\n");
+                        running = false;
+                        return null;
+                    }
+                };
+                //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
+                (new Thread(task)).start();
+            } else if (op.equals("medium")) {
+                Task<Void> task = new Task<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        //makeDirectories();
+                        importFromCameras();
+                        if (camerasConnected) {
+                            rotateImages();
+                            //deleteFromCameras();
+                        }
+                        sideStitch();
+                        scanTail();
+                        tailorStitch();
+                        if (useOCRMedium) {
+                            tesseract();
+                        } else {
+                            convertPDF();
+                        }
+
+                        if (txtOutputMedium) {
+                            convertTXT();
+                        }
+
+                        mediumCreatePDF.setText("Download and Create PDF!");
+                        mediumCreatePDF.setDisable(false);
+                        running = false;
+                        return null;
+                    }
+                };
+                //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
+                (new Thread(task)).start();
+            } else if (op.equals("import")) {
+                Task<Void> task = new Task<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        importFromCameras();
+                        hardDelete.setDisable(false);
+                        hardImport.setText("Download Images from Cameras");
+                        running = false;
+                        return null;
+                    }
+                };
+                //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
+                (new Thread(task)).start();
+            } else if (op.equals("delete")) {
+                Task<Void> task = new Task<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        deleteFromCameras();
+                        hardDelete.setText("Delete Images From Cameras");
+                        running = false;
+                        return null;
+                    }
+                };
+                //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
+                (new Thread(task)).start();
+            } else if (op.equals("stitchAndTailor")) {
+                Task<Void> task = new Task<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        sideStitch();
+                        scanTail();
+                        hardRunScanTailor.setDisable(false);
+                        hardCreatePDF.setDisable(false);
+                        running = false;
+                        return null;
+                    }
+                };
+                //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
+                (new Thread(task)).start();
+            } else if (op.equals("ocr")) {
+                Task<Void> task = new Task<Void>() {
+                    @Override
+                    public Void call() throws Exception {
+                        tailorStitch();
+                        if (useOCRHard) {
+                            tesseract();
+                        } else {
+                            convertPDF();
+                        }
+
+                        if (txtOutputHard) {
+                            convertTXT();
+                        }
+                        running = false;
+                        return null;
+                    }
+                };
+                //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
+                (new Thread(task)).start();
+            }
+        }catch (Exception e){
+            running = false;
         }
         //todo: make all operations work multithreading
     }
@@ -994,29 +1092,11 @@ public class Controller {
         mediumCreatePDF.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                running = true;
                 mediumCreatePDF.setDisable(true);
                 mediumCreatePDF.setText("Processing!");
                 appendLog("Processing...\n");
-                makeDirectories();
-                if(camerasConnected){
-                    importFromCameras();
-                    //deleteFromCameras();
-                }
-                sideStitch();
-                scanTail();
-                tailorStitch();
-                if(useOCRMedium){
-                    tesseract();
-                }else{
-                    convertPDF();
-                }
-
-                if(txtOutputMedium){
-                    convertTXT();
-                }
-
-                mediumCreatePDF.setText("Download and Create PDF!");
-                mediumCreatePDF.setDisable(false);
+                runOperation("medium");
             }
         });
     }
@@ -1160,9 +1240,7 @@ public class Controller {
                 hardImport.setText("Importing!");
                 hardDelete.setDisable(true);
                 //makeDirectories();
-                importFromCameras();
-                hardDelete.setDisable(false);
-                hardImport.setText("Download Images from Cameras");
+                runOperation("import");
             }
         });
 
@@ -1173,8 +1251,7 @@ public class Controller {
                 alert.showAndWait();
                 if (alert.getResult() == ButtonType.YES) {
                     hardDelete.setText("Deleting!");
-                    deleteFromCameras();
-                    hardDelete.setText("Delete Images From Cameras");
+                    runOperation("delete");
                 }
             }
         });
@@ -1185,10 +1262,7 @@ public class Controller {
                 hardScan.setText("Processing!");
                 margins = "" + hardMargins.getValue();
                 //makeDirectories();
-                sideStitch();
-                scanTail();
-                hardRunScanTailor.setDisable(false);
-                hardCreatePDF.setDisable(false);
+                runOperation("stitchAndTailor");
             }
         });
 
@@ -1221,16 +1295,7 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 hardCreatePDF.setText("Creating!");
-                tailorStitch();
-                if(useOCRHard){
-                    tesseract();
-                }else{
-                    convertPDF();
-                }
-
-                if(txtOutputHard){
-                    convertTXT();
-                }
+                runOperation("ocr");
             }
         });
 
