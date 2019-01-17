@@ -7,6 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="634e9a60-c00d-4321-8641-f8a8695bbb7b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ScannerGUI.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ScannerGUI.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,10 +23,11 @@
     <session id="-1115836657">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -41,12 +45,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="32" />
-          <entry key="java" value="519" />
+          <entry key="java" value="521" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="519" />
+          <entry key="JAVA" value="521" />
           <entry key="XML" value="32" />
         </counts>
       </usages-collector>
@@ -78,7 +82,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
+            <state relative-caret-position="986">
               <caret line="58" column="96" selection-start-line="58" selection-start-column="96" selection-end-line="58" selection-end-column="96" />
             </state>
           </provider>
@@ -88,49 +92,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="281" column="28" selection-start-line="281" selection-start-column="28" selection-end-line="281" selection-end-column="28" />
+            <state relative-caret-position="628">
+              <caret line="63" column="28" lean-forward="true" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2741#2902#0" />
                 <element signature="e#2908#4176#0" />
-                <element signature="e#5209#5665#0" />
-                <element signature="e#5671#8160#0" />
-                <element signature="e#11449#11450#0" expanded="true" />
-                <element signature="e#11525#11526#0" expanded="true" />
-                <element signature="e#8166#9078#0" />
-                <element signature="e#9084#11971#0" />
-                <element signature="e#11977#14948#0" />
-                <element signature="e#14954#19482#0" />
-                <element signature="e#19488#21582#0" />
-                <element signature="e#23609#28880#0" />
-                <element signature="e#28886#30971#0" />
-                <element signature="e#30977#33042#0" />
-                <element signature="e#33048#35133#0" />
-                <element signature="e#35139#37660#0" />
-                <element signature="class#35234:36250" />
-                <element signature="class#36291:36476" />
-                <element signature="e#39777#39778#0" expanded="true" />
-                <element signature="e#39849#39850#0" expanded="true" />
-                <element signature="class#36520:36711" />
-                <element signature="e#40006#40007#0" expanded="true" />
-                <element signature="e#40084#40085#0" expanded="true" />
-                <element signature="e#37666#39559#0" />
-                <element signature="e#39565#39840#0" />
-                <element signature="e#39846#42500#0" />
-                <element signature="class#44397:44696" />
-                <element signature="class#45769:46265" />
-                <element signature="class#46302:46779" />
-                <element signature="class#46825:47898" />
-                <element signature="class#47407:48142" />
-                <element signature="class#48184:49198" />
-                <element signature="class#49242:49996" />
-                <element signature="class#50035:50216" />
-                <element signature="e#51193#51194#0" expanded="true" />
-                <element signature="e#51261#51262#0" expanded="true" />
-                <element signature="class#50258:50445" />
-                <element signature="e#51416#51417#0" expanded="true" />
-                <element signature="e#51490#51491#0" expanded="true" />
+                <element signature="e#4381#5143#0" expanded="true" />
+                <element signature="e#5142#5143#0" expanded="true" />
+                <element signature="e#5383#6419#0" expanded="true" />
+                <element signature="e#6418#6419#0" expanded="true" />
+                <element signature="e#6659#7058#0" expanded="true" />
+                <element signature="e#7057#7058#0" expanded="true" />
+                <element signature="e#7298#7641#0" expanded="true" />
+                <element signature="e#7640#7641#0" expanded="true" />
+                <element signature="e#7890#8306#0" expanded="true" />
+                <element signature="e#8305#8306#0" expanded="true" />
+                <element signature="e#8543#9105#0" expanded="true" />
+                <element signature="e#9104#9105#0" expanded="true" />
+                <element signature="e#19366#19381#0" expanded="true" />
+                <element signature="e#19449#19464#0" expanded="true" />
+                <element signature="e#20144#20157#0" expanded="true" />
+                <element signature="e#20216#20229#0" expanded="true" />
+                <element signature="e#28745#28753#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,7 +123,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="221">
               <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -170,7 +154,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="10" />
     <option name="y" value="20" />
-    <option name="width" value="1252" />
+    <option name="width" value="1793" />
     <option name="height" value="960" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -179,8 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,6 +185,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -210,6 +194,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -225,7 +210,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8 (1)" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Scanner.Main" />
       <module name="ScannerGUI" />
@@ -248,10 +233,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="20" width="1252" height="960" extended-state="0" />
-    <editor active="true" />
+    <frame x="10" y="20" width="1793" height="960" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26572847" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18580496" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -260,8 +244,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3295583" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3292978" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39951575" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -284,16 +268,10 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/com/sun/glass/ui/win/WinApplication.java" />
-    <entry file="file://$PROJECT_DIR$/../Old/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="298" column="19" lean-forward="true" selection-start-line="298" selection-start-column="19" selection-end-line="298" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Old/Controller.java" />
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
+        <state relative-caret-position="986">
           <caret line="58" column="96" selection-start-line="58" selection-start-column="96" selection-end-line="58" selection-end-column="96" />
         </state>
       </provider>
@@ -301,7 +279,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="221">
           <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -311,49 +289,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="281" column="28" selection-start-line="281" selection-start-column="28" selection-end-line="281" selection-end-column="28" />
+        <state relative-caret-position="628">
+          <caret line="63" column="28" lean-forward="true" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2741#2902#0" />
             <element signature="e#2908#4176#0" />
-            <element signature="e#5209#5665#0" />
-            <element signature="e#5671#8160#0" />
-            <element signature="e#11449#11450#0" expanded="true" />
-            <element signature="e#11525#11526#0" expanded="true" />
-            <element signature="e#8166#9078#0" />
-            <element signature="e#9084#11971#0" />
-            <element signature="e#11977#14948#0" />
-            <element signature="e#14954#19482#0" />
-            <element signature="e#19488#21582#0" />
-            <element signature="e#23609#28880#0" />
-            <element signature="e#28886#30971#0" />
-            <element signature="e#30977#33042#0" />
-            <element signature="e#33048#35133#0" />
-            <element signature="e#35139#37660#0" />
-            <element signature="class#35234:36250" />
-            <element signature="class#36291:36476" />
-            <element signature="e#39777#39778#0" expanded="true" />
-            <element signature="e#39849#39850#0" expanded="true" />
-            <element signature="class#36520:36711" />
-            <element signature="e#40006#40007#0" expanded="true" />
-            <element signature="e#40084#40085#0" expanded="true" />
-            <element signature="e#37666#39559#0" />
-            <element signature="e#39565#39840#0" />
-            <element signature="e#39846#42500#0" />
-            <element signature="class#44397:44696" />
-            <element signature="class#45769:46265" />
-            <element signature="class#46302:46779" />
-            <element signature="class#46825:47898" />
-            <element signature="class#47407:48142" />
-            <element signature="class#48184:49198" />
-            <element signature="class#49242:49996" />
-            <element signature="class#50035:50216" />
-            <element signature="e#51193#51194#0" expanded="true" />
-            <element signature="e#51261#51262#0" expanded="true" />
-            <element signature="class#50258:50445" />
-            <element signature="e#51416#51417#0" expanded="true" />
-            <element signature="e#51490#51491#0" expanded="true" />
+            <element signature="e#4381#5143#0" expanded="true" />
+            <element signature="e#5142#5143#0" expanded="true" />
+            <element signature="e#5383#6419#0" expanded="true" />
+            <element signature="e#6418#6419#0" expanded="true" />
+            <element signature="e#6659#7058#0" expanded="true" />
+            <element signature="e#7057#7058#0" expanded="true" />
+            <element signature="e#7298#7641#0" expanded="true" />
+            <element signature="e#7640#7641#0" expanded="true" />
+            <element signature="e#7890#8306#0" expanded="true" />
+            <element signature="e#8305#8306#0" expanded="true" />
+            <element signature="e#8543#9105#0" expanded="true" />
+            <element signature="e#9104#9105#0" expanded="true" />
+            <element signature="e#19366#19381#0" expanded="true" />
+            <element signature="e#19449#19464#0" expanded="true" />
+            <element signature="e#20144#20157#0" expanded="true" />
+            <element signature="e#20216#20229#0" expanded="true" />
+            <element signature="e#28745#28753#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -369,7 +327,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

@@ -40,10 +40,10 @@ public class Controller {
     String rotate = "0.0";
     String deskew = "auto";
     String contentDirection = "normal";
-    String margins = "2";
+    String margins = "8";
     String alignment = "center";
     String dpi = "300";
-    String outputDpi = "1200";
+    String outputDpi = "600";
     String colorMode = "black_and_white";
     String whiteMargins = "false";
     String threshold = "0";
