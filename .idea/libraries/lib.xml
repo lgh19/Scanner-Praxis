@@ -1,17 +1,17 @@
 <component name="libraryTable">
   <library name="lib">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/charsets.jar!/" />
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/javaws.jar!/" />
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/rt.jar!/" />
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/plugin.jar!/" />
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jce.jar!/" />
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jfr.jar!/" />
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/management-agent.jar!/" />
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jsse.jar!/" />
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/resources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/jfxswt.jar!/" />
-      <root url="jar://$PROJECT_DIR$/out/artifacts/ScannerGUI/bundles/ScannerGUI/runtime/lib/deploy.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/jfxswt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/management-agent.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/javaws.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/jsse.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/resources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/plugin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/charsets.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/jce.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/jfr.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Standalones/Linux/runtime/lib/deploy.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

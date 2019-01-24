@@ -175,7 +175,7 @@ public class Controller {
                         }
                         sideStitch();
                         scanTail();
-                        tailorStitch();
+                        //tailorStitch();
                         tesseract();
                     /*if(camerasConnected){
                         //deleteFromCameras();
@@ -199,7 +199,7 @@ public class Controller {
                         }
                         sideStitch();
                         scanTail();
-                        tailorStitch();
+                        //tailorStitch();
                         if (useOCRMedium) {
                             tesseract();
                         } else {
@@ -261,7 +261,7 @@ public class Controller {
                 Task<Void> task = new Task<Void>() {
                     @Override
                     public Void call() throws Exception {
-                        tailorStitch();
+                        //tailorStitch();
                         if (useOCRHard) {
                             tesseract();
                         } else {
@@ -608,7 +608,12 @@ public class Controller {
             int imCount = 0;
 
             for(int i = 0; i < Math.min(leftFiles.length, rightFiles.length); i++){
-                String outFile = fileOfDirectory + "pageBlock" + i + ".jpg";
+                String numberName = "" + i;
+                while(numberName.length() < 4){
+                    numberName = "0" + numberName;
+                }
+
+                String outFile = fileOfDirectory + "pageBlock" + numberName + ".jpg";
                 System.out.println(outFile);
 
                 int imagesCount = 4;
@@ -696,61 +701,49 @@ public class Controller {
         }
     }
 
-    /*void tailorStitch(){
-        try {
-            appendLog("Combining .tifs into a single .tiff...\n");
+    void configureTesserectSource(){
+        try{
+            //Sets file string to current directory
             String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
-            String combinePath = fileOfDirectory;
+            String dest = fileOfDirectory;
 
             if(os.contains("win")){
                 fileOfDirectory += "\\tailored\\";
+                dest += "\\tailored\\combined_pages.txt";
             }else{
                 fileOfDirectory += "/tailored/";
+                dest += "/tailored/combined_pages.txt";
             }
 
-            File tailFolder = new File(fileOfDirectory);
-            File[] tailFiles = tailFolder.listFiles();
-            ArrayList<BufferedImage> tailImages = new ArrayList<BufferedImage>();
+            appendLog("Saving file names to txt...");
 
+            File sourceFolder = new File(fileOfDirectory);
+            File[] combinedFiles = sourceFolder.listFiles();
+            String[] fileNames = new String[combinedFiles.length];
 
-            for (File f : tailFiles) {
-                if (f.isFile()) {
-                    tailImages.add(ImageIO.read(f));
-                }
+            for(int i = 0; i < combinedFiles.length; i++){
+                fileNames[i] = combinedFiles[i].getName();
             }
 
+            Arrays.sort(fileNames);
 
-            ImageWriter writer = ImageIO.getImageWritersByFormatName("TIFF").next();
-            File stream = new File(fileOfDirectory + "combined_pages.tiff");
-
-            try (ImageOutputStream output = ImageIO.createImageOutputStream(stream)) {
-                writer.setOutput(output);
-
-                ImageWriteParam params = writer.getDefaultWriteParam();
-                params.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-
-                // Compression: None, PackBits, ZLib, Deflate, LZW, JPEG and CCITT variants allowed
-                // (different plugins may use a different set of compression type names)
-                params.setCompressionType("LZW");
-
-                writer.prepareWriteSequence(null);
-
-                for (BufferedImage image : tailImages) {
-                    writer.writeToSequence(new IIOImage(image, null, null), params);
-                }
-
-                // We're done
-                writer.endWriteSequence();
+            PrintWriter writer = new PrintWriter(new File(dest));
+            for(String nm : fileNames){
+                writer.println(nm);
             }
+            writer.flush();
+            writer.close();
 
-            writer.dispose();
-            appendLog("Finished combination.\n");
-        }catch(Exception e){
-            appendLog("Error combining tailored images");
-            e.printStackTrace();
+            System.out.println("Saved txt.");
+            appendLog("Saved txt.\n");
         }
-    }*/
+        catch (Exception e){
+            appendLog("Failed Imagemagick conversion\n");
+            appendLog(e.getMessage());
+            System.out.println("Failed Imagemagick");
+        }
+    }
 
     // Does the scanner, using the auto scan script
     void scanTail(){
@@ -999,6 +992,7 @@ public class Controller {
 
     void tesseract(){
         try {
+            configureTesserectSource();
             //Sets file string to current directory
             String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
@@ -1006,10 +1000,12 @@ public class Controller {
 
             if(os.contains("win")){
                 fileOfDirectory = fileOfDirectory + "\\";
-                inputImages += "\\tailored\\combined_pages.tiff";
+                //inputImages += "\\tailored\\combined_pages.tiff";
+                inputImages += "\\tailored\\combined_pages.txt";
             }else{
                 fileOfDirectory = fileOfDirectory + "/";
-                inputImages += "/tailored/combined_pages.tiff";
+                //inputImages += "/tailored/combined_pages.tiff";
+                inputImages += "/tailored/combined_pages.txt";
             }
 
             //tesseract output.tiff outputOCR -l eng pdf
