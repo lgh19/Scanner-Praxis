@@ -140,8 +140,8 @@ public class Controller {
         //Set default value of medium tab color mode options
         mediumColorMode.setValue("Text and Line Drawings Only");
         //Disable two buttons in the hard tab
-        hardRunScanTailor.setDisable(true);
-        hardCreatePDF.setDisable(true);
+        //hardRunScanTailor.setDisable(true);
+        //hardCreatePDF.setDisable(true);
         //Adds options to hard tab's layout options
         hardLayoutOption.getItems().addAll("Auto Detect", "One Page", "Two Page");
         //Set default layout option
@@ -163,6 +163,17 @@ public class Controller {
             return;
         }
         running = true;
+
+        Task<Void> taskLoad = new Task<Void>() {
+            @Override
+            public Void call() throws Exception {
+                loadAnimate();
+                return null;
+            }
+        };
+        //task.messageProperty().addListener((obs, oldMessage, newMessage) -> label.setText(newMessage));
+        (new Thread(taskLoad)).start();
+
         try {
             if (op.equals("easy")) {
                 Task<Void> task = new Task<Void>() {
@@ -296,6 +307,32 @@ public class Controller {
         }
     }
 
+    void loadAnimate(){
+        final String[] states = new String[]{"Loading...-",
+                "Loading...\\",
+                "Loading...|",
+                "Loading.../",
+                "Loading...-",
+                "Loading...\\",
+                "Loading...|"
+        };
+        int loadIndex = 0;
+        try {
+            while (running) {
+                final String thisLoad = states[loadIndex];
+                javafx.application.Platform.runLater(() -> easyCreate.setText(thisLoad));
+                javafx.application.Platform.runLater(() -> mediumCreatePDF.setText(thisLoad));
+
+                loadIndex = (loadIndex + 1) % states.length;
+                Thread.sleep(300);
+            }
+        }catch (Exception e){
+            System.out.println("Error waiting");
+        }
+        javafx.application.Platform.runLater( () -> easyCreate.setText("Download and Create PDF"));
+        javafx.application.Platform.runLater( () -> mediumCreatePDF.setText("Download and Create PDF"));
+    }
+
     void configTab(){
         // Handles event of "Download Location" button click on the easy tab of the GUI
         easyFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
@@ -365,7 +402,6 @@ public class Controller {
             public void handle(ActionEvent event) {
                 //If the current directory has been set, do the scanning; otherwise, show error message
                 if(!(currentDirectory == null) && !running){
-                    running = true;
                     easyCreate.setText("Processing...");
                     appendLog("Processing...\n");
                     runOperation("easy");
@@ -615,6 +651,7 @@ public class Controller {
 
                 String outFile = fileOfDirectory + "pageBlock" + numberName + ".jpg";
                 System.out.println(outFile);
+                appendLog(outFile);
 
                 int imagesCount = 4;
                 BufferedImage images[] = new BufferedImage[2];
@@ -638,7 +675,7 @@ public class Controller {
                 ImageIO.write(concatImage, "jpg", new File(outFile)); // export concat image
                 //outImages[imCount++] = concatImage;
             }
-            System.out.println("Finished stirch");
+            System.out.println("Finished stitch");
             appendLog("Finished stitching paired images.\n");
             /**/
         }
@@ -723,7 +760,7 @@ public class Controller {
             String[] fileNames = new String[combinedFiles.length];
 
             for(int i = 0; i < combinedFiles.length; i++){
-                fileNames[i] = combinedFiles[i].getName();
+                fileNames[i] = combinedFiles[i].getPath();
             }
 
             Arrays.sort(fileNames);
@@ -1088,7 +1125,6 @@ public class Controller {
         mediumCreatePDF.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                running = true;
                 mediumCreatePDF.setDisable(true);
                 mediumCreatePDF.setText("Processing!");
                 appendLog("Processing...\n");

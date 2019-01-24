@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6380add6-fefb-4d0f-b0c7-560ebd499c2b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ScannerGUI.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ScannerGUI.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ScannerGUI.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ScannerGUI1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ScannerGUI1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/limited.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/limited.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/unlimited.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/unlimited.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerGUI/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerGUI/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerGUI/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerGUI/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScannerGUI/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Standalones/ScannerGUI.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Standalones/ScannerGUI.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/ScannerGUI.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ScannerGUI/ScannerGUI.jnlp" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,35 +35,97 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-1115836657">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="fxml" value="1" />
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="42" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="42" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1271">
-              <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+            <state relative-caret-position="166">
+              <caret line="1190" column="8" selection-start-line="1190" selection-start-column="8" selection-end-line="1190" selection-end-column="8" />
               <folding>
                 <element signature="e#2740#2901#0" />
-                <element signature="e#2907#4175#0" />
-                <element signature="e#4181#9408#0" />
-                <element signature="e#9414#9870#0" />
-                <element signature="e#9876#12365#0" />
-                <element signature="e#12371#13283#0" />
-                <element signature="e#13289#16176#0" />
-                <element signature="e#16182#19153#0" />
-                <element signature="e#19159#23858#0" />
-                <element signature="e#23864#25958#0" />
-                <element signature="e#25964#27442#0" />
-                <element signature="e#27448#32719#0" />
-                <element signature="e#32725#34810#0" />
-                <element signature="e#34816#36881#0" />
-                <element signature="e#36887#38972#0" />
-                <element signature="e#38978#40953#0" />
-                <element signature="e#40959#42852#0" />
-                <element signature="e#42858#43133#0" />
-                <element signature="e#43139#45793#0" />
-                <element signature="e#45799#51541#0" />
+                <element signature="e#4181#9414#0" />
+                <element signature="e#9420#9876#0" />
+                <element signature="e#10231#11234#0" />
+                <element signature="e#9882#12371#0" />
+                <element signature="e#13637#13638#0" expanded="true" />
+                <element signature="e#13713#13714#0" expanded="true" />
+                <element signature="e#12377#13289#0" />
+                <element signature="e#13295#16182#0" />
+                <element signature="e#16188#19159#0" />
+                <element signature="e#19165#23864#0" />
+                <element signature="e#23870#25964#0" />
+                <element signature="e#27454#32725#0" />
+                <element signature="e#32731#34816#0" />
+                <element signature="e#34822#36887#0" />
+                <element signature="e#36893#39150#0" />
+                <element signature="e#39156#41131#0" />
+                <element signature="e#41771#41772#0" expanded="true" />
+                <element signature="e#41843#41844#0" expanded="true" />
+                <element signature="e#42000#42001#0" expanded="true" />
+                <element signature="e#42078#42079#0" expanded="true" />
+                <element signature="e#41137#43030#0" />
+                <element signature="e#43317#45971#0" />
+                <element signature="class#47425:47724" />
+                <element signature="class#47763:48258" />
+                <element signature="class#48295:48612" />
+                <element signature="class#48658:49731" />
+                <element signature="class#49773:49989" />
+                <element signature="class#50034:50769" />
+                <element signature="class#50811:51825" />
+                <element signature="class#51869:52623" />
+                <element signature="class#52662:52843" />
+                <element signature="e#52764#52765#0" expanded="true" />
+                <element signature="e#52832#52833#0" expanded="true" />
+                <element signature="class#52885:53072" />
+                <element signature="e#52987#52988#0" expanded="true" />
+                <element signature="e#53061#53062#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-661">
+              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+              <folding>
+                <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#!!top" />
+                <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#!!top" />
+                <element signature="n#Tab#2;n#tabs#0;n#TabPane#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -83,6 +136,15 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>tailorSt</find>
+      <find>loading</find>
+      <find>load</find>
+      <find>running</find>
+      <find>tailor</find>
+      <find>tailorStitch</find>
+      <find>button</find>
+      <find>expe</find>
+      <find>hardCreate</find>
+      <find>hardCreatePDF</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -91,13 +153,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/../Controller.java" />
         <option value="$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="372" />
-    <option name="y" value="55" />
+    <option name="x" value="492" />
+    <option name="y" value="87" />
     <option name="width" value="1406" />
     <option name="height" value="928" />
   </component>
@@ -107,8 +170,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -131,6 +192,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -152,7 +215,8 @@
   </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="9" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Scanner.Main" />
       <module name="ScannerGUI" />
       <method v="2">
@@ -174,65 +238,119 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="372" y="55" width="1406" height="928" extended-state="0" />
+    <frame x="492" y="87" width="1406" height="928" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25408617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32894737" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32871535" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3299748" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Scanner.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-661">
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+          <folding>
+            <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#!!top" />
+            <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#!!top" />
+            <element signature="n#Tab#2;n#tabs#0;n#TabPane#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="143" column="41" lean-forward="true" selection-start-line="143" selection-start-column="41" selection-end-line="143" selection-end-column="41" />
+          <folding>
+            <element signature="e#11239#13728#0" />
+            <element signature="e#13734#14610#0" />
+            <element signature="e#14616#17503#0" />
+            <element signature="e#17509#20480#0" />
+            <element signature="e#20486#25057#0" />
+            <element signature="e#25063#27157#0" />
+            <element signature="e#29184#34455#0" />
+            <element signature="e#34461#36546#0" />
+            <element signature="e#36552#38617#0" />
+            <element signature="e#38623#40708#0" />
+            <element signature="e#40714#42689#0" />
+            <element signature="e#42695#44588#0" />
+            <element signature="e#44594#44869#0" />
+            <element signature="e#44875#47529#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ScannerGUI/src/Scanner/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1271">
-          <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+        <state relative-caret-position="166">
+          <caret line="1190" column="8" selection-start-line="1190" selection-start-column="8" selection-end-line="1190" selection-end-column="8" />
           <folding>
             <element signature="e#2740#2901#0" />
-            <element signature="e#2907#4175#0" />
-            <element signature="e#4181#9408#0" />
-            <element signature="e#9414#9870#0" />
-            <element signature="e#9876#12365#0" />
-            <element signature="e#12371#13283#0" />
-            <element signature="e#13289#16176#0" />
-            <element signature="e#16182#19153#0" />
-            <element signature="e#19159#23858#0" />
-            <element signature="e#23864#25958#0" />
-            <element signature="e#25964#27442#0" />
-            <element signature="e#27448#32719#0" />
-            <element signature="e#32725#34810#0" />
-            <element signature="e#34816#36881#0" />
-            <element signature="e#36887#38972#0" />
-            <element signature="e#38978#40953#0" />
-            <element signature="e#40959#42852#0" />
-            <element signature="e#42858#43133#0" />
-            <element signature="e#43139#45793#0" />
-            <element signature="e#45799#51541#0" />
+            <element signature="e#4181#9414#0" />
+            <element signature="e#9420#9876#0" />
+            <element signature="e#10231#11234#0" />
+            <element signature="e#9882#12371#0" />
+            <element signature="e#13637#13638#0" expanded="true" />
+            <element signature="e#13713#13714#0" expanded="true" />
+            <element signature="e#12377#13289#0" />
+            <element signature="e#13295#16182#0" />
+            <element signature="e#16188#19159#0" />
+            <element signature="e#19165#23864#0" />
+            <element signature="e#23870#25964#0" />
+            <element signature="e#27454#32725#0" />
+            <element signature="e#32731#34816#0" />
+            <element signature="e#34822#36887#0" />
+            <element signature="e#36893#39150#0" />
+            <element signature="e#39156#41131#0" />
+            <element signature="e#41771#41772#0" expanded="true" />
+            <element signature="e#41843#41844#0" expanded="true" />
+            <element signature="e#42000#42001#0" expanded="true" />
+            <element signature="e#42078#42079#0" expanded="true" />
+            <element signature="e#41137#43030#0" />
+            <element signature="e#43317#45971#0" />
+            <element signature="class#47425:47724" />
+            <element signature="class#47763:48258" />
+            <element signature="class#48295:48612" />
+            <element signature="class#48658:49731" />
+            <element signature="class#49773:49989" />
+            <element signature="class#50034:50769" />
+            <element signature="class#50811:51825" />
+            <element signature="class#51869:52623" />
+            <element signature="class#52662:52843" />
+            <element signature="e#52764#52765#0" expanded="true" />
+            <element signature="e#52832#52833#0" expanded="true" />
+            <element signature="class#52885:53072" />
+            <element signature="e#52987#52988#0" expanded="true" />
+            <element signature="e#53061#53062#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -277,7 +395,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>9</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
