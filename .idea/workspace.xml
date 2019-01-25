@@ -159,8 +159,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="492" />
-    <option name="y" value="87" />
+    <option name="x" value="234" />
+    <option name="y" value="5" />
     <option name="width" value="1406" />
     <option name="height" value="928" />
   </component>
@@ -197,7 +197,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
@@ -215,7 +215,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH" value="9" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Scanner.Main" />
       <module name="ScannerGUI" />
