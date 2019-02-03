@@ -442,6 +442,7 @@ public class Controller {
             String rightDir = fileOfDirectory + "right";
             String comDir = fileOfDirectory + "combined";
             String tailDir = fileOfDirectory + "tailored";
+            String pdfDir = fileOfDirectory + "pdf";
 
             //make left directory
             String[] command = new String[]{"mkdir", "" + fileOfDirectory.substring(0, fileOfDirectory.length()-1)};
@@ -482,6 +483,11 @@ public class Controller {
             process.waitFor();
 
             command[2] = "mkdir " + tailDir;
+            pb = new ProcessBuilder(command);
+            process = pb.start();
+            process.waitFor();
+
+            command[2] = "mkdir " + pdfDir;
             pb = new ProcessBuilder(command);
             process = pb.start();
             process.waitFor();
@@ -965,7 +971,7 @@ public class Controller {
             System.out.println("Finished Imagemagick");
             appendLog("Finished convert to PDF\n");
         }
-            catch (Exception e){
+        catch (Exception e){
             appendLog("Failed Imagemagick\n");
             appendLog(e.getMessage());
             System.out.println("Failed Imagemagick");
@@ -1027,6 +1033,152 @@ public class Controller {
         }
     }
 
+    void tesseract(String path, String fileName){
+        try {
+            System.out.println("Tesseract: " + fileName);
+            System.out.println(path);
+            appendLog("Tesseract: " + fileName);
+            //Sets file string to current directory
+            String fileOfDirectory = extendedDirectory.toString();
+            String os = System.getProperty("os.name").toLowerCase();
+
+            if(os.contains("win")){
+                fileOfDirectory = fileOfDirectory + "\\pdf\\";
+            }else{
+                fileOfDirectory = fileOfDirectory + "/pdf/";
+            }
+
+            String[] command = new String[]{"tesseract", path, fileOfDirectory + fileName, "-l", "eng", "pdf"};
+
+            if(os.contains("win")){
+                command[0] = "C:\\Program Files (x86)\\Tesseract-OCR\\tesseract";
+            }
+
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+
+            //Re-direct output of process to console
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
+            }
+
+            process.waitFor();
+        }
+        catch (Exception e) {
+            appendLog("Failed tesseract\n");
+            appendLog(e.getMessage());
+            System.out.println("Failed tesseract");
+        }
+    }
+
+    void pdfMerge(File[] list, String path){
+        try {
+            String[] command = new String[]{"gs", "-dBATCH", "-dNOPAUSE", "-q", "-sDEVICE=pdfwrite", "-sOutputFile=" + path};
+            ArrayList<String> cl = new ArrayList<String>();
+
+            for(int i = 0; i < command.length; i++){
+                cl.add(command[i]);
+            }
+
+            for(int i = 0; i < list.length; i++){
+                cl.add(list[i].getPath());
+            }
+
+            command = new String[cl.size()];
+            for(int i = 0; i < command.length; i++){
+                command[i] = cl.get(i);
+            }
+
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Process process = pb.start();
+
+            //Re-direct output of process to console
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line + "\n");
+            }
+
+            BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            line = null;
+            while ((line = otherReader.readLine()) != null) {
+                System.out.println(line);
+                appendLog(line);
+            }
+
+            process.waitFor();
+        }catch(Exception e){
+            appendLog("Failed pdf merge\n");
+            appendLog(e.getMessage());
+            e.printStackTrace();
+            System.out.println("Failed pdf merge");
+        }
+    }
+
+    //New method: tesseract each tif individually - combining pdfs in the end
+    void tesseract(){
+        try {
+            System.out.println("Starting tesseract...");
+            appendLog("Starting tesseract...");
+            appendLog("Running OCR on each page separately.");
+            //Sets file string to current directory
+            String fileOfDirectory = extendedDirectory.toString();
+            String os = System.getProperty("os.name").toLowerCase();
+            String tailFolder = "";
+            String pdfFolder = "";
+
+            if(os.contains("win")){
+                fileOfDirectory = fileOfDirectory + "\\";
+            }else{
+                fileOfDirectory = fileOfDirectory + "/";
+            }
+
+            tailFolder = fileOfDirectory + "tailored";
+            pdfFolder = fileOfDirectory + "pdf";
+
+            //Get list of files in tailored folder
+            File tails = new File(tailFolder);
+            File[] listOfTails = tails.listFiles();
+
+            //call tesseract(path, name) for each file
+            for(int i = 0; i < listOfTails.length; i++){
+                tesseract(listOfTails[i].getPath(), listOfTails[i].getName().substring(0,listOfTails[i].getName().lastIndexOf(".")));
+            }
+
+            System.out.println("Finished OCR");
+            appendLog("Finished OCR");
+            System.out.println("Merging PDFs...");
+            appendLog("Merging PDFs...");
+
+            //get list of pdfs in pdf folder
+            File pdfs = new File(pdfFolder);
+            File[] listOfPdfs = pdfs.listFiles();
+            Arrays.sort(listOfPdfs);
+
+            pdfMerge(listOfPdfs, fileOfDirectory + projectName + ".pdf");
+
+        }
+        catch (Exception e){
+            appendLog("Failed tesseract\n");
+            appendLog(e.getMessage());
+            e.printStackTrace();
+            System.out.println("Failed tesseract");
+        }
+    }
+
+    //Original method: tesseract all the tifs into a pdf in one go
+    /*
     void tesseract(){
         try {
             configureTesserectSource();
@@ -1082,7 +1234,7 @@ public class Controller {
             appendLog(e.getMessage());
             System.out.println("Failed tesseract");
         }
-    }
+    }*/
 
     // For the medium tab of the GUI
     void mediumTab(){

@@ -17,6 +17,9 @@ https://www.imagemagick.org/
 Tesseract OCR
 https://github.com/tesseract-ocr/tesseract
 
+GhostScript (included with ImageMagick)
+https://www.ghostscript.com
+
 Mac Install:                    | Linux Install:
 -----------------------------   | --------------------------
 sudo port selfupdate            | sudo apt-get update
