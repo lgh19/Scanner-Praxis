@@ -179,6 +179,7 @@ public class Controller {
                 Task<Void> task = new Task<Void>() {
                     @Override
                     public Void call() throws Exception {
+                        long startTime = System.currentTimeMillis();
                         importFromCameras();
                         //NOTE: MAY NEED TO UNCOMMENT THIS LINE
                         if (camerasConnected) {
@@ -191,7 +192,10 @@ public class Controller {
                     /*if(camerasConnected){
                         //deleteFromCameras();
                     }*/
+                        long endTime = System.currentTimeMillis();
+                        long timePassed = endTime - startTime;
                         appendLog("Done\n");
+                        appendLog("Time elapsed in minutes: " + (timePassed/1000.0)/60.0);
                         running = false;
                         return null;
                     }
@@ -292,7 +296,6 @@ public class Controller {
         }catch (Exception e){
             running = false;
         }
-        //todo: make all operations work multithreading
     }
 
     void appendLog(String s){
@@ -1083,21 +1086,17 @@ public class Controller {
 
     void pdfMerge(File[] list, String path){
         try {
-            String[] command = new String[]{"gs", "-dBATCH", "-dNOPAUSE", "-q", "-sDEVICE=pdfwrite", "-sOutputFile=" + path};
-            ArrayList<String> cl = new ArrayList<String>();
+            String[] command = new String[]{"pdftk", "", "", "cat", "output", path};
 
-            for(int i = 0; i < command.length; i++){
-                cl.add(command[i]);
+            String os = System.getProperty("os.name").toLowerCase();
+            if(os.contains("win")){
+                command[0] = "C:\\Program Files (x86)\\PDFtk Server\\bin\\pdftk.exe";
             }
 
-            for(int i = 0; i < list.length; i++){
-                cl.add(list[i].getPath());
-            }
-
-            command = new String[cl.size()];
-            for(int i = 0; i < command.length; i++){
-                command[i] = cl.get(i);
-            }
+            String tempName = path.substring(0, path.length()-4) + "_.pdf";
+            appendLog("Merging pages 1 and 2");
+            command[1] = list[0].getPath();
+            command[2] = list[1].getPath();
 
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
@@ -1118,6 +1117,42 @@ public class Controller {
             }
 
             process.waitFor();
+
+            command[1] = tempName;
+            for(int i = 2; i < list.length; i++){
+                appendLog("Merging with page " + (i+1));
+                File fullPdf = new File(path);
+                File renamed = new File(tempName);
+                if(i !=2 && !renamed.delete()){
+                    throw new Exception("Failure deleting file.");
+                }
+
+                if(!fullPdf.renameTo(renamed)){
+                    throw new Exception("Failure renaming file");
+                }
+
+                command[2] = list[i].getPath();
+                pb = new ProcessBuilder(command);
+                process = pb.start();
+
+                //Re-direct output of process to console
+                reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                line = null;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                    appendLog(line + "\n");
+                }
+
+                otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                line = null;
+                while ((line = otherReader.readLine()) != null) {
+                    System.out.println(line);
+                    appendLog(line);
+                }
+                process.waitFor();
+            }
+            File renamed = new File(tempName);
+            renamed.delete();
         }catch(Exception e){
             appendLog("Failed pdf merge\n");
             appendLog(e.getMessage());
@@ -1167,7 +1202,7 @@ public class Controller {
             Arrays.sort(listOfPdfs);
 
             pdfMerge(listOfPdfs, fileOfDirectory + projectName + ".pdf");
-
+            appendLog("Finished PDF!");
         }
         catch (Exception e){
             appendLog("Failed tesseract\n");

@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="Scanner" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ff391a7-ef8b-4d33-a411-f73a2e17c5ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../.idea/artifacts/ScannerGUI.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/ScannerGUI.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/ScannerGUI1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/ext.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/limited.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/libraries/unlimited.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="1d975220-fff7-4fcf-af89-69a244efa6e4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Scanner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scanner/.idea/artifacts/Scanner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scanner/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Scanner/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scanner/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Scanner/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Scanner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Scanner/.idea/workspace.xml" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,89 +21,96 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="2098036573">
+    <session id="-640724998">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="5" />
+          <entry key="java" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="5" />
+          <entry key="JAVA" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1980" />
+          <entry key="java" value="1107" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1980" />
+          <entry key="JAVA" value="1107" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2610">
-              <caret line="1095" lean-forward="true" selection-start-line="1095" selection-end-line="1095" />
+            <state relative-caret-position="296">
+              <caret line="197" column="88" selection-start-line="197" selection-start-column="88" selection-end-line="197" selection-end-column="88" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#2740#2901#0" />
                 <element signature="e#2907#4179#0" />
-                <element signature="e#4185#9772#0" />
+                <element signature="e#4330#4504#0" expanded="true" />
+                <element signature="e#4503#4504#0" expanded="true" />
                 <element signature="e#4738#5502#0" expanded="true" />
                 <element signature="e#5501#5502#0" expanded="true" />
+                <element signature="e#5742#6780#0" expanded="true" />
+                <element signature="e#6779#6780#0" expanded="true" />
+                <element signature="e#7020#7419#0" expanded="true" />
+                <element signature="e#7418#7419#0" expanded="true" />
+                <element signature="e#7659#8002#0" expanded="true" />
+                <element signature="e#8001#8002#0" expanded="true" />
+                <element signature="e#8251#8667#0" expanded="true" />
+                <element signature="e#8666#8667#0" expanded="true" />
+                <element signature="e#8904#9468#0" expanded="true" />
+                <element signature="e#9467#9468#0" expanded="true" />
                 <element signature="e#9778#10234#0" />
                 <element signature="e#10240#11243#0" />
                 <element signature="e#11249#13738#0" />
-                <element signature="method#handle#0;class#11395:12045" />
                 <element signature="e#13744#14620#0" />
                 <element signature="e#14626#17722#0" />
                 <element signature="e#17728#20699#0" />
                 <element signature="e#20705#25440#0" />
+                <element signature="e#20911#20926#0" expanded="true" />
+                <element signature="e#20994#21009#0" expanded="true" />
+                <element signature="e#21689#21702#0" expanded="true" />
+                <element signature="e#21761#21774#0" expanded="true" />
                 <element signature="e#25446#27540#0" />
                 <element signature="e#27546#29024#0" />
                 <element signature="e#29030#34301#0" />
-                <element signature="e#34307#36392#0" />
-                <element signature="e#36398#38463#0" />
-                <element signature="e#38469#40380#0" />
-                <element signature="e#40491#40499#0" expanded="true" />
-                <element signature="e#42649#44592#0" />
-                <element signature="e#44003#44004#0" expanded="true" />
-                <element signature="e#44075#44076#0" expanded="true" />
-                <element signature="e#44232#44233#0" expanded="true" />
-                <element signature="e#44310#44311#0" expanded="true" />
-                <element signature="e#44598#46491#0" />
-                <element signature="e#46497#46772#0" />
-                <element signature="e#46778#49432#0" />
-                <element signature="e#49438#55180#0" />
-                <element signature="e#54964#54965#0" expanded="true" />
-                <element signature="e#55032#55033#0" expanded="true" />
-                <element signature="e#55187#55188#0" expanded="true" />
-                <element signature="e#55261#55262#0" expanded="true" />
+                <element signature="e#29960#29968#0" expanded="true" />
+                <element signature="e#34307#36388#0" />
+                <element signature="e#36394#38459#0" />
+                <element signature="e#38465#40256#0" />
+                <element signature="e#46293#48236#0" />
+                <element signature="e#48242#50135#0" />
+                <element signature="e#50422#53076#0" />
+                <element signature="e#53082#58824#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/ProcessBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="1047" selection-start-line="1047" selection-end-line="1047" />
             </state>
           </provider>
         </entry>
@@ -125,16 +123,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Main.java" />
         <option value="$PROJECT_DIR$/Controller.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="23" />
-    <option name="width" value="1215" />
-    <option name="height" value="777" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="115" />
+    <option name="y" value="175" />
+    <option name="width" value="1691" />
+    <option name="height" value="841" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -142,7 +139,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -154,14 +151,16 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549053967359" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549578369284" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -191,44 +190,44 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2ff391a7-ef8b-4d33-a411-f73a2e17c5ba" name="Default Changelist" comment="" />
-      <created>1549050074903</created>
+      <changelist id="1d975220-fff7-4fcf-af89-69a244efa6e4" name="Default Changelist" comment="" />
+      <created>1549507081012</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1549050074903</updated>
+      <updated>1549507081012</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="23" width="1215" height="777" extended-state="0" />
+    <frame x="166" y="95" width="1691" height="841" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25319692" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2498469" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.32957748" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.329927" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32957748" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.329927" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -236,72 +235,58 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/org/apache/pdfbox/contentstream/PDFStreamEngine.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/ProcessBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pdfbox-2.0.13/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/PDDocument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pdfbox-1.8.16/pdfbox/src/main/java/org/apache/pdfbox/pdfparser/PDFParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+        <state relative-caret-position="315">
+          <caret line="1047" selection-start-line="1047" selection-end-line="1047" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2610">
-          <caret line="1095" lean-forward="true" selection-start-line="1095" selection-end-line="1095" />
+        <state relative-caret-position="296">
+          <caret line="197" column="88" selection-start-line="197" selection-start-column="88" selection-end-line="197" selection-end-column="88" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#2740#2901#0" />
             <element signature="e#2907#4179#0" />
-            <element signature="e#4185#9772#0" />
+            <element signature="e#4330#4504#0" expanded="true" />
+            <element signature="e#4503#4504#0" expanded="true" />
             <element signature="e#4738#5502#0" expanded="true" />
             <element signature="e#5501#5502#0" expanded="true" />
+            <element signature="e#5742#6780#0" expanded="true" />
+            <element signature="e#6779#6780#0" expanded="true" />
+            <element signature="e#7020#7419#0" expanded="true" />
+            <element signature="e#7418#7419#0" expanded="true" />
+            <element signature="e#7659#8002#0" expanded="true" />
+            <element signature="e#8001#8002#0" expanded="true" />
+            <element signature="e#8251#8667#0" expanded="true" />
+            <element signature="e#8666#8667#0" expanded="true" />
+            <element signature="e#8904#9468#0" expanded="true" />
+            <element signature="e#9467#9468#0" expanded="true" />
             <element signature="e#9778#10234#0" />
             <element signature="e#10240#11243#0" />
             <element signature="e#11249#13738#0" />
-            <element signature="method#handle#0;class#11395:12045" />
             <element signature="e#13744#14620#0" />
             <element signature="e#14626#17722#0" />
             <element signature="e#17728#20699#0" />
             <element signature="e#20705#25440#0" />
+            <element signature="e#20911#20926#0" expanded="true" />
+            <element signature="e#20994#21009#0" expanded="true" />
+            <element signature="e#21689#21702#0" expanded="true" />
+            <element signature="e#21761#21774#0" expanded="true" />
             <element signature="e#25446#27540#0" />
             <element signature="e#27546#29024#0" />
             <element signature="e#29030#34301#0" />
-            <element signature="e#34307#36392#0" />
-            <element signature="e#36398#38463#0" />
-            <element signature="e#38469#40380#0" />
-            <element signature="e#40491#40499#0" expanded="true" />
-            <element signature="e#42649#44592#0" />
-            <element signature="e#44003#44004#0" expanded="true" />
-            <element signature="e#44075#44076#0" expanded="true" />
-            <element signature="e#44232#44233#0" expanded="true" />
-            <element signature="e#44310#44311#0" expanded="true" />
-            <element signature="e#44598#46491#0" />
-            <element signature="e#46497#46772#0" />
-            <element signature="e#46778#49432#0" />
-            <element signature="e#49438#55180#0" />
-            <element signature="e#54964#54965#0" expanded="true" />
-            <element signature="e#55032#55033#0" expanded="true" />
-            <element signature="e#55187#55188#0" expanded="true" />
-            <element signature="e#55261#55262#0" expanded="true" />
+            <element signature="e#29960#29968#0" expanded="true" />
+            <element signature="e#34307#36388#0" />
+            <element signature="e#36394#38459#0" />
+            <element signature="e#38465#40256#0" />
+            <element signature="e#46293#48236#0" />
+            <element signature="e#48242#50135#0" />
+            <element signature="e#50422#53076#0" />
+            <element signature="e#53082#58824#0" />
           </folding>
         </state>
       </provider>
@@ -312,12 +297,10 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>Scanner</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
