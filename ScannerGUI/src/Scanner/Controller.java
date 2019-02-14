@@ -1188,7 +1188,9 @@ public class Controller {
 
             //call tesseract(path, name) for each file
             for(int i = 0; i < listOfTails.length; i++){
-                tesseract(listOfTails[i].getPath(), listOfTails[i].getName().substring(0,listOfTails[i].getName().lastIndexOf(".")));
+                if(listOfTails[i].getName().lastIndexOf(".") != -1){
+                    tesseract(listOfTails[i].getPath(), listOfTails[i].getName().substring(0,listOfTails[i].getName().lastIndexOf(".")));
+                }
             }
 
             System.out.println("Finished OCR");

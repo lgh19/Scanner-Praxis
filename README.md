@@ -27,5 +27,4 @@ sudo port install scantailor    | sudo apt-get install scantailor
 sudo port install ImageMagick   | sudo apt-get install imagemagick
 sudo port install tesseract     | sudo apt-get install tesseract-ocr
 sudo port install tesseract-eng | sudo apt-get install libtesseract-dev
-
-PDFtk Server must be manually installed
+                                | sudo apt install pdftk
