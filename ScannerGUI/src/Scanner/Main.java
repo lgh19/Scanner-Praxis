@@ -17,8 +17,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         try {
             // Loads FXML from file
-            //Parent root = FXMLLoader.load(getClass().getResource("Scanner.fxml"));
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Scanner.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Scanner.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Scanner.fxml"));
             primaryStage.getIcons().add(new Image("file:icon.png"));
             //Sets title of window
             primaryStage.setTitle("A Scanner Darkly");
