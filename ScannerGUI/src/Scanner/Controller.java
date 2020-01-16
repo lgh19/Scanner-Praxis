@@ -182,7 +182,7 @@ public class Controller {
                         long startTime = System.currentTimeMillis();
                         importFromCameras();
                         //NOTE: MAY NEED TO UNCOMMENT THIS LINE
-                        if (camerasConnected) {
+                        if (!camerasConnected) {
                             rotateImages();
                         }
                         sideStitch();
@@ -208,7 +208,7 @@ public class Controller {
                     public Void call() throws Exception {
                         //makeDirectories();
                         importFromCameras();
-                        if (camerasConnected) {
+                        if (!camerasConnected) {
                             rotateImages();
                             //deleteFromCameras();
                         }
@@ -238,6 +238,9 @@ public class Controller {
                     @Override
                     public Void call() throws Exception {
                         importFromCameras();
+                        if (!camerasConnected) {
+                            rotateImages();
+                        }
                         hardDelete.setDisable(false);
                         hardImport.setText("Download Images from Cameras");
                         running = false;
@@ -311,13 +314,13 @@ public class Controller {
     }
 
     void loadAnimate(){
-        final String[] states = new String[]{"Loading...-",
-                "Loading...\\",
-                "Loading...|",
-                "Loading.../",
-                "Loading...-",
-                "Loading...\\",
-                "Loading...|"
+        final String[] states = new String[]{"Processing...-",
+                "Processing...\\",
+                "Processing...|",
+                "Processing.../",
+                "Processing...-",
+                "Processing...\\",
+                "Processing...|"
         };
         int loadIndex = 0;
         try {
@@ -812,8 +815,8 @@ public class Controller {
             if(easyProjectName.getCharacters().toString().length() > 0)
                 projectName = easyProjectName.getCharacters().toString();
 
-            System.out.println("Starting ScanTailor...");
-            appendLog("Starting ScanTailor...");
+            System.out.println("Processing with ScanTailor...");
+            appendLog("Processing with ScanTailor... (this could take a while)");
 
             ArrayList<String> commands = new ArrayList<String>();
 
@@ -1331,6 +1334,9 @@ public class Controller {
                 subDir = "/" + subDir;
             }
 
+            System.out.println("Starting download from cameras...");
+            appendLog("Starting download from cameras...");
+
             System.out.println("" + usbAddress);
             System.out.println("" + extendedDirectory+ subDir);
             String[] command = new String[]{"cp", usbAddress + "/*", "" + extendedDirectory + subDir};
@@ -1363,6 +1369,9 @@ public class Controller {
                 System.out.println(line);
                 appendLog(line);
             }
+
+            System.out.println("Finished download from cameras.");
+            appendLog("Finished download from cameras.");
         }
         catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Application was unable to import from cameras", ButtonType.OK);
