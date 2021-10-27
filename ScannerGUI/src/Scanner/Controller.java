@@ -1352,7 +1352,7 @@ public class Controller {
             if(os.contains("win") ){
                 command = new String[]{"xcopy", "/f", usbAddress + "\\*", "" + extendedDirectory + subDir};
             }
-
+            System.out.println("Downloading from cameras...");
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
 
