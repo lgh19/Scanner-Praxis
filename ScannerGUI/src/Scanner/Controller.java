@@ -158,6 +158,7 @@ public class Controller {
         hardColorMode.setValue("Text and Line Drawings Only");
     }
 
+    //
     private void runOperation(String op) {
         if(running){
             return;
@@ -301,6 +302,7 @@ public class Controller {
         }
     }
 
+    
     void appendLog(String s){
         s = s.trim() + "\n";
         try {
@@ -339,6 +341,7 @@ public class Controller {
         javafx.application.Platform.runLater( () -> mediumCreatePDF.setText("Download and Create PDF"));
     }
 
+    
     void configTab(){
         // Handles event of "Download Location" button click on the easy tab of the GUI
         easyFileBrowser.setOnAction(new EventHandler<ActionEvent>() {
@@ -347,13 +350,14 @@ public class Controller {
                 //Try to locate the file
                 try{
                     DirectoryChooser chooser = new DirectoryChooser();
-                    chooser.setTitle("Choose destination folder");
+                    chooser.setTitle("Choose destination folder");	
                     currentDirectory = chooser.showDialog(new Stage());
                     easyFilePath.setText(currentDirectory.toString());
                     //makeDirectories();
                 }
                 catch (Exception e){
                     System.out.println("No directory selected.");
+                    //could hard code a directory here
                 }
             }
         });
@@ -1088,6 +1092,8 @@ public class Controller {
     }
 
     void pdfMerge(File[] list, String path){
+        boolean success = true;
+
         try {
             String[] command = new String[]{"pdftk", "", "", "cat", "output", path};
 
@@ -1156,12 +1162,21 @@ public class Controller {
             }
             File renamed = new File(tempName);
             renamed.delete();
+            
+        
         }catch(Exception e){
             appendLog("Failed pdf merge\n");
             appendLog(e.getMessage());
             e.printStackTrace();
             System.out.println("Failed pdf merge");
-        }
+            success = false;
+            appendLog("Errors found, files on cameras not deleted\n");
+            
+        }       
+        if(success == true){
+        	appendLog("Deleting files from cameras");
+        	deleteFromCameras();
+       }
     }
 
     //New method: tesseract each tif individually - combining pdfs in the end
@@ -1405,6 +1420,8 @@ public class Controller {
             if(os.contains("win") ){
                 command = new String[]{"del", "" + leftCamDirectory + "\\*"};
             }
+            
+            appendLog("Deleting images from this directory: " + command[2]);
 
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
@@ -1432,7 +1449,10 @@ public class Controller {
             if(!(os.contains("win") || os.contains("osx"))){
                 String[] newCommand = {"/bin/bash", "-c", ""};
                 for(String a: command){
-                    newCommand[2] += a + " ";
+                    newCommand[2] += a + " ";   
+                }
+                for(int i = 0; i < newCommand.length; i++) {
+                	System.out.println(newCommand[i]);
                 }
                 command = newCommand;
             }
@@ -1440,6 +1460,8 @@ public class Controller {
             if(os.contains("win") ){
                 command = new String[]{"del", "" + rightCamDirectory + "\\*"};
             }
+            
+            appendLog("Deleting images from this directory: " + command[2]);
 
             pb = new ProcessBuilder(command);
             process = pb.start();
@@ -1520,7 +1542,9 @@ public class Controller {
                 }
             }
         });
-
+        
+        
+        //creates the pdf
         hardCreatePDF.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
