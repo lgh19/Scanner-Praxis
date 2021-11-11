@@ -1421,7 +1421,7 @@ public class Controller {
                 command = new String[]{"del", "" + leftCamDirectory + "\\*"};
             }
             
-            appendLog("Deleting images from this directory: " + command[2]);
+            appendLog("Deleted images from this directory (camera): " + command[2]);
 
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
@@ -1461,7 +1461,7 @@ public class Controller {
                 command = new String[]{"del", "" + rightCamDirectory + "\\*"};
             }
             
-            appendLog("Deleting images from this directory: " + command[2]);
+            appendLog("Deleted images from this directory (camera): " + command[2]);
 
             pb = new ProcessBuilder(command);
             process = pb.start();
