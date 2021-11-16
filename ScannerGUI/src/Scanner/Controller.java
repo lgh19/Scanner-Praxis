@@ -207,6 +207,8 @@ public class Controller {
                 Task<Void> task = new Task<Void>() {
                     @Override
                     public Void call() throws Exception {
+                        
+                        //**makeDirectories() is called and if the directory is left null by the user its handled in that method
                         makeDirectories();
                         importFromCameras();
                         if (!camerasConnected) {
@@ -440,10 +442,13 @@ public class Controller {
             String os="";
             if(easyProjectName.getCharacters().toString().length() > 0)
                 projectName = easyProjectName.getCharacters().toString();
-            
+
+            //** this checks if the user entered a directory for the project
             if(currentDirectory!=null) {
             	fileOfDirectory = currentDirectory.toString();
             	os = System.getProperty("os.name").toLowerCase();
+                
+             //** if the user left the directory empty, it is automatically set to "/home/bookscan/Documents/bookscans"
             } else {
             	fileOfDirectory = "/home/bookscan/Documents/bookscans";
             	os = System.getProperty("os.name").toLowerCase();
@@ -1105,7 +1110,8 @@ public class Controller {
     }
 
     void pdfMerge(File[] list, String path){
-        //**
+        //** boolean success = true to begin with, and then if pdfMerge fails it 
+        // becomes false, and if it's false the camera images are not deleted
         boolean success = true;
 
         try {
@@ -1183,7 +1189,7 @@ public class Controller {
             appendLog(e.getMessage());
             e.printStackTrace();
             System.out.println("Failed pdf merge");
-            //**
+            //** something failed within pdfMerge, and the images from the camera aren't deleted
             success = false; 
             appendLog("Errors found, files on cameras not deleted\n");
             
