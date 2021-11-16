@@ -207,7 +207,7 @@ public class Controller {
                 Task<Void> task = new Task<Void>() {
                     @Override
                     public Void call() throws Exception {
-                        //makeDirectories();
+                        makeDirectories();
                         importFromCameras();
                         if (!camerasConnected) {
                             rotateImages();
@@ -352,8 +352,11 @@ public class Controller {
                     DirectoryChooser chooser = new DirectoryChooser();
                     chooser.setTitle("Choose destination folder");	
                     currentDirectory = chooser.showDialog(new Stage());
+                  
+                    System.out.println("currentDirectory: "+currentDirectory.toString()+ " "+currentDirectory);
                     easyFilePath.setText(currentDirectory.toString());
-                    //makeDirectories();
+                  
+                   makeDirectories();
                 }
                 catch (Exception e){
                     System.out.println("No directory selected.");
@@ -372,6 +375,7 @@ public class Controller {
                     leftCamDirectory = chooser.showDialog(new Stage());
                     leftCamFilePath.setText(leftCamDirectory.toString());
                     easySetLeftCamera.setText("Left Camera Set");
+                    System.out.println("leftCamFilePath: "+leftCamFilePath.getText());
                 }
                 catch (Exception e){
                     System.out.println("No directory selected.");
@@ -389,6 +393,7 @@ public class Controller {
                     rightCamDirectory = chooser.showDialog(new Stage());
                     rightCamFilePath.setText(rightCamDirectory.toString());
                     easySetRightCamera.setText("Right Camera Set");
+                    System.out.println("rightCamFilePath: "+rightCamFilePath.getText());
                 }
                 catch (Exception e){
                     System.out.println("No directory selected.");
@@ -431,18 +436,24 @@ public class Controller {
             String strDateFormat = "_yyyy-MM-dd_hh-mm-ss-a";
             DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
             String formattedDate = dateFormat.format(date);
-
+            String fileOfDirectory = "";
+            String os="";
             if(easyProjectName.getCharacters().toString().length() > 0)
                 projectName = easyProjectName.getCharacters().toString();
-
-            String fileOfDirectory = currentDirectory.toString();
-            String os = System.getProperty("os.name").toLowerCase();
-
+            
+            if(currentDirectory!=null) {
+            	fileOfDirectory = currentDirectory.toString();
+            	os = System.getProperty("os.name").toLowerCase();
+            } else {
+            	fileOfDirectory = "/home/bookscan/Documents/bookscans";
+            	os = System.getProperty("os.name").toLowerCase();
+            }
             if (os.contains("win")) {
                 fileOfDirectory = fileOfDirectory + "\\" + projectName + formattedDate;
                 extendedDirectory = new File(fileOfDirectory);
                 fileOfDirectory = fileOfDirectory + "\\";
             } else {
+            	
                 fileOfDirectory = fileOfDirectory + "/" + projectName + formattedDate;
                 extendedDirectory = new File(fileOfDirectory);
                 fileOfDirectory = fileOfDirectory + "/";
@@ -938,6 +949,7 @@ public class Controller {
 
     void convertPDF(){
         try{
+        	System.out.println("convertPDF line 946: "+extendedDirectory.toString());
             //Sets file string to current directory
             String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
@@ -991,6 +1003,7 @@ public class Controller {
     void convertTXT(){
         try {
             //Sets file string to current directory
+        	System.out.println("convertTXT line 1000: "+extendedDirectory.toString());
             String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
 
@@ -1092,6 +1105,7 @@ public class Controller {
     }
 
     void pdfMerge(File[] list, String path){
+        //**
         boolean success = true;
 
         try {
@@ -1169,10 +1183,14 @@ public class Controller {
             appendLog(e.getMessage());
             e.printStackTrace();
             System.out.println("Failed pdf merge");
-            success = false;
+            //**
+            success = false; 
             appendLog("Errors found, files on cameras not deleted\n");
             
-        }       
+        }    
+        
+      //** if no merge errors are caught, the deleteFromCameras() method is called and
+        // the images are automatically deleted
         if(success == true){
         	appendLog("Deleting files from cameras");
         	deleteFromCameras();
@@ -1351,7 +1369,6 @@ public class Controller {
 
             System.out.println("Starting download from cameras...");
             appendLog("Starting download from cameras...");
-
             System.out.println("" + usbAddress);
             System.out.println("" + extendedDirectory+ subDir);
             String[] command = new String[]{"cp", usbAddress + "/*", "" + extendedDirectory + subDir};
@@ -1421,6 +1438,7 @@ public class Controller {
                 command = new String[]{"del", "" + leftCamDirectory + "\\*"};
             }
             
+          //** shows user which directory is being deleted
             appendLog("Deleted images from this directory (camera): " + command[2]);
 
             ProcessBuilder pb = new ProcessBuilder(command);
@@ -1461,6 +1479,7 @@ public class Controller {
                 command = new String[]{"del", "" + rightCamDirectory + "\\*"};
             }
             
+            //** shows user which directory is being deleted
             appendLog("Deleted images from this directory (camera): " + command[2]);
 
             pb = new ProcessBuilder(command);
