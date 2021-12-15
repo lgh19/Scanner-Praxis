@@ -156,6 +156,8 @@ public class Controller {
         hardColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
         //Sets default value in hard tab color options
         hardColorMode.setValue("Text and Line Drawings Only");
+        
+        easyFilePath.setText("(Default): Documents/Bookscans");
     }
 
     //
@@ -228,7 +230,7 @@ public class Controller {
                             convertTXT();
                         }
 
-                        mediumCreatePDF.setText("Download and Create PDF!");
+                        mediumCreatePDF.setText("Run");
                         mediumCreatePDF.setDisable(false);
                         running = false;
                         return null;
@@ -339,8 +341,8 @@ public class Controller {
         }catch (Exception e){
             System.out.println("Error waiting");
         }
-        javafx.application.Platform.runLater( () -> easyCreate.setText("Download and Create PDF"));
-        javafx.application.Platform.runLater( () -> mediumCreatePDF.setText("Download and Create PDF"));
+        javafx.application.Platform.runLater( () -> easyCreate.setText("Run"));
+        javafx.application.Platform.runLater( () -> mediumCreatePDF.setText("Run"));
     }
 
     
@@ -656,7 +658,6 @@ public class Controller {
                     System.out.println(leftFiles[j].getName());
                 }
             }
-
             for(int j = 0; j < rightFiles.length; j++){
                 if(rightFiles[j].isFile()){
                     rightImages.add(ImageIO.read(rightFiles[j]));
@@ -867,9 +868,7 @@ public class Controller {
                 for(String a: command){
                     newCommand[2] += a + " ";
                 }
-
                 newCommand[2] = newCommand[2].substring(0, newCommand[2].length()-1);
-
                 command = newCommand;
             }*/
 
@@ -1265,7 +1264,6 @@ public class Controller {
             String fileOfDirectory = extendedDirectory.toString();
             String os = System.getProperty("os.name").toLowerCase();
             String inputImages = fileOfDirectory;
-
             if(os.contains("win")){
                 fileOfDirectory = fileOfDirectory + "\\";
                 //inputImages += "\\tailored\\combined_pages.tiff";
@@ -1275,20 +1273,15 @@ public class Controller {
                 //inputImages += "/tailored/combined_pages.tiff";
                 inputImages += "/tailored/combined_pages.txt";
             }
-
             //tesseract output.tiff outputOCR -l eng pdf
             System.out.println("Starting Tesseract...");
             appendLog("Starting OCR to create PDF with Tesseract...");
-
             String[] command = new String[]{"tesseract", inputImages, fileOfDirectory + projectName, "-l", "eng", "pdf"};
-
             if(os.contains("win")){
                 command[0] = "C:\\Program Files (x86)\\Tesseract-OCR\\tesseract";
             }
-
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
-
             //Re-direct output of process to console
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line = null;
@@ -1296,14 +1289,12 @@ public class Controller {
                 System.out.println(line);
                 appendLog(line + "\n");
             }
-
             BufferedReader otherReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
             line = null;
             while ((line = otherReader.readLine()) != null) {
                 System.out.println(line);
                 appendLog(line);
             }
-
             process.waitFor();
             System.out.println("Finished Tesseract");
             appendLog("Finished Tesseract\n");
@@ -1529,6 +1520,13 @@ public class Controller {
                 if (alert.getResult() == ButtonType.YES) {
                     hardDelete.setText("Deleting!");
                     runOperation("delete");
+                    try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                    hardDelete.setText("Deleted!");
                 }
             }
         });
