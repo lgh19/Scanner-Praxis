@@ -27,11 +27,11 @@
                           <Label layoutX="14.0" layoutY="14.0" text="Project Name:" />
                           <!-- Text input of the project name -->
                           <TextField fx:id="easyProjectName" layoutX="108.0" layoutY="9.0" />
-                          <CheckBox fx:id="usingCameras" layoutX="14.0" layoutY="85.0" mnemonicParsing="false" text="Do you need to rotate the images?" />
+                          <CheckBox fx:id="usingCameras" layoutX="14.0" layoutY="85.0" mnemonicParsing="false" text="Rotate Images?" />
                           <!-- File browser button, "Download Location" -->
                           <Button fx:id="easyFileBrowser" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="Destination Folder" prefWidth="150.0"/>
                           <!-- Label for the pathways label "File Path:" -->
-                          <Label layoutX="180.0" layoutY="50.0" text="File Path:" />
+                          <Label layoutX="180.0" layoutY="50.0" text="File Path: " />
                           <!-- Pathway label -->
                           <Label fx:id="easyFilePath" layoutX="255.0" layoutY="50.0" />
                           <!-- Left camera button -->
@@ -48,19 +48,21 @@
                           <Label layoutX="180.0" layoutY="165.0" text="File Path:" />
                           <!-- Pathway label -->
                           <Label fx:id="rightCamFilePath" layoutX="255.0" layoutY="165.0" />
+                          
+                          <!-- Auto select cameras button -->
+                          <Button fx:id="easySetCameras" layoutX="1000" layoutY="9.0" mnemonicParsing="false" text="Auto select cameras" prefWidth="175"/>
 
                           <!-- Line splitting third and fourth -->
                           <Line endX="600.0" layoutX="90.0" layoutY="200.0" startX="-100.0" />
                           <Text layoutX="14.0" layoutY="220.0" text="Instructions" />
-                          <Text layoutX="14.0" layoutY="240.0" text="1. Set your configuration on this tab." />
-                          <Text layoutX="34.0" layoutY="260.0" text="a. Set your destination folder. This is where all assembled files will go." />
-                          <Text layoutX="34.0" layoutY="280.0" text="b. Set paths to both cameras; these are folders with left and right images." />
-                          <Text layoutX="14.0" layoutY="300.0" text="2. Choose an output method." />
+                          <Text layoutX="14.0" layoutY="240.0" text="1. Type a project name (one word, no spaces)." />
+                          <Text layoutX="34.0" layoutY="260.0" text="a. Set paths to both cameras; these are folders with left and right images." />
+                          <Text layoutX="14.0" layoutY="300.0" text="2. Choose an output method by clicking a tab at the top." />
                           <Text layoutX="34.0" layoutY="320.0" text="a. The easy tab is for simple automatic downloads and conversion to pdf with OCR." />
                           <Text layoutX="34.0" layoutY="340.0" text="b. The normal tab includes options for color modes, OCR, and txt." />
                           <Text layoutX="34.0" layoutY="360.0" text="c. The expert tab includes a wider array of specific options." />
 
-                          <Text layoutX="14.0" layoutY="395.0" text="Note: If the final pdf is upside-down, you've mistakingly swapped left+right cameras." />
+                          <Text layoutX="12" layoutY="395.0" text="Note: If the final pdf is upside-down, you've mistakenly swapped left+right cameras" />
                           <Text layoutX="14.0" layoutY="435.0" text="A project by the Vibrant Media Lab at the University of Pittsburgh." />
                           <Text layoutX="14.0" layoutY="455.0" text="For more information, go to vml.pitt.edu" />
                       </children>
@@ -73,7 +75,7 @@
                   <AnchorPane minHeight="500.0" minWidth="600.0">
                       <children>
                           <!-- Button for creating and downloading pdfs -->
-                          <Button fx:id="easyCreate" layoutX="62.0" layoutY="15.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="476.0" text="Download and Create PDF" textAlignment="CENTER" wrapText="true">
+                          <Button fx:id="easyCreate" layoutX="62.0" layoutY="15.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="476.0" text="Run" textAlignment="CENTER" wrapText="true">
                               <Font size="18.0" />
                           </Button>
                           <!-- Log for the easy tab -->
@@ -98,7 +100,7 @@
                           <Line endX="600.0" layoutX="90.0" layoutY="100.0" startX="-100.0" />
 
                           <!-- Button to begin PDF generation -->
-                          <Button fx:id="mediumCreatePDF" layoutX="62.0" layoutY="120.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="476.0" text="Download and Create PDF" />
+                          <Button fx:id="mediumCreatePDF" layoutX="62.0" layoutY="120.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="476.0" text="Run" />
                           <!-- text log for the normal tab -->
                           <TextArea fx:id="normalLog" editable="false" layoutX="62.0" layoutY="200.0" prefHeight="250.0" prefWidth="476.0" />
                       </children>
@@ -126,7 +128,7 @@
                           <Label layoutX="14.0" layoutY="110.0" prefHeight="27.0" prefWidth="99.0" text="Layout Option:" />
                           <!-- Layout options -->
                           <ChoiceBox fx:id="hardLayoutOption" layoutX="115.0" layoutY="110.0" />
-                          <!-- Lebel for orientation options -->
+                          <!-- Label for orientation options -->
                           <Label layoutX="14.0" layoutY="140.0" prefHeight="27.0" prefWidth="99.0" text="Orientation:" />
                           <!-- orientation options -->
                           <ChoiceBox fx:id="hardOrientation" layoutX="113.0" layoutY="140.0" />
