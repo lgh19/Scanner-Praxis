@@ -156,7 +156,8 @@ public class Controller {
         hardColorMode.getItems().addAll("Text and Line Drawings Only", "Text and Photographs", "Full Photographs");
         //Sets default value in hard tab color options
         hardColorMode.setValue("Text and Line Drawings Only");
-        
+	    
+        //** The user can now see the default file path on the UI
         easyFilePath.setText("(Default): Documents/Bookscans");
     }
 
@@ -229,7 +230,7 @@ public class Controller {
                         if (txtOutputMedium) {
                             convertTXT();
                         }
-
+			
                         mediumCreatePDF.setText("Run");
                         mediumCreatePDF.setDisable(false);
                         running = false;
@@ -341,6 +342,8 @@ public class Controller {
         }catch (Exception e){
             System.out.println("Error waiting");
         }
+	    
+	//** Now the button to run the program says "Run" instead of "Download and create PDF"
         javafx.application.Platform.runLater( () -> easyCreate.setText("Run"));
         javafx.application.Platform.runLater( () -> mediumCreatePDF.setText("Run"));
     }
